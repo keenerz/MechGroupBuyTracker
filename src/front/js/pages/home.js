@@ -9,15 +9,14 @@ export const Home = (props) => {
   return (
     <div className="text-center mt-5">
       <h1>Group Buy Tracker (working title)</h1>
-      <div class="card" style="width: 18rem;">
+      <div className="card">
         <img src="..." className="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Name</h5>
+        <div className="card-body">
+          <h5 className="card-title">Name</h5>
           <div>
-            <p class="card-text"></p>
+            <p className="card-text">something</p>
           </div>
-
-          <a href="#" class="btn btn-primary">
+          <a href="#" className="btn btn-primary">
             Go somewhere
           </a>
         </div>

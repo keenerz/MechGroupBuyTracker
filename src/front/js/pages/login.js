@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import "/workspace/react-flask-hello/src/front/styles/home.css";
+import "/workspace/MechGroupBuyTracker/src/front/styles/home.css";
 import { Link } from "react-router-dom";
-import { Context } from "/workspace/react-flask-hello/src/front/js/store/appContext.js";
+import { Context } from "/workspace/MechGroupBuyTracker/src/front//js/store/appContext.js";
 import { useHistory } from "react-router-dom";
 
 export const Login = () => {
@@ -54,7 +54,7 @@ export const Login = () => {
         </div>
       </form>
       <div align="center">
-        <Link to="/newuser">
+        <Link to="...">
           <button type="newuser" className="btn btn-primary">
             Create Account
           </button>

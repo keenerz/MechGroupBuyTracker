@@ -21,3 +21,15 @@ def create_token():
         return jsonify({"msg": "Missing email or password"}), 401
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
+
+@api.route('/user', methods=['POST'])
+def create_user():
+    email = request.json.get('email')
+    username = request.json.get('username')
+    password = request.json.get('password')
+    usertype = request.json.get('usertype')
+    user = User(email=email,username=username, password=password, usertype=usertype)
+    db.session.add(user)
+    db.session.commit()
+    return jsonify(user.serialize())
+

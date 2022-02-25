@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import { Cards } from "../component/cards";
 
 export const Home = (props) => {
   const { store, actions } = useContext(Context);
@@ -9,17 +10,24 @@ export const Home = (props) => {
   return (
     <div className="text-center mt-5">
       <h1>Group Buy Tracker (working title)</h1>
-      <div className="card">
-        <img src="..." className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title">Name</h5>
-          <div>
-            <p className="card-text">something</p>
-          </div>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
-          </a>
-        </div>
+      <div
+        className="d-flex flex-row mx-auto"
+        style={{ width: "90%", overflow: "auto" }}
+      >
+        {store.project.map((c, i) => (
+          <Cards
+            data={c}
+            uid={store.projects[i].uid}
+            favStatus={store.projects[i].isFavorite}
+            name={store.projects[i].name}
+            gender={store.projects[i].gender}
+            hair_color={store.projects[i].hair_color}
+            eye_color={store.projects[i].eye_color}
+            img={store.projects[i].img_url}
+            details={store.projects[i].details}
+            key={i}
+          />
+        ))}
       </div>
     </div>
   );

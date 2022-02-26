@@ -28,7 +28,7 @@ def create_user():
     username = request.json.get('username')
     password = request.json.get('password')
     usertype = request.json.get('usertype')
-    user = User(email=email,username=username, password=password, usertype=usertype)
+    user = User(email=email, username=username, password=password, usertype=usertype)
     db.session.add(user)
     db.session.commit()
     return jsonify(user.serialize())

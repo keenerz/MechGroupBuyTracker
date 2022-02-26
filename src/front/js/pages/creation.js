@@ -1,6 +1,6 @@
 import React from "react";
 
-export function accountCreation(props) {
+export function AccountCreation(props) {
   return (
     <div className="container">
       <section class="register">

@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       tracked: [],
+      projects: [],
     },
     actions: {
       login: async (email, password) => {

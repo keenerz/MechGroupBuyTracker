@@ -33,3 +33,8 @@ def create_user():
     db.session.commit()
     return jsonify(user.serialize())
 
+@api.route('/projects', methods=['GET'])
+def get_project():
+    projects_query = Projects.query.all()
+    all_serialized_projects = list(map(lambda item:item.serialize(), project_query))
+    return jsonify(all_serialized_projects)

@@ -37,6 +37,7 @@ class Project(db.Model):
     ended_at = db.Column(db.DateTime(timezone=True))
     vendor_links = db.Column(db.String(250), unique=False, nullable=True)
     discussion_links = db.Column(db.String(250), unique=False, nullable = True)
+    img_url = db.Column(db.String(250), unique=False, nullable = True)
 
     def serialize(self):
         return {

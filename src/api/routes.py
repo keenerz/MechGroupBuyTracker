@@ -39,3 +39,37 @@ def get_project():
     all_serialized_project = list(map(lambda item:item.serialize(), project_query))
     return jsonify(all_serialized_project)
 
+@api.route('/projects', methods=['POST'])
+def create_project():
+    name = request.json.get('name', None)
+    project_type = request.json.get('project_type', None)
+    project_stage = request.json.get('project_stage', None)
+    sale_type = request.json.get('sale_type', None)
+    region = request.json.get('region', None)
+    baseprice = request.json.get('baseprice', None)
+    estimated_ship = request.json.get('estimated_ship', None)
+    create_at = request.json.get('create_at', None)
+    updated_at = request.json.get("updated_at", None)
+    started_at = request.json.get('started_at', None)
+    ended_at = request.json.get('ended_at', None)
+    vendor_links = request.json.get('vendor_links', None)
+    discussion_links = request.json.get('discussion_links', None)
+    img_url = request.json.get('img_url', None)
+    
+    project = Project(name=name,
+                    project_type=project_type,
+                    project_stage=project_stage,
+                    sale_type=sale_type,
+                    region=region,
+                    baseprice=baseprice,
+                    estimated_ship=estimated_ship,
+                    create_at=create_at,
+                    updated_at=updated_at,
+                    started_at=started_at,
+                    ended_at=ended_at,
+                    vendor_links=vendor_links,
+                    discussion_links=discussion_links,
+                    img_url=img_url)
+    db.session.add(project)
+    db.session.commit()
+    return jsonify(project.serialize())

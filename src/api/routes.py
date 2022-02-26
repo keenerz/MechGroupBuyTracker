@@ -35,6 +35,7 @@ def create_user():
 
 @api.route('/projects', methods=['GET'])
 def get_project():
-    projects_query = Projects.query.all()
-    all_serialized_projects = list(map(lambda item:item.serialize(), project_query))
-    return jsonify(all_serialized_projects)
+    project_query = Project.query.all()
+    all_serialized_project = list(map(lambda item:item.serialize(), project_query))
+    return jsonify(all_serialized_project)
+

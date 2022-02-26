@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import { Context } from "/workspace/MechGroupBuyTracker/src/front/js/store/appContext.js";
 import { Link, useParams } from "react-router-dom";
 
-export const Cards = (props) => {
+export const Card = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
   return (
@@ -22,7 +22,7 @@ export const Cards = (props) => {
         <p className="card-text">Base Price: {props.price}</p>
         <p className="card-text">Start Date: {props.start_date}</p>
         <p className="card-text">End Date: {props.end_date}</p>
-        <Link to={`/character/${props.uid}`}>
+        <Link to={props.id}>
           <button className="btn btn-outline-primary">Learn more!</button>
         </Link>
         <button
@@ -42,13 +42,13 @@ export const Cards = (props) => {
   );
 };
 
-CharacterCards.propTypes = {
-  uid: PropTypes.string,
+Card.propTypes = {
+  id: PropTypes.string,
   img: PropTypes.string,
   name: PropTypes.string,
-  gender: PropTypes.string,
-  hair_color: PropTypes.string,
-  eye_color: PropTypes.string,
+  base_price: PropTypes.string,
+  start_date: PropTypes.string,
+  end_date: PropTypes.string,
   favStatus: PropTypes.bool,
   details: PropTypes.string,
 };

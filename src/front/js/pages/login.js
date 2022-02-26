@@ -12,54 +12,57 @@ export const Login = () => {
   console.log("This is your token", store.session);
 
   return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          actions.login(email, password).then((session) => history.push("/"));
-          e.preventDefault();
-        }}
-        className="container"
-      >
-        <div>
-          <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
-              Email address
+    <div className="container">
+      <section class="login-dark">
+        <form
+          method="post"
+          onSubmit={(e) => {
+            actions.login(email, password).then((session) => history.push("/"));
+            e.preventDefault();
+          }}
+        >
+          <h2 class="visually-hidden">Login Form</h2>
+          <div class="illustration">
+            <i class="fa-solid fa-lock-keyhole"></i>
+          </div>
+          <div class="mb-3">
+            <label for="email" className="form-label">
+              Email
             </label>
             <input
+              class="form-control"
               type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="example@example.com"
+              name="email"
+              id="email"
+              placeholder="user@user.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            ></input>
+            />
           </div>
-          <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+          <div class="mb-3">
+            <label for="password" className="form-label">
               Password
             </label>
             <input
+              class="form-control"
               type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="shhhh"
+              name="password"
+              id="password"
+              placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            ></input>
+            />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </div>
-      </form>
-      <div align="center">
-        <Link to="...">
-          <button type="newuser" className="btn btn-primary">
-            Create Account
-          </button>
-        </Link>
-      </div>
+          <div class="mb-3">
+            <button class="btn btn-primary d-block w-100" type="submit">
+              Log In
+            </button>
+          </div>
+          <a class="forgot" href="#">
+            Forgot your email or password?
+          </a>
+        </form>
+      </section>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Project
+from api.models import db, User, Project, Tracked
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
@@ -40,6 +40,7 @@ def get_project():
     return jsonify(all_serialized_project)
 
 @api.route('/projects', methods=['POST'])
+# @jwt_required()
 def create_project():
     name = request.json.get('name', None)
     project_type = request.json.get('project_type', None)
@@ -73,3 +74,15 @@ def create_project():
     db.session.add(project)
     db.session.commit()
     return jsonify(project.serialize())
+
+@api.route('/tracked', methods=['GET'])
+@jwt_required()
+def get_tracked():
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    if user is None:
+        return jsonify({"msg": "User Not Found"}), 403
+    tracked_query = Tracked.query.filter_by(userid=current_user_id)
+    all_serialized_tracked = list(map(lambda item:item.serialize(), tracked_query))
+    return jsonify(all_serialized_tracked)
+

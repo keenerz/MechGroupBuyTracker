@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+/*import PropTypes from "prop-types";
 import React, { useState, useContext } from "react";
 import { Context } from "/workspace/MechGroupBuyTracker/src/front/js/store/appContext.js";
 import { Link, useParams } from "react-router-dom";
@@ -52,3 +52,4 @@ CharacterCards.propTypes = {
   favStatus: PropTypes.bool,
   details: PropTypes.string,
 };
+*/

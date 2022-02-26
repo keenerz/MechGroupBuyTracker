@@ -5,6 +5,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       projects: [],
     },
     actions: {
+      getCurrentSession: () => {
+        const session = JSON.parse(localStorage.getItem("session"));
+        return session;
+      },
       login: async (email, password) => {
         const options = {
           method: "POST",
@@ -33,6 +37,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           return true;
         } catch (error) {
           console.error("Error in login zone");
+        }
+      },
+      logout: () => {
+        const actions = getActions();
+        localStorage.removeItem("session");
+        setStore({ session: null });
+      },
+      loadProjects: async () => {
+        const response = await fetch(process.env.BACKEND_URL + `/api/projects`);
+        if (response.status === 200) {
+          const payload = await response.json();
+          setStore({ projects: payload });
         }
       },
     },

@@ -1,4 +1,4 @@
-/*import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import React, { useState, useContext } from "react";
 import { Context } from "/workspace/MechGroupBuyTracker/src/front/js/store/appContext.js";
 import { Link, useParams } from "react-router-dom";
@@ -31,7 +31,7 @@ export const Card = (props) => {
             actions.addTracking(props.data);
           }}
         >
-          {props.favStatus === true ? (
+          {props.trackedStatus === true ? (
             <i className="fas fa-heart"></i>
           ) : (
             <i className="far fa-heart"></i>
@@ -49,7 +49,6 @@ Card.propTypes = {
   base_price: PropTypes.string,
   start_date: PropTypes.string,
   end_date: PropTypes.string,
-  favStatus: PropTypes.bool,
+  trackedStatus: PropTypes.bool,
   details: PropTypes.string,
 };
-*/

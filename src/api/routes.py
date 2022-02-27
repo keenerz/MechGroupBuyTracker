@@ -86,3 +86,20 @@ def get_tracked():
     all_serialized_tracked = list(map(lambda item:item.serialize(), tracked_query))
     return jsonify(all_serialized_tracked)
 
+@api.route('/tracked', methods=['POST'])
+@jwt_required()
+def add_tracked():
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    user_id = request.json.get('user')
+    project_id = request.json.get('project')
+    if user is None:
+        return jsonify({"msg": "User Not Found"}), 403
+    project = Project(user_id = user.id, project_id = project_id)
+    duplicate = Project.query.filter_by(user_id=user_id,project_id=project_id).first()
+    if duplicate is None:
+        db.session.add(project)
+        db.session.commit()
+        return jsonify(project.serialize())
+    else:
+        return jsonify({"msg": "Duplicate"}), 400

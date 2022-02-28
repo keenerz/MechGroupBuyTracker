@@ -60,8 +60,8 @@ class Project(db.Model):
 
 class Tracked(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    userid = db.Column(db.Integer, db.ForeignKey("user.id"))
-    projectid = db.Column(db.Integer, db.ForeignKey("project.id"))
+    userid = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    projectid = db.Column(db.Integer, db.ForeignKey("project.id"), nullable=False)
     user = db.relationship(User)
     project = db.relationship(Project)
 

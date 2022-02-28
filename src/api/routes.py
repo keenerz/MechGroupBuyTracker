@@ -95,8 +95,8 @@ def add_tracked():
     project_id = request.json.get('project')
     if user is None:
         return jsonify({"msg": "User Not Found"}), 403
-    project = Project(user_id = user.id, project_id = project_id)
-    duplicate = Project.query.filter_by(user_id=user_id,project_id=project_id).first()
+    project = Tracked(userid = user.id, projectid = project_id)
+    duplicate = Tracked.query.filter_by(userid=user.id,projectid=project_id).first()
     if duplicate is None:
         db.session.add(project)
         db.session.commit()

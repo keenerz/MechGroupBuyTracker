@@ -101,6 +101,96 @@ def delete_project():
     db.session.commit()
     return jsonify({ "msg": "Project Deleted"}), 200
 
+@api.route('/projects', methods=['PUT'])
+#@jwt_required()
+def update_project():
+    project_id = request.json.get('project')
+    project = Project.query.filter_by(id=project_id).first()
+    if project is None:
+        return jsonify({"msg":"Project doesn't exist"}), 400
+    name = request.json.get('name')
+    project_type = request.json.get('project_type')
+    project_stage = request.json.get('project_stage')
+    sale_type = request.json.get('sale_type')
+    region = request.json.get('region')
+    baseprice = request.json.get('baseprice')
+    estimated_ship = request.json.get('estimated_ship')
+    create_at = request.json.get('create_at')
+    updated_at = request.json.get('updated_at')
+    started_at = request.json.get('started_at')
+    ended_at = request.json.get('ended_at')
+    vendor_links = request.json.get('vendor_links')
+    discussion_links = request.json.get('discussion_links')
+    img_url = request.json.get('img_url')
+
+    if name is None:
+        project.name = project.name
+    else:
+        project.name = name
+
+    if project_type is None:
+        project.project_type = project.project_type
+    else:
+        project.project_type = project_type
+
+    if project_stage is None:
+        project.project_stage = project.project_stage
+    else:
+        project.project_stage = project_stage
+    
+    if sale_type is None:
+        project.sale_type = project.sale_type
+    else:
+        project.sale_type = sale_type
+    
+    if region is None:
+        project.region = project.region
+    else:
+        project.region = region
+
+    if baseprice is None:
+        project.baseprice = project.baseprice
+    else:
+        project.baseprice = baseprice
+
+    if estimated_ship is None:
+        project.estimated_ship = project.estimated_ship
+    else:
+        project.estimated_ship = estimated_ship
+    
+    if create_at is None:
+        project.create_at = project.create_at
+    else:
+        project.create_at = create_at
+
+    if updated_at is None:
+        project.updated_at = project.updated_at
+    else:
+        project.updated_at = updated_at
+
+    if ended_at is None:
+        project.ended_at = project.ended_at
+    else:
+        project.ended_at = ended_at
+
+    if vendor_links is None:
+        project.vendor_links = project.vendor_links
+    else:
+        project.vendor_links = vendor_links
+
+    if discussion_links is None:
+        project.discussion_links = project.discussion_links
+    else:
+        project.discussion_links = discussion_links
+
+    if img_url is None:
+        project.img_url = project.img_url
+    else:
+        project.img_url = img_url
+
+    db.session.commit()
+    return jsonify(project.serialize())
+
 
 #Tracker Endpoints
 @api.route('/tracked', methods=['GET'])

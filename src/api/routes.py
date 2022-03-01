@@ -33,6 +33,19 @@ def create_user():
     db.session.commit()
     return jsonify(user.serialize())
 
+@api.route('/user', methods=['DELETE'])
+@jwt_required()
+def delete_user():
+    email = request.json.get('email')
+    username = request.json.get('username')
+    password = request.json.get('password')
+    usertype = request.json.get('usertype')
+    user = User.query.filter_by(email=email, username=username, password=password, usertype=usertype).first()
+    if user is None: 
+        return jsonify({"msg": "Invalid user"}), 400
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({ "msg": "User Deleted"}), 200
 
 #Project Endpoints
 @api.route('/projects', methods=['GET'])

@@ -118,3 +118,17 @@ def add_tracked():
         return jsonify(project.serialize())
     else:
         return jsonify({"msg": "Duplicate"}), 400
+
+@api.route('/tracked', methods=['DELETE'])
+@jwt_required()
+def delete_tracked():
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    user_id = request.json.get('user')
+    project_id_get = request.json.get('project')
+    target_tracked = Tracked.query.filter_by(userid=user_id, projectid=project_id_get).first()
+    if target_tracked is None: 
+        return jsonify({"msg": "Invalid tracked"}), 400
+    db.session.delete(target_tracked)
+    db.session.commit()
+    return jsonify({ "msg": "Tracked Deleted"}), 200

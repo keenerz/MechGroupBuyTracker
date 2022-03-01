@@ -51,6 +51,24 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ projects: payload });
         }
       },
+      loadTracked: async () => {
+        const store = getStore();
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          headers: {
+            Authorization: "Bearer " + session.token,
+          },
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/tracked`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          setStore({ tracked: payload });
+        }
+      },
     },
   };
 };

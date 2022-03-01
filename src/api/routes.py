@@ -9,7 +9,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_tok
 
 api = Blueprint('api', __name__)
 
-
+#User Endpoints
 @api.route('/token', methods=['POST'])
 def create_token():
     if request.json is None:
@@ -33,6 +33,8 @@ def create_user():
     db.session.commit()
     return jsonify(user.serialize())
 
+
+#Project Endpoints
 @api.route('/projects', methods=['GET'])
 def get_project():
     project_query = Project.query.all()
@@ -75,6 +77,19 @@ def create_project():
     db.session.commit()
     return jsonify(project.serialize())
 
+@api.route('/projects', methods=['DELETE'])
+#@jwt_required()
+def delete_project():
+    project_id = request.json.get('project')
+    target_project = Project.query.filter_by(id=project_id).first()
+    if target_project is None: 
+        return jsonify({"msg": "Invalid project"}), 400
+    db.session.delete(target_project)
+    db.session.commit()
+    return jsonify({ "msg": "Project Deleted"}), 200
+
+
+#Tracker Endpoints
 @api.route('/tracked', methods=['GET'])
 @jwt_required()
 def get_tracked():

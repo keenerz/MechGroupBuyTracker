@@ -47,6 +47,41 @@ def delete_user():
     db.session.commit()
     return jsonify({ "msg": "User Deleted"}), 200
 
+@api.route('/user', methods=['PUT'])
+@jwt_required()
+def update_user():
+    current_user_id = get_jwt_identity()
+    user = User.query.filter_by(id=current_user_id).first()
+    if user is None:
+        return jsonify({"msg":"User doesn't exist"}), 400
+    email = request.json.get('email')
+    username = request.json.get('username')
+    password = request.json.get('password')
+    usertype = request.json.get('usertype')
+
+    if email is None:
+        user.email = user.email
+    else:
+        user.email = email
+
+    if username is None:
+        user.username = user.username
+    else:
+        user.username = username
+
+    if password is None:
+        user.password = user.password
+    else:
+        user.password = password
+    
+    if usertype is None:
+        user.usertype = user.usertype
+    else:
+        user.usertype = usertype
+    
+    db.session.commit()
+    return jsonify(user.serialize())
+
 #Project Endpoints
 @api.route('/projects', methods=['GET'])
 def get_project():

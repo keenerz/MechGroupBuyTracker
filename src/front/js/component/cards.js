@@ -32,9 +32,9 @@ export const Card = (props) => {
           }}
         >
           {props.trackedStatus === true ? (
-            <i className="fas fa-heart"></i>
+            <i class="fas fa-check-square"></i>
           ) : (
-            <i className="far fa-heart"></i>
+            <i class="far fa-check-square"></i>
           )}
         </button>
       </div>

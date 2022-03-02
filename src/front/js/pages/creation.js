@@ -2,7 +2,6 @@ import React from "react";
 
 export function AccountCreation(props) {
   return (
-    <div className="container">
       <section class="register">
         <div class="form-container">
           <div class="image-holder"></div>
@@ -54,6 +53,5 @@ export function AccountCreation(props) {
           </form>
         </div>
       </section>
-    </div>
   );
 }

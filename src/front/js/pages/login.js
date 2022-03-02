@@ -12,7 +12,7 @@ export const Login = () => {
   console.log("This is your token", store.session);
 
   return (
-    <div className="container">
+    
       <section class="login-dark">
         <form
           method="post"
@@ -63,6 +63,5 @@ export const Login = () => {
           </a>
         </form>
       </section>
-    </div>
   );
 };

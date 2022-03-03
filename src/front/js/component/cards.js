@@ -23,7 +23,9 @@ export const Card = (props) => {
         <p className="card-text">Start Date: {props.start_date}</p>
         <p className="card-text">End Date: {props.end_date}</p>
         <Link to={props.id}>
-          <button className="btn btn-outline-primary">Learn more!</button>
+          <button className="btn btn-outline-primary float-start">
+            Learn more!
+          </button>
         </Link>
         <button
           className="btn btn-outline-warning float-end"

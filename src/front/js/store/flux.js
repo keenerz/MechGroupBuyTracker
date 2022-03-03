@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       projects: [],
     },
     actions: {
+      //Login and Token items
       getCurrentSession: () => {
         const session = JSON.parse(localStorage.getItem("session"));
         return session;
@@ -44,6 +45,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         localStorage.removeItem("session");
         setStore({ session: null });
       },
+
+      //Project Loading
       loadProjects: async () => {
         const response = await fetch(process.env.BACKEND_URL + `/api/projects`);
         if (response.status === 200) {
@@ -51,6 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ projects: payload });
         }
       },
+      //Tracked Loading
       loadTracked: async () => {
         const store = getStore();
         const actions = getActions();

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "/workspace/MechGroupBuyTracker/src/front/styles/home.css";
 import { Context } from "/workspace/MechGroupBuyTracker/src/front//js/store/appContext.js";
 import { useHistory } from "react-router-dom";
+import "../../styles/login.css";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);

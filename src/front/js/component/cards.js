@@ -18,10 +18,10 @@ export const Card = (props) => {
         width="400"
       />
       <div className="card-body p-3">
-        <h5 className="card-title text-center px-3 py-0">{props.name}</h5>
-        <p className="card-text">Base Price: {props.price}</p>
-        <p className="card-text">Start Date: {props.start_date}</p>
-        <p className="card-text">End Date: {props.end_date}</p>
+        <h5 className="card-title text-center px-3 py-0 fw-bold">{props.name}</h5>
+        <p className="card-text fw-bold fw-bold">Base Price: {props.price}</p>
+        <p className="card-text fw-bold">Start Date: {props.start_date}</p>
+        <p className="card-text fw-bold">End Date: {props.end_date}</p>
         <Link to={props.id}>
           <button className="btn btn-outline-primary">Learn more!</button>
         </Link>

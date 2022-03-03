@@ -8,7 +8,6 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-  console.log("This is your token", store.session);
 
   return (
     <section class="login-dark">

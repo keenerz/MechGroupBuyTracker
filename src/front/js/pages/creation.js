@@ -25,10 +25,14 @@ export function AccountCreation(props) {
         <form
           method="post"
           onSubmit={(e) => {
-            actions
-              .createUser(email, password, username)
-              .then((session) => history.push("/login"));
-            e.preventDefault();
+            if (matchingPassword() === false) {
+              alert("Make sure your passwords are matching!");
+            } else {
+              actions
+                .createUser(email, password, username)
+                .then((session) => history.push("/login"));
+              e.preventDefault();
+            }
           }}
         >
           <h2 class="text-center">

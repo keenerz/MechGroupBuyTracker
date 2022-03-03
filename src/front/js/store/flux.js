@@ -45,6 +45,28 @@ const getState = ({ getStore, getActions, setStore }) => {
         localStorage.removeItem("session");
         setStore({ session: null });
       },
+      createUser: async (email, password, username) => {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+            username: username,
+            usertype: "buyer",
+          }),
+        };
+
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/user`,
+          options
+        );
+        if (response.status !== 200) {
+          alert("Incorrect Email or Password");
+        }
+      },
 
       //Project Loading
       loadProjects: async () => {

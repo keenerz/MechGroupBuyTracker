@@ -40,7 +40,12 @@ export const Home = (props) => {
         </select>
         <select
           className="form-select-sm m-3"
-          aria-label="Default select example"
+          aria-label="Filter2"
+          onChange={(e) => {
+            setQuery({ ...query, stage: e.target.value });
+            console.log(e.target.value);
+            console.log(query);
+          }}
         >
           <option selected>IC/GB/Ended</option>
           <option value="interestcheck">Interest Check</option>
@@ -49,7 +54,8 @@ export const Home = (props) => {
         </select>
         <select
           className="form-select-sm m-3"
-          aria-label="Default select example"
+          aria-label="Filter3"
+          onChange={(e) => setQuery({ ...query, type: e.target.value })}
         >
           <option selected>Keycap/Keyboard/Switch</option>
           <option value="keycaps">Keycaps</option>

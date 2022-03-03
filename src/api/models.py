@@ -56,7 +56,7 @@ class Project(db.Model):
             "ended_at": self.ended_at,
             "vendor_links": self.vendor_links,
             "discussion_links": self.discussion_links,
-            "tracked_list": [t.serialized() for t in self.tracked_list]
+            "tracked_list": [t.serialize() for t in self.tracked_list]
             # do not serialize the password, its a security breach
         }
 

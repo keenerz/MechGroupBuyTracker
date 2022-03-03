@@ -10,6 +10,26 @@ export const Home = (props) => {
   return (
     <div className="text-center mt-5">
       <h1>Group Buy Tracker (working title)</h1>
+      <div>
+        <select class="form-select-sm" aria-label="Filter">
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <select class="form-select-sm" aria-label="Default select example">
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <select class="form-select-sm" aria-label="Default select example">
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
       <div
         className="d-flex flex-row mx-auto"
         style={{ width: "90%", overflow: "auto" }}

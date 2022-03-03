@@ -38,6 +38,7 @@ class Project(db.Model):
     vendor_links = db.Column(db.String(250), unique=False, nullable=True)
     discussion_links = db.Column(db.String(250), unique=False, nullable = True)
     img_url = db.Column(db.String(250), unique=False, nullable = True)
+    tracked_list = db.relationship("Tracked")
 
     def serialize(self):
         return {
@@ -54,7 +55,8 @@ class Project(db.Model):
             "started_at": self.started_at,
             "ended_at": self.ended_at,
             "vendor_links": self.vendor_links,
-            "discussion_links": self.discussion_links
+            "discussion_links": self.discussion_links,
+            "tracked_list": [t.serialized() for t in self.tracked_list]
             # do not serialize the password, its a security breach
         }
 

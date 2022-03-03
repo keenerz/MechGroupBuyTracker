@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
@@ -6,15 +6,37 @@ import { Card } from "../component/cards";
 
 export const Home = (props) => {
   const { store, actions } = useContext(Context);
+  const [query, setQuery] = useState({
+    isTracking: null,
+    stage: null,
+    type: null,
+  });
+
+  const filterProject = (project) => {
+    if (project.tracked_list.length === 0 && query.isTracking === true) {
+      return false;
+    }
+    if (query.stage !== null && project.project_stage !== query.stage) {
+      return false;
+    }
+    if (query.type !== null && project.project_type !== query.type) {
+      return false;
+    }
+    return true;
+  };
 
   return (
     <div className="text-center mt-5">
       <h1>Group Buy Tracker (working title)</h1>
       <div>
-        <select className="form-select-sm m-3" aria-label="Filter">
+        <select
+          className="form-select-sm m-3"
+          aria-label="Filter"
+          onChange={(e) => setQuery({ ...query, isTracking: e.target.value })}
+        >
           <option selected>Tracked/All</option>
-          <option value="untracked">All</option>
-          <option value="tracked">Tracked</option>
+          <option value={false}>All</option>
+          <option value={true}>Tracked</option>
         </select>
         <select
           className="form-select-sm m-3"
@@ -39,7 +61,7 @@ export const Home = (props) => {
         className="d-flex flex-row mx-auto"
         style={{ width: "90%", overflow: "auto" }}
       >
-        {store.projects.map((c, i) => (
+        {store.projects.filter(filterProject).map((c, i) => (
           <Card
             data={c}
             id={store.projects[i].id}

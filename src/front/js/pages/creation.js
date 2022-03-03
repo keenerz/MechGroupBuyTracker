@@ -10,7 +10,6 @@ export function AccountCreation(props) {
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const history = useHistory();
 
-  let matchedpassword = null;
   let matchingPassword = () => {
     if (password !== passwordRepeat) {
       return false;

@@ -16,7 +16,7 @@ export const Home = (props) => {
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4 class="text-white">About</h4>
-          <p class="text-muted">Keep track of when products go live, when group buys happend create new lsitings all in one place. Priority givenn to members so sign up before you miss the latest in stock.</p>
+          <p class="text-muted">Keep track of when products go live, when group buys happend create new lsitings all in one place. Priority givenn to members so sign up before you miss the latest in stock</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Contact</h4>

@@ -31,13 +31,14 @@ class Project(db.Model):
     region = db.Column(db.String(120), unique=False, nullable=True)
     baseprice = db.Column(db.Float(8), unique=False, nullable=True)
     estimated_ship = db.Column(db.String(120), unique=False, nullable=True)
-    create_at = db.Column(db.DateTime(timezone=False))
-    updated_at = db.Column(db.DateTime(timezone=False))
-    started_at = db.Column(db.DateTime(timezone=True))
-    ended_at = db.Column(db.DateTime(timezone=True))
+    create_at = db.Column(db.DateTime(timezone=False), nullable=True)
+    updated_at = db.Column(db.DateTime(timezone=False), nullable=True)
+    started_at = db.Column(db.DateTime(timezone=True), nullable=True)
+    ended_at = db.Column(db.DateTime(timezone=True), nullable=True)
     vendor_links = db.Column(db.String(250), unique=False, nullable=True)
     discussion_links = db.Column(db.String(250), unique=False, nullable = True)
     img_url = db.Column(db.String(250), unique=False, nullable = True)
+    tracked_list = db.relationship("Tracked")
 
     def serialize(self):
         return {
@@ -54,14 +55,15 @@ class Project(db.Model):
             "started_at": self.started_at,
             "ended_at": self.ended_at,
             "vendor_links": self.vendor_links,
-            "discussion_links": self.discussion_links
+            "discussion_links": self.discussion_links,
+            "tracked_list": [t.serialize() for t in self.tracked_list]
             # do not serialize the password, its a security breach
         }
 
 class Tracked(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    userid = db.Column(db.Integer, db.ForeignKey("user.id"))
-    projectid = db.Column(db.Integer, db.ForeignKey("project.id"))
+    userid = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    projectid = db.Column(db.Integer, db.ForeignKey("project.id"), nullable=False)
     user = db.relationship(User)
     project = db.relationship(Project)
 

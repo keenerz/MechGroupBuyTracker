@@ -21,24 +21,44 @@ export const Navbar = () => {
                 Live Lisitings
               </a>
             </li>
-           
+
             <li class="nav-item">
               <a href="#" class="nav-link link-dark px-2">
-                About</a>
-              
+                About
+              </a>
             </li>
             <li class="nav-item dropdown">
-          <a class="nav-link link-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Products
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Keycaps</a></li>
-            <li><a class="dropdown-item" href="#">Keyboards</a></li>
-            <li><hr class="dropdown-divider"/></li>
-            <li><a class="dropdown-item" href="#">Switches</a></li>
-          </ul>
-        </li>
-        
+              <a
+                class="nav-link link-dark dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Products
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Keycaps
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Keyboards
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Switches
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
           <ul class="nav">
             <li class="nav-item">
@@ -50,6 +70,7 @@ export const Navbar = () => {
               <a href="#" class="nav-link link-dark px-2">
                 Sign up
               </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
             </li>
           </ul>
         </div>

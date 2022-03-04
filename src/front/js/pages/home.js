@@ -13,7 +13,7 @@ export const Home = (props) => {
   });
 
   const filterProject = (project) => {
-    if (project.tracked_list.length === 0 && query.isTracking === true) {
+    if (project.tracked_list.length === 0 && query.isTracking === false) {
       return false;
     }
     if (query.stage !== null && project.project_stage !== query.stage) {
@@ -73,8 +73,9 @@ export const Home = (props) => {
             id={store.projects[i].id}
             name={store.projects[i].name}
             project_type={store.projects[i].project_type}
-            hair_color={store.projects[i].hair_color}
-            eye_color={store.projects[i].eye_color}
+            sale_type={store.projects[i].sale_type}
+            started_at={store.projects[i].started_at}
+            ended_at={store.projects[i].ended_at}
             img={store.projects[i].img_url}
             details={store.projects[i].details}
             key={i}

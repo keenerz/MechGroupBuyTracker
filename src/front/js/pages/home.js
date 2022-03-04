@@ -13,7 +13,7 @@ export const Home = (props) => {
   });
 
   const filterProject = (project) => {
-    if (project.tracked_list.length === 0 && query.isTracking === false) {
+    if (project.tracked_list.length === 0 && query.isTracking === true) {
       return false;
     }
     if (query.stage !== null && project.project_stage !== query.stage) {
@@ -58,7 +58,7 @@ export const Home = (props) => {
           onChange={(e) => setQuery({ ...query, type: e.target.value })}
         >
           <option selected>Keycap/Keyboard/Switch</option>
-          <option value="keycaps">Keycaps</option>
+          <option value="keycap">Keycaps</option>
           <option value="keyboards">Keyboards</option>
           <option value="switches">Switches</option>
         </select>

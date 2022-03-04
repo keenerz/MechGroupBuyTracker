@@ -40,8 +40,8 @@ class Project(db.Model):
     img_url = db.Column(db.String(250), unique=False, nullable = True)
     tracked_list = db.relationship("Tracked")
 
-    def serialize(self):
-        return {
+    def serialize(self, extended=False):
+        data = {
             "id": self.id,
             "name": self.name,
             "project_type": self.project_type,
@@ -56,9 +56,13 @@ class Project(db.Model):
             "ended_at": self.ended_at,
             "vendor_links": self.vendor_links,
             "discussion_links": self.discussion_links,
-            "tracked_list": [t.serialize() for t in self.tracked_list]
             # do not serialize the password, its a security breach
         }
+        if extended:
+            data["tracked_list"] = [t.serialize() for t in self.tracked_list]
+        
+        return data
+    
 
 class Tracked(db.Model):
     id = db.Column(db.Integer, primary_key=True)

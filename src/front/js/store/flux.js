@@ -136,7 +136,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (response.status !== 200) {
           alert("Error in first");
         }
-        actions.loadCharacters();
+        actions.loadTracked();
       },
     },
   };

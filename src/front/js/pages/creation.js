@@ -66,7 +66,7 @@ export function AccountCreation(props) {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label for="password" className="form-label">
               Password
             </label>
@@ -103,7 +103,7 @@ export function AccountCreation(props) {
             </div>
           ) : null}
 
-          <div class="mb-3">
+          <div className="mb-3">
             <button className="btn btn-primary d-block w-100" type="submit">
               Sign Up
             </button>

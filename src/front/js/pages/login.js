@@ -11,7 +11,7 @@ export const Login = () => {
   const history = useHistory();
 
   return (
-    <section class="login-dark">
+    <section className="login-dark">
       <form
         method="post"
         onSubmit={(e) => {
@@ -19,16 +19,16 @@ export const Login = () => {
           e.preventDefault();
         }}
       >
-        <h2 class="visually-hidden">Login Form</h2>
-        <div class="illustration">
-          <i class="fa-solid fa-lock-keyhole"></i>
+        <h2 className="visually-hidden">Login Form</h2>
+        <div className="illustration">
+          <i className="fa-solid fa-lock-keyhole"></i>
         </div>
-        <div class="mb-3">
-          <label for="email" className="form-label">
+        <div className="mb-3">
+          <label for="email" classNameName="form-label">
             Email
           </label>
           <input
-            class="form-control"
+            className="form-control"
             type="email"
             name="email"
             id="email"
@@ -37,12 +37,12 @@ export const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div class="mb-3">
-          <label for="password" className="form-label">
+        <div className="mb-3">
+          <label for="password" classNameName="form-label">
             Password
           </label>
           <input
-            class="form-control"
+            className="form-control"
             type="password"
             name="password"
             id="password"
@@ -51,12 +51,12 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div class="mb-3">
-          <button class="btn btn-primary d-block w-100" type="submit">
+        <div className="mb-3">
+          <button className="btn btn-primary d-block w-100" type="submit">
             Log In
           </button>
         </div>
-        <a class="forgot" href="#">
+        <a className="forgot" href="#">
           Forgot your email or password?
         </a>
       </form>

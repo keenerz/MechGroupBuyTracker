@@ -8,24 +8,24 @@ export const listing = () => {
       <input
         name="name"
         type="text"
-        class="feedback-input"
+        className="feedback-input"
         placeholder="Name"
       />
       <input
         name="Region"
         type="text"
-        class="feedback-input"
+        className="feedback-input"
         placeholder="Region"
       />
       <input
         name="Price"
         type="text"
-        class="feedback-input"
+        className="feedback-input"
         placeholder="Price"
       />
       <textarea
         name="text"
-        class="feedback-input"
+        className="feedback-input"
         placeholder="Description of Product"
       ></textarea>
       <input type="submit" value="SUBMIT" />

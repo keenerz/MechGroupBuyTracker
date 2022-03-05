@@ -4,32 +4,32 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
   return (
     <>
-      <nav class="  py-2 bg-light border-bottom">
-        <div class="container d-flex flex-wrap">
-          <ul class=" nav me-auto">
-            <li class="nav-item">
+      <nav className="  py-2 bg-light border-bottom">
+        <div className="container d-flex flex-wrap">
+          <ul className=" nav me-auto">
+            <li className="nav-item">
               <a
                 href="#"
-                class="nav-link link-dark px-2 active"
+                className="nav-link link-dark px-2 active"
                 aria-current="page"
               >
                 Home
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link link-dark px-2">
+            <li className="nav-item">
+              <a href="#" className="nav-link link-dark px-2">
                 Live Lisitings
               </a>
             </li>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link link-dark px-2">
+            <li className="nav-item">
+              <a href="#" className="nav-link link-dark px-2">
                 About
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link link-dark dropdown-toggle"
+                className="nav-link link-dark dropdown-toggle"
                 href="#"
                 id="navbarDropdown"
                 role="button"
@@ -38,63 +38,66 @@ export const Navbar = () => {
               >
                 Products
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     Keycaps
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     Keyboards
                   </a>
                 </li>
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     Switches
                   </a>
                 </li>
               </ul>
             </li>
           </ul>
-          <ul class="nav">
-            <li class="nav-item">
-              <a href="#" class="nav-link link-dark px-2">
+          <ul className="nav">
+            <li className="nav-item">
+              <a href="#" className="nav-link link-dark px-2">
                 Login
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link link-dark px-2">
+            <li className="nav-item">
+              <a href="#" className="nav-link link-dark px-2">
                 Sign up
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdown"
+              ></ul>
             </li>
           </ul>
         </div>
       </nav>
-      <header class="py-3 mb-4 border-bottom">
-        <div class="container d-flex flex-wrap justify-content-center">
+      <header className="py-3 mb-4 border-bottom">
+        <div className="container d-flex flex-wrap justify-content-center">
           <a
             href="/"
-            class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-light text-decoration-none"
+            className="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-light text-decoration-none"
           >
-            <svg class="bi me-2" width="40" height="32"></svg>
-            <span class="fs-4">Create New Listing</span>
+            <svg className="bi me-2" width="40" height="32"></svg>
+            <span className="fs-4">Create New Listing</span>
           </a>
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0">
+          <form className="col-12 col-lg-auto mb-3 mb-lg-0">
             <input
               type="search"
-              class="form-control"
+              className="form-control"
               placeholder="Search..."
               aria-label="Search"
             />
           </form>
         </div>
       </header>
-      <div class="b-example-divider"></div>
+      <div className="b-example-divider"></div>
     </>
   );
 };

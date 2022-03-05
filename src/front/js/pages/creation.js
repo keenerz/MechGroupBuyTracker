@@ -19,9 +19,9 @@ export function AccountCreation(props) {
   };
 
   return (
-    <section class="register">
-      <div class="form-container">
-        <div class="image-holder"></div>
+    <section className="register">
+      <div className="form-container">
+        <div className="image-holder"></div>
         <form
           method="post"
           onSubmit={(e) => {
@@ -35,15 +35,15 @@ export function AccountCreation(props) {
             }
           }}
         >
-          <h2 class="text-center">
+          <h2 className="text-center">
             <strong>Create</strong> an account.
           </h2>
-          <div class="mb-3">
+          <div className="mb-3">
             <label for="email" className="form-label">
               Email
             </label>
             <input
-              class="form-control"
+              className="form-control"
               type="email"
               name="email"
               placeholder="Email"
@@ -52,12 +52,12 @@ export function AccountCreation(props) {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label for="username" className="form-label">
               Username
             </label>
             <input
-              class="form-control"
+              className="form-control"
               type="username"
               name="username"
               placeholder="Username"
@@ -80,12 +80,12 @@ export function AccountCreation(props) {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label for="password-repeat" className="form-label">
               Password Confirmation
             </label>
             <input
-              class="form-control"
+              className="form-control"
               type="password"
               name="password-repeat"
               placeholder="Password (repeat)"
@@ -98,17 +98,17 @@ export function AccountCreation(props) {
             />
           </div>
           {matchingPassword() === false ? (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               Passwords do not match!
             </div>
           ) : null}
 
           <div class="mb-3">
-            <button class="btn btn-primary d-block w-100" type="submit">
+            <button className="btn btn-primary d-block w-100" type="submit">
               Sign Up
             </button>
           </div>
-          <a class="already" href="#">
+          <a className="already" href="#">
             You already have an account? Login here.
           </a>
         </form>

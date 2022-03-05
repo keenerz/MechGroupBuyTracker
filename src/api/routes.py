@@ -86,7 +86,7 @@ def update_user():
 @api.route('/projects', methods=['GET'])
 def get_project():
     project_query = Project.query.all()
-    all_serialized_project = list(map(lambda item:item.serialize(), project_query))
+    all_serialized_project = list(map(lambda item:item.serialize(extended=True), project_query))
     return jsonify(all_serialized_project)
 
 @api.route('/projects', methods=['POST'])

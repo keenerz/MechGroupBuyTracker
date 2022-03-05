@@ -7,19 +7,19 @@ import { Card } from "../component/cards";
 export const ProjectList = (props) => {
   const { store, actions } = useContext(Context);
   const [query, setQuery] = useState({
-    isTracking: null,
-    stage: null,
-    type: null,
+    isTracking: false,
+    stage: "0",
+    type: "0",
   });
 
   const filterProject = (project) => {
     if (project.tracked_list.length === 0 && query.isTracking === true) {
       return false;
     }
-    if (query.stage !== null && project.project_stage !== query.stage) {
+    if (query.stage !== "0" && project.project_stage !== query.stage) {
       return false;
     }
-    if (query.type !== null && project.project_type !== query.type) {
+    if (query.type !== "0" && project.project_type !== query.type) {
       return false;
     }
     return true;
@@ -30,9 +30,11 @@ export const ProjectList = (props) => {
         <select
           className="form-select-sm m-3"
           aria-label="Filter"
-          onChange={(e) => setQuery({ ...query, isTracking: e.target.value })}
+          onChange={(e) => {
+            setQuery({ ...query, isTracking: e.target.value });
+            console.log(query);
+          }}
         >
-          <option selected>Tracked/All</option>
           <option value={false}>All</option>
           <option value={true}>Tracked</option>
         </select>
@@ -45,7 +47,7 @@ export const ProjectList = (props) => {
             console.log(query);
           }}
         >
-          <option selected>IC/GB/Ended</option>
+          <option value={0}>IC/GB/Ended</option>
           <option value="interestcheck">Interest Check</option>
           <option value="groupbuy">Group Buy</option>
           <option value="ended">Ended</option>
@@ -55,9 +57,9 @@ export const ProjectList = (props) => {
           aria-label="Filter3"
           onChange={(e) => setQuery({ ...query, type: e.target.value })}
         >
-          <option selected>Keycap/Keyboard/Switch</option>
+          <option value={0}>Keycap/Keyboard/Switch</option>
           <option value="keycap">Keycaps</option>
-          <option value="keyboards">Keyboards</option>
+          <option value="keyboard">Keyboards</option>
           <option value="switches">Switches</option>
         </select>
       </div>
@@ -68,14 +70,14 @@ export const ProjectList = (props) => {
         {store.projects.filter(filterProject).map((c, i) => (
           <Card
             data={c}
-            id={store.projects[i].id}
-            name={store.projects[i].name}
-            project_type={store.projects[i].project_type}
-            sale_type={store.projects[i].sale_type}
-            started_at={store.projects[i].started_at}
-            ended_at={store.projects[i].ended_at}
-            img={store.projects[i].img_url}
-            details={store.projects[i].details}
+            id={c.id}
+            name={c.name}
+            project_type={c.project_type}
+            sale_type={c.sale_type}
+            started_at={c.started_at}
+            ended_at={c.ended_at}
+            img={c.img_url}
+            details={c.details}
             key={i}
           />
         ))}

@@ -18,7 +18,9 @@ export const Card = (props) => {
         width="400"
       />
       <div className="card-body p-3">
-        <h5 className="card-title text-center px-3 py-0 fw-bold">{props.name}</h5>
+        <h5 className="card-title text-center px-3 py-0 fw-bold">
+          {props.name}
+        </h5>
         <p className="card-text fw-bold fw-bold">Base Price: {props.price}</p>
         <p className="card-text fw-bold">Start Date: {props.start_date}</p>
         <p className="card-text fw-bold">End Date: {props.end_date}</p>
@@ -37,6 +39,18 @@ export const Card = (props) => {
             <i class="fas fa-check-square"></i>
           ) : (
             <i class="far fa-check-square"></i>
+          )}
+        </button>
+        <button
+          className="btn btn-outline-warning float-end"
+          onClick={() => {
+            actions.deleteTracking(props.data);
+          }}
+        >
+          {props.trackedStatus === true ? (
+            <i class="fas fa-check-square"></i>
+          ) : (
+            <i class="fas fa-check-square"></i>
           )}
         </button>
       </div>

@@ -8,13 +8,13 @@ export const Navbar = () => {
         <div className="container d-flex flex-wrap">
           <ul className=" nav me-auto">
             <li className="nav-item">
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="nav-link link-dark px-2 active"
                 aria-current="page"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a href="#" className="nav-link link-dark px-2">
@@ -62,14 +62,14 @@ export const Navbar = () => {
           </ul>
           <ul className="nav">
             <li className="nav-item">
-              <a href="#" className="nav-link link-dark px-2">
+              <Link to="/login" className="nav-link link-dark px-2">
                 Login
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#" className="nav-link link-dark px-2">
+              <Link to="/create" className="nav-link link-dark px-2">
                 Sign up
-              </a>
+              </Link>
               <ul
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdown"

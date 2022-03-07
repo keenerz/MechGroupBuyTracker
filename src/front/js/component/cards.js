@@ -24,7 +24,7 @@ export const Card = (props) => {
         <p className="card-text fw-bold fw-bold">Base Price: {props.price}</p>
         <p className="card-text fw-bold">Start Date: {props.start_date}</p>
         <p className="card-text fw-bold">End Date: {props.end_date}</p>
-        <Link to={props.id}>
+        <Link to= {"/details/"+ props.id}>
           <button 
             className="btn btn-outline-primary float-start"
            >

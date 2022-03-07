@@ -3,37 +3,38 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Card } from "../component/cards";
+import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export const detailedView = (props) => {
+export const DetailedView = (props) => {
   const { store, actions } = useContext(Context);
+  const params = useParams().id;
+
+  const project = store.projects;
 
   return (
-    <div className="card text-center">
-      <div className="card-header">
-        <ul className="nav nav-tabs card-header-tabs">
-          <li className="nav-item">
-            <a className="nav-link active" aria-current="true" href="#">
-              Active
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Link
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link disabled">Disabled</a>
-          </li>
-        </ul>
-      </div>
-      <div className="card-body">
-        <h5 className="card-title">Special title treatment</h5>
-        <p className="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <a href="#" className="btn btn-primary">
-          Go somewhere
-        </a>
+    <div className="card mb-3" style={{ maxWidth: "540px" }}>
+      <div className="row g-0">
+        <div className="col-md-4">
+          <img
+            src="https://i.imgur.com/4l88EPt.jpeg"
+            className="img-fluid rounded-start"
+            alt="..."
+          />
+        </div>
+        <div className="col-md-8">
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <p className="card-text">
+              <small className="text-muted">Last updated 3 mins ago</small>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

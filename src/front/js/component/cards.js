@@ -43,6 +43,18 @@ export const Card = (props) => {
             <i class="far fa-check-square"></i>
           )}
         </button>
+        <button
+          className="btn btn-outline-warning float-end"
+          onClick={() => {
+            actions.deleteTracking(props.data);
+          }}
+        >
+          {props.trackedStatus === true ? (
+            <i class="fas fa-check-square"></i>
+          ) : (
+            <i class="fas fa-check-square"></i>
+          )}
+        </button>
       </div>
     </div>
   );

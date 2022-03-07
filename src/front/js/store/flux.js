@@ -95,6 +95,49 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ tracked: payload });
         }
       },
+      addTracking: async (project) => {
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + session.token,
+          },
+          body: JSON.stringify({
+            user: session.user_id,
+            project: project.id,
+          }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/tracked`,
+          options
+        );
+        actions.loadTracked();
+      },
+      deleteTracking: async (project) => {
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + session.token,
+          },
+          body: JSON.stringify({
+            user: session.user_id,
+            project: project.id,
+          }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/tracked`,
+          options
+        );
+        if (response.status !== 200) {
+          alert("Error in first");
+        }
+        actions.loadTracked();
+      },
     },
   };
 };

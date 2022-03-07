@@ -1,0 +1,65 @@
+div.jumbotron.carousel-front {
+  color: #fff;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-bottom: 0;
+}
+
+div.jumbotron.front-keyboard {
+  background-image: url("https://cdn.shopify.com/s/files/1/1994/3097/products/Solarized_Dark_2_1050x700.jpg?v=1569291945");
+}
+
+div.jumbotron.front-caps {
+  background-image: url("https://www.extremetech.com/wp-content/uploads/2019/07/Keystone-with-Silo-Switches.jpg");
+}
+
+div.jumbotron.front-switches {
+  background-image: url("https://blog.wooting.nl/wp-content/uploads/2016/05/IMG_5169-min.jpg");
+}
+
+h1.front-title,
+h2.front-title,
+h3.front-title {
+  text-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+p.front-subtitle {
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.plat {
+  border-radius: 0px;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+  box-shadow: 0 0 0 0 #048f83 !important;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #016090;
+  border-color: #016090;
+}
+
+.btn.btn-primary {
+  background-color: #048f83 !important;
+  border-color: #048f83 !important;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+span {
+  font-style: inherit;
+  font-weight: inherit;
+}

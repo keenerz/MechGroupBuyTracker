@@ -18,12 +18,16 @@ export const Card = (props) => {
         width="400"
       />
       <div className="card-body p-3">
-        <h5 className="card-title text-center px-3 py-0 fw-bold">{props.name}</h5>
+        <h5 className="card-title text-center px-3 py-0 fw-bold">
+          {props.name}
+        </h5>
         <p className="card-text fw-bold fw-bold">Base Price: {props.price}</p>
         <p className="card-text fw-bold">Start Date: {props.start_date}</p>
         <p className="card-text fw-bold">End Date: {props.end_date}</p>
         <Link to={props.id}>
-          <button className="btn btn-outline-primary float-start">
+          <button 
+            className="btn btn-outline-primary float-start"
+           >
             Learn more!
           </button>
         </Link>

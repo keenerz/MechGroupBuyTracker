@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 export function AccountCreation(props) {
   const { store, actions } = useContext(Context);
@@ -109,9 +109,9 @@ export function AccountCreation(props) {
               Sign Up
             </button>
           </div>
-          <a className="already" href="#">
+          <Link to="/login" className="already">
             You already have an account? Login here.
-          </a>
+          </Link>
         </form>
       </div>
     </section>

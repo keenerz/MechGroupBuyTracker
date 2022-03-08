@@ -27,6 +27,7 @@ export function AccountCreation(props) {
           onSubmit={(e) => {
             if (matchingPassword() === false) {
               alert("Make sure your passwords are matching!");
+              e.preventDefault();
             } else {
               actions
                 .createUser(email, password, username)

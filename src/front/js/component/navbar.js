@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
+  const session = actions.getCurrentSession();
   return (
     <>
       <nav className="  py-2 bg-light border-bottom">
@@ -60,12 +63,21 @@ export const Navbar = () => {
               </ul>
             </li>
           </ul>
+          {!session ? (
+            <Link to="/login">
+              <button className="btn btn-primary">Login</button>
+            </Link>
+          ) : (
+            <button
+              className="btn btn-danger log"
+              onClick={() => {
+                actions.logout();
+              }}
+            >
+              Logout
+            </button>
+          )}
           <ul className="nav">
-            <li className="nav-item">
-              <Link to="/login" className="nav-link link-dark px-2">
-                Login
-              </Link>
-            </li>
             <li className="nav-item">
               <Link to="/create" className="nav-link link-dark px-2">
                 Sign up

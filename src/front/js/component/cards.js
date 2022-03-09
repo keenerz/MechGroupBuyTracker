@@ -1,11 +1,14 @@
 import PropTypes from "prop-types";
 import React, { useState, useContext } from "react";
 import { Context } from "/workspace/MechGroupBuyTracker/src/front/js/store/appContext.js";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
+  const session = actions.getCurrentSession();
+  const history = useHistory();
+
   return (
     <div
       className="card p-0 me-3 mb-4"
@@ -34,6 +37,9 @@ export const Card = (props) => {
         <button
           className="btn btn-outline-warning float-end"
           onClick={() => {
+            if (!session) {
+              history.push("/login");
+            }
             if (props.data.tracked_list.length > 0) {
               actions.deleteTracking(props.data);
             } else {
@@ -41,10 +47,12 @@ export const Card = (props) => {
             }
           }}
         >
-          {props.data.tracked_list.length > 0 ? (
-            <i className="fas fa-check-square"></i>
+          {!session ? (
+            <i className="fas fa-user-lock"></i>
+          ) : props.data.tracked_list.length > 0 ? (
+            <i className="fas fa-minus"></i>
           ) : (
-            <i className="far fa-check-square"></i>
+            <i className="fas fa-plus"></i>
           )}
         </button>
       </div>

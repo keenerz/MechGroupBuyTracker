@@ -24,18 +24,36 @@ export const DetailedView = (props) => {
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title">Card title</h5>
+            <h5 className="card-title">Card title: {props.name}</h5>
             <p className="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              <p className="card-text fw-bold fw-bold">
+                Base Price: {props.price}
+              </p>
+              <p className="card-text fw-bold">
+                Start Date: {props.start_date}
+              </p>
+              <p className="card-text fw-bold">End Date: {props.end_date}</p>
+              <p className="card-text fw-bold">Stage: {props.trackedStatus}</p>
+              <p className="card-text fw-bold">Region: {props.id}</p>
             </p>
+            
             <p className="card-text">
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted">Last updated 14 mins ago</small>
             </p>
           </div>
         </div>
       </div>
     </div>
   );
+};
+
+Card.propTypes = {
+  id: PropTypes.string,
+  img: PropTypes.string,
+  name: PropTypes.string,
+  base_price: PropTypes.string,
+  start_date: PropTypes.string,
+  end_date: PropTypes.string,
+  trackedStatus: PropTypes.bool,
+  details: PropTypes.string,
 };

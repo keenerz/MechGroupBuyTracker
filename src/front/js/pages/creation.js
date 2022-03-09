@@ -47,7 +47,7 @@ export function AccountCreation(props) {
               className="form-control"
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="user@user.com"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -61,7 +61,7 @@ export function AccountCreation(props) {
               className="form-control"
               type="username"
               name="username"
-              placeholder="Username"
+              placeholder="User"
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -89,7 +89,7 @@ export function AccountCreation(props) {
               className="form-control"
               type="password"
               name="password-repeat"
-              placeholder="Password (repeat)"
+              placeholder="Password (Repeat)"
               id="password-repeat"
               value={passwordRepeat}
               onChange={(e) => {

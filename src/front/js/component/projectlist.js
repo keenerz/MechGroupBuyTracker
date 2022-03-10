@@ -32,7 +32,6 @@ export const ProjectList = (props) => {
           aria-label="Filter"
           onChange={(e) => {
             setQuery({ ...query, isTracking: e.target.value });
-            console.log(query);
           }}
         >
           <option value={false}>All</option>
@@ -43,8 +42,6 @@ export const ProjectList = (props) => {
           aria-label="Filter2"
           onChange={(e) => {
             setQuery({ ...query, stage: e.target.value });
-            console.log(e.target.value);
-            console.log(query);
           }}
         >
           <option value={0}>IC/GB/Ended</option>
@@ -67,20 +64,27 @@ export const ProjectList = (props) => {
         className="d-flex flex-row mx-auto"
         style={{ width: "90%", overflow: "auto" }}
       >
-        {store.projects.filter(filterProject).map((c, i) => (
-          <Card
-            data={c}
-            id={c.id}
-            name={c.name}
-            project_type={c.project_type}
-            sale_type={c.sale_type}
-            started_at={c.started_at}
-            ended_at={c.ended_at}
-            img={c.img_url}
-            details={c.details}
-            key={i}
-          />
-        ))}
+        {store.projects.filter(filterProject).map((c, i) => <Card key={i} />)
+          .length === 0 ? (
+          <h1 className="m-auto">No Projects Detected</h1>
+        ) : (
+          store.projects
+            .filter(filterProject)
+            .map((c, i) => (
+              <Card
+                data={c}
+                id={c.id}
+                name={c.name}
+                project_type={c.project_type}
+                sale_type={c.sale_type}
+                started_at={c.started_at}
+                ended_at={c.ended_at}
+                img={c.img_url}
+                details={c.details}
+                key={i}
+              />
+            ))
+        )}
       </div>
     </div>
   );

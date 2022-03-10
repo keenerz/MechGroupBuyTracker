@@ -10,7 +10,6 @@ export function Settings(props) {
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const history = useHistory();
   const usernameEdit = JSON.parse(localStorage.getItem("useredit"));
-  const session = actions.getCurrentSession();
 
   let matchingPassword = () => {
     if (password !== passwordRepeat) {
@@ -35,8 +34,9 @@ export function Settings(props) {
               alert("Make sure your passwords are matching!");
               e.preventDefault();
             } else {
-              actions.editUser(email, password, username);
-              // .then(history.push("/login"));
+              actions
+                .editUser(email, password, username)
+                .then((session) => history.push("/login"));
               e.preventDefault();
             }
           }}

@@ -52,7 +52,7 @@ export const Navbar = () => {
         </li>
         {!session ? (
           <Link to="/login">
-            <button className="btn btn-primary">Login</button>
+            <button className="btn btn-dark">Login</button>
           </Link>
         ) : (
           <button

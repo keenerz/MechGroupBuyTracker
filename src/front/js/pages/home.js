@@ -4,12 +4,13 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { ProjectList } from "../component/projectlist";
 import logo from "../../img/logo.png";
+import logogif from "../../img/logogif.gif";
 export const Home = (props) => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="text-center mt-5">
-      <img src={logo} alt="img alt" id="logo-id" />
+      <img src={logogif} alt="img alt" id="logo-id" />
 
       <section className="py-5 text-center container">
         <div className="row py-lg-5">

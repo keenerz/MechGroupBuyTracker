@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       tracked: [],
       projects: [],
+      useredit: null,
     },
     actions: {
       //Login and Token items
@@ -38,6 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           localStorage.setItem("session", JSON.stringify(data));
           setStore({ session: data });
           actions.loadProjects();
+          actions.getUser();
           return true;
         } catch (error) {
           console.error("Error in login zone");
@@ -48,6 +50,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         const actions = getActions();
         localStorage.removeItem("session");
         setStore({ session: null });
+        localStorage.removeItem("useredit");
+        setStore({ useredit: null });
         actions.loadProjects();
       },
       createUser: async (email, password, username) => {
@@ -71,6 +75,49 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (response.status !== 200) {
           alert("Incorrect Email or Password");
           e.preventDefault();
+        }
+      },
+      editUser: async (email, password, username) => {
+        const store = getStore();
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "PUT",
+          headers: {
+            Authorization: "Bearer " + session.token,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+            username: username,
+            usertype: "buyer",
+          }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/user`,
+          options
+        );
+      },
+      getUser: async () => {
+        const store = getStore();
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + session.token,
+          },
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/user`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          localStorage.setItem("useredit", JSON.stringify(payload));
+          setStore({ useredit: payload });
+          console.log(JSON.stringify(payload));
         }
       },
 

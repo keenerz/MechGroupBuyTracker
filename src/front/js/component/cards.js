@@ -61,12 +61,11 @@ export const Card = (props) => {
 };
 
 Card.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   img: PropTypes.string,
   name: PropTypes.string,
   baseprice: PropTypes.number,
   start_date: PropTypes.string,
   end_date: PropTypes.string,
-  trackedStatus: PropTypes.bool,
   details: PropTypes.string,
 };

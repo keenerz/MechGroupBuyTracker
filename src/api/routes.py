@@ -59,28 +59,40 @@ def update_user():
     password = request.json.get('password')
     usertype = request.json.get('usertype')
 
-    if email is None:
+    if email is None or not email:
         user.email = user.email
     else:
         user.email = email
 
-    if username is None:
+    if username is None or not username:
         user.username = user.username
     else:
         user.username = username
 
-    if password is None:
+    if password is None or not password:
         user.password = user.password
     else:
         user.password = password
     
-    if usertype is None:
+    if usertype is None or not usertype:
         user.usertype = user.usertype
     else:
         user.usertype = usertype
     
     db.session.commit()
     return jsonify(user.serialize())
+
+@api.route('/user', methods=['GET'])
+@jwt_required()
+def get_user():
+    current_user_id = get_jwt_identity()
+    print("this is the user_id", current_user_id)
+    user_query = User.query.filter_by(id=current_user_id).first()
+    if user_query is None:
+        return jsonify({"msg": "User Not Found"}), 403
+    email_get = user_query.email
+    username_get = user_query.username
+    return jsonify({"email": email_get, "username": username_get})
 
 #Project Endpoints
 @api.route('/projects', methods=['GET'])
@@ -161,67 +173,67 @@ def update_project():
     discussion_links = request.json.get('discussion_links')
     img_url = request.json.get('img_url')
 
-    if name is None:
+    if name is None or not name:
         project.name = project.name
     else:
         project.name = name
 
-    if project_type is None:
+    if project_type is None or not project_type:
         project.project_type = project.project_type
     else:
         project.project_type = project_type
 
-    if project_stage is None:
+    if project_stage is None or not project_stage:
         project.project_stage = project.project_stage
     else:
         project.project_stage = project_stage
     
-    if sale_type is None:
+    if sale_type is None or not sale_type:
         project.sale_type = project.sale_type
     else:
         project.sale_type = sale_type
     
-    if region is None:
+    if region is None or not region:
         project.region = project.region
     else:
         project.region = region
 
-    if baseprice is None:
+    if baseprice is None or not baseprice:
         project.baseprice = project.baseprice
     else:
         project.baseprice = baseprice
 
-    if estimated_ship is None:
+    if estimated_ship is None or not estimated_ship:
         project.estimated_ship = project.estimated_ship
     else:
         project.estimated_ship = estimated_ship
     
-    if create_at is None:
+    if create_at is None or not create_at:
         project.create_at = project.create_at
     else:
         project.create_at = create_at
 
-    if updated_at is None:
+    if updated_at is None or not updated_at:
         project.updated_at = project.updated_at
     else:
         project.updated_at = updated_at
 
-    if ended_at is None:
+    if ended_at is None or not ended_at:
         project.ended_at = project.ended_at
     else:
         project.ended_at = ended_at
 
-    if vendor_links is None:
+    if vendor_links is None or not vendor_links:
         project.vendor_links = project.vendor_links
     else:
         project.vendor_links = vendor_links
 
-    if discussion_links is None:
+    if discussion_links is None or not discussion_links:
         project.discussion_links = project.discussion_links
     else:
         project.discussion_links = discussion_links
 
-    if img_url is None:
+    if img_url is None or not img_url:
         project.img_url = project.img_url
     else:
         project.img_url = img_url

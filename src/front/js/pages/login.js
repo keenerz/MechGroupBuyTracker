@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "/workspace/MechGroupBuyTracker/src/front/styles/home.css";
 import { Context } from "/workspace/MechGroupBuyTracker/src/front//js/store/appContext.js";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "../../styles/login.css";
 
 export const Login = () => {
@@ -15,7 +15,9 @@ export const Login = () => {
       <form
         method="post"
         onSubmit={(e) => {
-          actions.login(email, password).then((session) => history.push("/"));
+          actions.login(email, password).then((session) => {
+            if (session) history.push("/");
+          });
           e.preventDefault();
         }}
       >
@@ -59,6 +61,9 @@ export const Login = () => {
         <a className="forgot" href="#">
           Forgot your email or password?
         </a>
+        <Link to="/create" className="forgot mt-2">
+          Don't have an account? Sign up here.
+        </Link>
       </form>
     </section>
   );

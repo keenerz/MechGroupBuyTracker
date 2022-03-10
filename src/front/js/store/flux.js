@@ -11,6 +11,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         return session;
       },
       login: async (email, password) => {
+        const store = getStore();
+        const actions = getActions();
         const options = {
           method: "POST",
           headers: {
@@ -35,15 +37,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           const data = await response.json();
           localStorage.setItem("session", JSON.stringify(data));
           setStore({ session: data });
+          actions.loadProjects();
           return true;
         } catch (error) {
           console.error("Error in login zone");
         }
       },
       logout: () => {
+        const store = getStore();
         const actions = getActions();
         localStorage.removeItem("session");
         setStore({ session: null });
+        actions.loadProjects();
       },
       createUser: async (email, password, username) => {
         const options = {
@@ -65,12 +70,27 @@ const getState = ({ getStore, getActions, setStore }) => {
         );
         if (response.status !== 200) {
           alert("Incorrect Email or Password");
+          e.preventDefault();
         }
       },
 
       //Project Loading
       loadProjects: async () => {
-        const response = await fetch(process.env.BACKEND_URL + `/api/projects`);
+        const store = getStore();
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        let options = {
+          headers: {
+            Authorization: "Bearer " + session?.token,
+          },
+        };
+        if (!session) {
+          options.headers = {};
+        }
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/projects`,
+          options
+        );
         if (response.status === 200) {
           const payload = await response.json();
           setStore({ projects: payload });
@@ -113,7 +133,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           process.env.BACKEND_URL + `/api/tracked`,
           options
         );
-        actions.loadTracked();
+        actions.loadProjects();
       },
       deleteTracking: async (project) => {
         const actions = getActions();
@@ -136,7 +156,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (response.status !== 200) {
           alert("Error in first");
         }
-        actions.loadTracked();
+        actions.loadProjects();
       },
     },
   };

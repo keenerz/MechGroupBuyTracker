@@ -1,50 +1,77 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
+  const session = actions.getCurrentSession();
   return (
     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      {/* <a
-        href="/"
-        className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
-      >
-        <svg
-          className="bi me-2"
-          width="40"
-          height="32"
-          role="img"
-          aria-label="Bootstrap"
-        >
-          <use xlink:href="#bootstrap" />
-        </svg>
-      </a> */}
-
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li>
           <a href="#" className="nav-link px-2 link-secondary">
             Home
           </a>
         </li>
-        <li>
-          <a href="#" className="nav-link px-2 link-dark">
-              Live Listings
+        <li className="nav-item">
+          <a href="#" className="nav-link link-dark px-2">
+            About
           </a>
         </li>
-        <li>
-          <a href="#" className="nav-link px-2 link-dark">
-            Customers
+        <li className="nav-item dropdown">
+          <a
+            className="nav-link link-dark dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Products
           </a>
-        </li>        
-  <div className="dropdown me-1">
-    <button type="button" className="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
-      Product
-    </button>
-    <ul className="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-      <li><a className="dropdown-item" href="#">Keyboard</a></li>
-      <li><a className="dropdown-item" href="#">Keycaps</a></li>
-      <li><a className="dropdown-item" href="#">Switches</a></li>
-    </ul>
-  </div>
+          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a className="dropdown-item" href="#">
+                Keycaps
+              </a>
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                Keyboards
+              </a>
+            </li>
+            <li>
+              <hr className="dropdown-divider" />
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                Switches
+              </a>
+            </li>
+          </ul>
+        </li>
+        {!session ? (
+          <Link to="/login">
+            <button className="btn btn-primary">Login</button>
+          </Link>
+        ) : (
+          <button
+            className="btn btn-danger log"
+            onClick={() => {
+              actions.logout();
+            }}
+          >
+            Logout
+          </button>
+        )}
+        <ul className="nav">
+          <li className="nav-item">
+            <Link to="/create" className="nav-link link-dark px-2">
+              Sign up
+            </Link>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
+          </li>
+        </ul>
       </ul>
 
       <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -78,12 +105,12 @@ export const Navbar = () => {
         >
           <li>
             <a className="dropdown-item" href="#">
-              New Listing (Coming Soon!)
+              Add New Listing (Coming Soon to Members!)
             </a>
           </li>
           <li>
             <a className="dropdown-item" href="#">
-              Settings
+             Track Listings
             </a>
           </li>
           <li>

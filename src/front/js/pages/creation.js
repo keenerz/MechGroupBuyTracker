@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 export function AccountCreation(props) {
   const { store, actions } = useContext(Context);
@@ -27,6 +27,7 @@ export function AccountCreation(props) {
           onSubmit={(e) => {
             if (matchingPassword() === false) {
               alert("Make sure your passwords are matching!");
+              e.preventDefault();
             } else {
               actions
                 .createUser(email, password, username)
@@ -46,7 +47,7 @@ export function AccountCreation(props) {
               className="form-control"
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="user@user.com"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -60,7 +61,7 @@ export function AccountCreation(props) {
               className="form-control"
               type="username"
               name="username"
-              placeholder="Username"
+              placeholder="User"
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -88,7 +89,7 @@ export function AccountCreation(props) {
               className="form-control"
               type="password"
               name="password-repeat"
-              placeholder="Password (repeat)"
+              placeholder="Password (Repeat)"
               id="password-repeat"
               value={passwordRepeat}
               onChange={(e) => {
@@ -108,9 +109,9 @@ export function AccountCreation(props) {
               Sign Up
             </button>
           </div>
-          <a className="already" href="#">
+          <Link to="/login" className="already">
             You already have an account? Login here.
-          </a>
+          </Link>
         </form>
       </div>
     </section>

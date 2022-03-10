@@ -13,7 +13,7 @@ export const ProjectList = (props) => {
   });
 
   const filterProject = (project) => {
-    if (project.tracked_list.length === 0 && query.isTracking === true) {
+    if (project.tracked_list.length === 0 && query.isTracking == "true") {
       return false;
     }
     if (query.stage !== "0" && project.project_stage !== query.stage) {

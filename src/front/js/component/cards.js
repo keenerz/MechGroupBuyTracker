@@ -8,6 +8,24 @@ export const Card = (props) => {
   const params = useParams();
   const session = actions.getCurrentSession();
   const history = useHistory();
+  let start_date = props.data.started_at;
+  start_date =
+    start_date.split(" ")[0] +
+    " " +
+    start_date.split(" ")[2] +
+    " " +
+    start_date.split(" ")[1] +
+    " " +
+    start_date.split(" ")[3];
+  let end_date = props.data.ended_at;
+  end_date =
+    end_date.split(" ")[0] +
+    " " +
+    end_date.split(" ")[2] +
+    " " +
+    end_date.split(" ")[1] +
+    " " +
+    end_date.split(" ")[3];
 
   return (
     <div
@@ -27,8 +45,8 @@ export const Card = (props) => {
         <p className="card-text fw-bold fw-bold">
           Base Price: {props.data.baseprice}
         </p>
-        <p className="card-text fw-bold">Start Date: {props.data.start_date}</p>
-        <p className="card-text fw-bold">End Date: {props.data.end_date}</p>
+        <p className="card-text fw-bold">Start Date: {start_date}</p>
+        <p className="card-text fw-bold">End Date: {end_date}</p>
         <Link to={"/details/" + props.id}>
           <button className="btn btn-outline-primary float-start">
             Learn more!

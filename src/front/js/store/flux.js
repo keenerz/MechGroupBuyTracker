@@ -143,6 +143,51 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ projects: payload });
         }
       },
+      addProject: async (
+        name,
+        project_type,
+        project_stage,
+        sale_type,
+        region,
+        baseprice,
+        estimated_ship,
+        create_at,
+        updates_at,
+        started_at,
+        ended_at,
+        vendor_links,
+        discussion_links,
+        img_url
+      ) => {
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + session.token,
+          },
+          body: JSON.stringify({
+            name: name,
+            project_type: project_type,
+            rotation_period: rotationPeriod,
+            orbital_period: orbitalPeriod,
+            diameter: diameter,
+            terrain: terrain,
+            population: population,
+            img_url: imgUrl,
+          }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/planet`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          console.log("planet created successfully!");
+          return payload;
+        }
+      },
       //Tracked Loading
       loadTracked: async () => {
         const store = getStore();

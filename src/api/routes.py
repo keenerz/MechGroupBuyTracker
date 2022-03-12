@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Project, Tracked
-from api.utils import generate_sitemap, APIException
+from api.utils import generate_sitemap, APIException, send_sms
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
 
@@ -58,6 +58,7 @@ def update_user():
     username = request.json.get('username')
     password = request.json.get('password')
     usertype = request.json.get('usertype')
+    phone = request.json.get('phone')
 
     if email is None or not email:
         user.email = user.email
@@ -79,6 +80,12 @@ def update_user():
     else:
         user.usertype = usertype
     
+    if phone is None or not phone:
+        user.phone = user.phone
+    else:
+        user.phone = phone
+        send_sms(to=user.phone, message=f'Thank you {user.username} for signing up for notifications!')
+
     db.session.commit()
     return jsonify(user.serialize())
 
@@ -105,7 +112,7 @@ def get_project():
     return jsonify(all_serialized_project)
 
 @api.route('/projects', methods=['POST'])
-# @jwt_required()
+@jwt_required()
 def create_project():
     name = request.json.get('name', None)
     project_type = request.json.get('project_type', None)
@@ -141,7 +148,7 @@ def create_project():
     return jsonify(project.serialize())
 
 @api.route('/projects', methods=['DELETE'])
-#@jwt_required()
+@jwt_required()
 def delete_project():
     project_id = request.json.get('project')
     target_project = Project.query.filter_by(id=project_id).first()
@@ -152,13 +159,14 @@ def delete_project():
     return jsonify({ "msg": "Project Deleted"}), 200
 
 @api.route('/projects', methods=['PUT'])
-#@jwt_required()
+@jwt_required()
 def update_project():
     project_id = request.json.get('project')
     project = Project.query.filter_by(id=project_id).first()
     if project is None:
         return jsonify({"msg":"Project doesn't exist"}), 400
     name = request.json.get('name')
+    message = ""
     project_type = request.json.get('project_type')
     project_stage = request.json.get('project_stage')
     sale_type = request.json.get('sale_type')
@@ -187,11 +195,13 @@ def update_project():
         project.project_stage = project.project_stage
     else:
         project.project_stage = project_stage
+        message+="project stage changed to " + project_stage + "\n"
     
     if sale_type is None or not sale_type:
         project.sale_type = project.sale_type
     else:
         project.sale_type = sale_type
+        message+="sale type changed to " + sale_type + "\n"
     
     if region is None or not region:
         project.region = project.region
@@ -239,6 +249,11 @@ def update_project():
         project.img_url = img_url
 
     db.session.commit()
+    if message != "":
+        tracked_list = Tracked.query.filter_by(projectid=project.id) 
+        for t in tracked_list:
+            send_sms(to=t.user.phone, message=f'Project {project.name} updated: \n {message}')
+
     return jsonify(project.serialize())
 
 

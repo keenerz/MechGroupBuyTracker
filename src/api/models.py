@@ -6,6 +6,7 @@ db = SQLAlchemy()
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
+    phone = db.Column(db.String(120), unique=False, nullable=True, default=None)
     username = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     usertype = db.Column(db.Enum("buyer", "creator", name="UserTypes"), unique=False, nullable=False)
@@ -18,7 +19,8 @@ class User(db.Model):
             "id": self.id,
             "email": self.email,
             "username": self.username,
-            "usertype": self.usertype
+            "usertype": self.usertype,
+            "phone": self.phone
             # do not serialize the password, its a security breach
         }
 

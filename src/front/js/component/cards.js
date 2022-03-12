@@ -8,24 +8,30 @@ export const Card = (props) => {
   const params = useParams();
   const session = actions.getCurrentSession();
   const history = useHistory();
+
+  // Date Display Function
   let start_date = props.data.started_at;
-  start_date =
-    start_date.split(" ")[0] +
-    " " +
-    start_date.split(" ")[2] +
-    " " +
-    start_date.split(" ")[1] +
-    " " +
-    start_date.split(" ")[3];
+  if (start_date !== null) {
+    start_date =
+      start_date.split(" ")[0] +
+      " " +
+      start_date.split(" ")[2] +
+      " " +
+      start_date.split(" ")[1] +
+      " " +
+      start_date.split(" ")[3];
+  }
   let end_date = props.data.ended_at;
-  end_date =
-    end_date.split(" ")[0] +
-    " " +
-    end_date.split(" ")[2] +
-    " " +
-    end_date.split(" ")[1] +
-    " " +
-    end_date.split(" ")[3];
+  if (end_date !== null) {
+    end_date =
+      end_date.split(" ")[0] +
+      " " +
+      end_date.split(" ")[2] +
+      " " +
+      end_date.split(" ")[1] +
+      " " +
+      end_date.split(" ")[3];
+  }
 
   return (
     <div
@@ -33,7 +39,7 @@ export const Card = (props) => {
       style={{ minWidth: "18rem", maxWidth: "18rem", minHeight: "22rem" }}
     >
       <img
-        src={props.data.img || "https://via.placeholder.com/400x200"}
+        src={props.data.img_url || "https://via.placeholder.com/400x200"}
         className="card-img-top"
         height="200"
         width="400"

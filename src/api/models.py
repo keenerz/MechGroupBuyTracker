@@ -55,6 +55,7 @@ class Project(db.Model):
             "ended_at": self.ended_at,
             "vendor_links": self.vendor_links,
             "discussion_links": self.discussion_links,
+            "img_url" : self.img_url
             # do not serialize the password, its a security breach
         }
         tracked_list = []

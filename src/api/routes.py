@@ -93,13 +93,13 @@ def update_user():
 @jwt_required()
 def get_user():
     current_user_id = get_jwt_identity()
-    print("this is the user_id", current_user_id)
     user_query = User.query.filter_by(id=current_user_id).first()
     if user_query is None:
         return jsonify({"msg": "User Not Found"}), 403
     email_get = user_query.email
     username_get = user_query.username
-    return jsonify({"email": email_get, "username": username_get})
+    phone_get = user_query.phone
+    return jsonify({"email": email_get, "username": username_get, "phone":phone_get})
 
 #Project Endpoints
 @api.route('/projects', methods=['GET'])
@@ -212,11 +212,13 @@ def update_project():
         project.baseprice = project.baseprice
     else:
         project.baseprice = baseprice
+        message+="base price set to " + baseprice + "\n"
 
     if estimated_ship is None or not estimated_ship:
         project.estimated_ship = project.estimated_ship
     else:
         project.estimated_ship = estimated_ship
+        message+="estimated ship date changed to " + estimated_ship + "\n"
     
     if create_at is None or not create_at:
         project.create_at = project.create_at

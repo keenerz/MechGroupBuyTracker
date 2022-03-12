@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-
+// import { Home } from "../layout";
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const session = actions.getCurrentSession();
@@ -9,15 +9,11 @@ export const Navbar = () => {
     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li>
-          <a href="#" className="nav-link px-2 link-secondary">
-            Home
-          </a>
-        </li>
-        <li className="nav-item">
-          <a href="#" className="nav-link link-dark px-2">
-            About
-          </a>
-        </li>
+          {/* <Link to={`/${Home}`}> */}
+          <Link to="/home">
+            <button className="btn btn">Home</button>
+          </Link>
+        </li>        
         <li className="nav-item dropdown">
           <a
             className="nav-link link-dark dropdown-toggle"
@@ -104,13 +100,13 @@ export const Navbar = () => {
           aria-labelledby="dropdownUser1"
         >
           <li>
-            <a className="dropdown-item" href="#">
+            <a className="nav-link disabled dropdown-item" href="#">
               Add New Listing (Coming Soon to Members!)
             </a>
           </li>
           <li>
             <a className="dropdown-item" href="#">
-             Track Listings
+              Tracked Listings
             </a>
           </li>
           <li>

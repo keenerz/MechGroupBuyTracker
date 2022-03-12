@@ -4,18 +4,18 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { ProjectList } from "../component/projectlist";
 import logo from "../../img/logo.png";
-import logogif from "../../img/logogif.gif";
+import logoGIF from "../../img/logoGIF.gif";
 export const Home = (props) => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="text-center mt-5">
-      <img src={logogif} alt="img alt" id="logo-id" />
+      <img src={logoGIF} alt="img alt" id="logo-id" />
 
-      <section className="py-5 text-center container">
+      <section className="py-5 text-center container" id="album">
         <div className="row py-lg-5">
-          <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light">List, Buy, Track. Repeat. </h1>
+          <div className="col-lg-6 col-md-8 mx-auto" >
+            <h1 className="fw-bold">List, Buy, Track. Repeat. </h1>
             <p className="lead text-muted">
               Unlock some of our newest listed products, while you still can.
             </p>

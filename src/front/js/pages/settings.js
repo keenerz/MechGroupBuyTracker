@@ -38,7 +38,7 @@ export function Settings(props) {
             } else {
               actions
                 .editUser(email, password, username, phone)
-                .then((session) => history.push("/login"));
+                .then((session) => history.push("/"));
               e.preventDefault();
             }
           }}

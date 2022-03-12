@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 import enum
 
 db = SQLAlchemy()
@@ -33,8 +34,8 @@ class Project(db.Model):
     region = db.Column(db.String(120), unique=False, nullable=True)
     baseprice = db.Column(db.Float(8), unique=False, nullable=True)
     estimated_ship = db.Column(db.String(120), unique=False, nullable=True)
-    create_at = db.Column(db.DateTime(timezone=False), nullable=True)
-    updated_at = db.Column(db.DateTime(timezone=False), nullable=True)
+    create_at = db.Column(db.DateTime(timezone=False), nullable=True, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime(timezone=False), nullable=True, onupdate=datetime.utcnow)
     started_at = db.Column(db.Date(), nullable=True)
     ended_at = db.Column(db.Date(), nullable=True)
     vendor_links = db.Column(db.String(250), unique=False, nullable=True)

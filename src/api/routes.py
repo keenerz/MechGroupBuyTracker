@@ -121,8 +121,6 @@ def create_project():
     region = request.json.get('region', None)
     baseprice = request.json.get('baseprice', None)
     estimated_ship = request.json.get('estimated_ship', None)
-    create_at = request.json.get('create_at', None)
-    updated_at = request.json.get("updated_at", None)
     started_at = request.json.get('started_at', None)
     ended_at = request.json.get('ended_at', None)
     vendor_links = request.json.get('vendor_links', None)
@@ -136,8 +134,6 @@ def create_project():
                     region=region,
                     baseprice=baseprice,
                     estimated_ship=estimated_ship,
-                    create_at=create_at,
-                    updated_at=updated_at,
                     started_at=started_at,
                     ended_at=ended_at,
                     vendor_links=vendor_links,
@@ -173,8 +169,6 @@ def update_project():
     region = request.json.get('region')
     baseprice = request.json.get('baseprice')
     estimated_ship = request.json.get('estimated_ship')
-    create_at = request.json.get('create_at')
-    updated_at = request.json.get('updated_at')
     started_at = request.json.get('started_at')
     ended_at = request.json.get('ended_at')
     vendor_links = request.json.get('vendor_links')
@@ -219,16 +213,6 @@ def update_project():
     else:
         project.estimated_ship = estimated_ship
         message+="estimated ship date changed to " + estimated_ship + "\n"
-    
-    if create_at is None or not create_at:
-        project.create_at = project.create_at
-    else:
-        project.create_at = create_at
-
-    if updated_at is None or not updated_at:
-        project.updated_at = project.updated_at
-    else:
-        project.updated_at = updated_at
 
     if ended_at is None or not ended_at:
         project.ended_at = project.ended_at

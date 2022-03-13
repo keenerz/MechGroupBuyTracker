@@ -5,3 +5,40 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
+a:hover {
+  color: ffde59;
+}
+.dropdown-menu{
+  background-color: ffde59;
+}
+h1 {
+  color: rgb(247, 0, 0);
+  font-family: "Courier New", Courier, monospace;
+}
+h5 {
+  font-family: "Courier New", Courier, monospace;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: goldenrod;
+}
+.card {
+  margin-top: 70px;
+  border: 3px solid;
+  border-color: rgb(0, 204, 255);
+  border-radius: 5px;
+  text-align: left;
+  color: white;
+  background-color: #000000;
+}
+#logo-id {
+  width: 380px;
+  height: 380px;
+}
+#album{
+  margin-right: 0px,0px;
+  margin-bottom: 60px;
+}

@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       tracked: [],
       projects: [],
+      useredit: null,
     },
     actions: {
       //Login and Token items
@@ -38,6 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           localStorage.setItem("session", JSON.stringify(data));
           setStore({ session: data });
           actions.loadProjects();
+          actions.getUser();
           return true;
         } catch (error) {
           console.error("Error in login zone");
@@ -48,6 +50,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         const actions = getActions();
         localStorage.removeItem("session");
         setStore({ session: null });
+        localStorage.removeItem("useredit");
+        setStore({ useredit: null });
         actions.loadProjects();
       },
       createUser: async (email, password, username) => {
@@ -73,6 +77,50 @@ const getState = ({ getStore, getActions, setStore }) => {
           e.preventDefault();
         }
       },
+      editUser: async (email, password, username, phone) => {
+        const store = getStore();
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "PUT",
+          headers: {
+            Authorization: "Bearer " + session.token,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+            username: username,
+            usertype: "buyer",
+            phone: phone,
+          }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/user`,
+          options
+        );
+      },
+      getUser: async () => {
+        const store = getStore();
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + session.token,
+          },
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/user`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          localStorage.setItem("useredit", JSON.stringify(payload));
+          setStore({ useredit: payload });
+          console.log(JSON.stringify(payload));
+        }
+      },
 
       //Project Loading
       loadProjects: async () => {
@@ -94,6 +142,51 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (response.status === 200) {
           const payload = await response.json();
           setStore({ projects: payload });
+        }
+      },
+      addProject: async (
+        name,
+        project_type,
+        project_stage,
+        sale_type,
+        region,
+        baseprice,
+        estimated_ship,
+        create_at,
+        updates_at,
+        started_at,
+        ended_at,
+        vendor_links,
+        discussion_links,
+        img_url
+      ) => {
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + session.token,
+          },
+          body: JSON.stringify({
+            name: name,
+            project_type: project_type,
+            rotation_period: rotationPeriod,
+            orbital_period: orbitalPeriod,
+            diameter: diameter,
+            terrain: terrain,
+            population: population,
+            img_url: imgUrl,
+          }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/planet`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          console.log("planet created successfully!");
+          return payload;
         }
       },
       //Tracked Loading

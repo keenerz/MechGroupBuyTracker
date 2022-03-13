@@ -5,6 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { AccountCreation } from "./pages/creation";
+import { Settings } from "./pages/settings";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -35,6 +36,9 @@ const Layout = () => {
             <Route exact path="/create">
               <AccountCreation />
             </Route>
+            <Route exact path="/accountsettings">
+              <Settings />
+            </Route>
             <Route>
               <h1>Not found!</h1>
             </Route>
@@ -42,8 +46,7 @@ const Layout = () => {
           <Footer />
         </ScrollToTop>
       </BrowserRouter>
-
-      </div>
+    </div>
   );
 };
 

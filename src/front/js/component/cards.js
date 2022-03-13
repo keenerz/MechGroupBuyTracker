@@ -1,18 +1,45 @@
 import PropTypes from "prop-types";
 import React, { useState, useContext } from "react";
 import { Context } from "/workspace/MechGroupBuyTracker/src/front/js/store/appContext.js";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
+  const session = actions.getCurrentSession();
+  const history = useHistory();
+
+  // Date Display Function
+  let start_date = props.data.started_at;
+  if (start_date !== null) {
+    start_date =
+      start_date.split(" ")[0] +
+      " " +
+      start_date.split(" ")[2] +
+      " " +
+      start_date.split(" ")[1] +
+      " " +
+      start_date.split(" ")[3];
+  }
+  let end_date = props.data.ended_at;
+  if (end_date !== null) {
+    end_date =
+      end_date.split(" ")[0] +
+      " " +
+      end_date.split(" ")[2] +
+      " " +
+      end_date.split(" ")[1] +
+      " " +
+      end_date.split(" ")[3];
+  }
+
   return (
     <div
       className="card p-0 me-3 mb-4"
       style={{ minWidth: "18rem", maxWidth: "18rem", minHeight: "22rem" }}
     >
       <img
-        src={props.data.img || "https://via.placeholder.com/400x200"}
+        src={props.data.img_url || "https://via.placeholder.com/400x200"}
         className="card-img-top"
         height="200"
         width="400"
@@ -24,8 +51,8 @@ export const Card = (props) => {
         <p className="card-text fw-bold fw-bold">
           Base Price: {props.data.baseprice}
         </p>
-        <p className="card-text fw-bold">Start Date: {props.data.start_date}</p>
-        <p className="card-text fw-bold">End Date: {props.data.end_date}</p>
+        <p className="card-text fw-bold">Start Date: {start_date}</p>
+        <p className="card-text fw-bold">End Date: {end_date}</p>
         <Link to={"/details/" + props.id}>
           <button className="btn btn-outline-primary float-start">
             Learn more!
@@ -34,6 +61,9 @@ export const Card = (props) => {
         <button
           className="btn btn-outline-warning float-end"
           onClick={() => {
+            if (!session) {
+              history.push("/login");
+            }
             if (props.data.tracked_list.length > 0) {
               actions.deleteTracking(props.data);
             } else {
@@ -41,10 +71,12 @@ export const Card = (props) => {
             }
           }}
         >
-          {props.data.tracked_list.length > 0 ? (
-            <i className="fas fa-check-square"></i>
+          {!session ? (
+            <i className="fas fa-user-lock"></i>
+          ) : props.data.tracked_list.length > 0 ? (
+            <i className="fas fa-minus"></i>
           ) : (
-            <i className="far fa-check-square"></i>
+            <i className="fas fa-plus"></i>
           )}
         </button>
       </div>
@@ -53,12 +85,11 @@ export const Card = (props) => {
 };
 
 Card.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   img: PropTypes.string,
   name: PropTypes.string,
   baseprice: PropTypes.number,
   start_date: PropTypes.string,
   end_date: PropTypes.string,
-  trackedStatus: PropTypes.bool,
   details: PropTypes.string,
 };

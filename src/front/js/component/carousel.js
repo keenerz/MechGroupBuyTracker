@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
 
-export const frontDisplay = () => {
-  return function ControlledCarousel() {
-    const [index, setIndex] = useState(0);
+export const Display = () => {
+  const [index, setIndex] = useState(0);
 
-    const handleSelect = (selectedIndex, e) => {
-      setIndex(selectedIndex);
-    };
-
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+  return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img
@@ -48,6 +48,6 @@ export const frontDisplay = () => {
           </p>
         </Carousel.Caption>
       </Carousel.Item>
-    </Carousel>;
-  };
+    </Carousel>
+  );
 };

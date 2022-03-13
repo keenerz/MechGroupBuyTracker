@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { ProjectList } from "../component/projectlist";
+
+import { Display } from "../component/carousel";
 import logo from "../../img/logo.png";
 import logoGIF from "../../img/logoGIF.gif";
+
 export const Home = (props) => {
   const { store, actions } = useContext(Context);
 
@@ -33,6 +36,7 @@ export const Home = (props) => {
         </div>
       </section>
       <ProjectList />
+      <Display />
     </div>
   );
 };

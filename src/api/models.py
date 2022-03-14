@@ -41,6 +41,8 @@ class Project(db.Model):
     vendor_links = db.Column(db.String(250), unique=False, nullable=True)
     discussion_links = db.Column(db.String(250), unique=False, nullable = True)
     img_url = db.Column(db.String(250), unique=False, nullable = True)
+    creator = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=True)
+    user = db.relationship(User)
 
     def serialize(self, extended=False, user_id=None):
         data = {
@@ -58,7 +60,8 @@ class Project(db.Model):
             "ended_at": self.ended_at,
             "vendor_links": self.vendor_links,
             "discussion_links": self.discussion_links,
-            "img_url" : self.img_url
+            "img_url" : self.img_url,
+            "creator" : self.creator
             # do not serialize the password, its a security breach
         }
         tracked_list = []
@@ -66,7 +69,9 @@ class Project(db.Model):
             if user_id is not None:
                 tracked_list = Tracked.query.filter_by(userid=user_id, projectid=self.id)
             data["tracked_list"] = [t.serialize() for t in tracked_list]
-        
+    
+        def __repr__(self):
+            return f'user {self.creator}'
         return data
     
 

@@ -106,10 +106,21 @@ def get_user():
 @jwt_required(optional=True)
 def get_project():
     user_id = get_jwt_identity()
-    print("this is the user_id", user_id)
     project_query = Project.query.all()
     all_serialized_project = list(map(lambda item:item.serialize(extended=True, user_id=user_id), project_query))
     return jsonify(all_serialized_project)
+
+@api.route('/projects/<project_id>', methods=['GET'])
+@jwt_required()
+def get_specified_project(project_id):
+    project = Project.query.filter_by(id=project_id).first()
+    if project is None: 
+        return jsonify({"msg": "Invalid project"}), 400
+    user_id = get_jwt_identity()
+    creator = project.creator
+    if user_id != creator:
+        return jsonify({"msg": "You are not the project creator"}), 400
+    return jsonify(project.serialize())
 
 @api.route('/projects', methods=['POST'])
 @jwt_required()
@@ -126,6 +137,7 @@ def create_project():
     vendor_links = request.json.get('vendor_links', None)
     discussion_links = request.json.get('discussion_links', None)
     img_url = request.json.get('img_url', None)
+    creator = get_jwt_identity()
     
     project = Project(name=name,
                     project_type=project_type,
@@ -138,7 +150,8 @@ def create_project():
                     ended_at=ended_at,
                     vendor_links=vendor_links,
                     discussion_links=discussion_links,
-                    img_url=img_url)
+                    img_url=img_url,
+                    creator=creator)
     db.session.add(project)
     db.session.commit()
     return jsonify(project.serialize())
@@ -213,6 +226,11 @@ def update_project():
     else:
         project.estimated_ship = estimated_ship
         message+="estimated ship date changed to " + estimated_ship + "\n"
+
+    if started_at is None or not started_at:
+        project.started_at = project.started_at
+    else:
+        project.ended_at = ended_at
 
     if ended_at is None or not ended_at:
         project.ended_at = project.ended_at

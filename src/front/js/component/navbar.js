@@ -6,17 +6,17 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const session = actions.getCurrentSession();
   return (
-    <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+    <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
+      <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
         <li>
           {/* <Link to={`/${Home}`}> */}
           <Link to="/home">
-            <button className="btn btn">Home</button>
+            <button className="btn btn link-light">Home</button>
           </Link>
-        </li>        
+        </li>
         <li className="nav-item dropdown">
           <a
-            className="nav-link link-dark dropdown-toggle"
+            className="nav-link link-light dropdown-toggle"
             href="#"
             id="navbarDropdown"
             role="button"
@@ -48,7 +48,7 @@ export const Navbar = () => {
         </li>
         {!session ? (
           <Link to="/login">
-            <button className="btn btn-dark">Login</button>
+            <button className="btn btn-danger">Login</button>
           </Link>
         ) : (
           <button
@@ -62,7 +62,7 @@ export const Navbar = () => {
         )}
         <ul className="nav">
           <li className="nav-item">
-            <Link to="/create" className="nav-link link-dark px-2">
+            <Link to="/create" className="nav-link link-light px-2">
               Sign up
             </Link>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown"></ul>

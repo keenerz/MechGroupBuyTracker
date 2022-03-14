@@ -10,10 +10,10 @@ export const Navbar = () => {
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li>
           {/* <Link to={`/${Home}`}> */}
-          <Link to="/home">
+          <Link to="/">
             <button className="btn btn">Home</button>
           </Link>
-        </li>        
+        </li>
         <li className="nav-item dropdown">
           <a
             className="nav-link link-dark dropdown-toggle"
@@ -70,7 +70,7 @@ export const Navbar = () => {
         </ul>
       </ul>
 
-      <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+      <form className="col-12 col-lg-auto me-lg-3">
         <input
           type="search"
           className="form-control"
@@ -79,7 +79,7 @@ export const Navbar = () => {
         />
       </form>
 
-      <div className="dropdown text-end">
+      <div className="dropdown text-end float-end">
         <a
           href="#"
           className="d-block link-dark text-decoration-none dropdown-toggle"

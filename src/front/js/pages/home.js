@@ -24,14 +24,6 @@ export const Home = (props) => {
             <p className="lead text-muted">
               Unlock some of our newest listed products, while you still can.
             </p>
-            <p>
-              <a href="#" className="btn btn-primary my-2">
-                Login
-              </a>
-              <a href="#" className="btn btn-secondary my-2">
-                Sign Up
-              </a>
-            </p>
           </div>
         </div>
       </section>

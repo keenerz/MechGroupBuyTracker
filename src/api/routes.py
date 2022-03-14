@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Project, Tracked
-from api.utils import generate_sitemap, APIException
+from api.utils import generate_sitemap, APIException, send_sms
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
 
@@ -58,6 +58,7 @@ def update_user():
     username = request.json.get('username')
     password = request.json.get('password')
     usertype = request.json.get('usertype')
+    phone = request.json.get('phone')
 
     if email is None or not email:
         user.email = user.email
@@ -79,6 +80,12 @@ def update_user():
     else:
         user.usertype = usertype
     
+    if phone is None or not phone:
+        user.phone = user.phone
+    else:
+        user.phone = phone
+        send_sms(to=user.phone, message=f'Thank you {user.username} for signing up for notifications!')
+
     db.session.commit()
     return jsonify(user.serialize())
 
@@ -86,26 +93,37 @@ def update_user():
 @jwt_required()
 def get_user():
     current_user_id = get_jwt_identity()
-    print("this is the user_id", current_user_id)
     user_query = User.query.filter_by(id=current_user_id).first()
     if user_query is None:
         return jsonify({"msg": "User Not Found"}), 403
     email_get = user_query.email
     username_get = user_query.username
-    return jsonify({"email": email_get, "username": username_get})
+    phone_get = user_query.phone
+    return jsonify({"email": email_get, "username": username_get, "phone":phone_get})
 
 #Project Endpoints
 @api.route('/projects', methods=['GET'])
 @jwt_required(optional=True)
 def get_project():
     user_id = get_jwt_identity()
-    print("this is the user_id", user_id)
     project_query = Project.query.all()
     all_serialized_project = list(map(lambda item:item.serialize(extended=True, user_id=user_id), project_query))
     return jsonify(all_serialized_project)
 
+@api.route('/projects/<project_id>', methods=['GET'])
+@jwt_required()
+def get_specified_project(project_id):
+    project = Project.query.filter_by(id=project_id).first()
+    if project is None: 
+        return jsonify({"msg": "Invalid project"}), 400
+    user_id = get_jwt_identity()
+    creator = project.creator
+    if user_id != creator:
+        return jsonify({"msg": "You are not the project creator"}), 400
+    return jsonify(project.serialize())
+
 @api.route('/projects', methods=['POST'])
-# @jwt_required()
+@jwt_required()
 def create_project():
     name = request.json.get('name', None)
     project_type = request.json.get('project_type', None)
@@ -114,13 +132,12 @@ def create_project():
     region = request.json.get('region', None)
     baseprice = request.json.get('baseprice', None)
     estimated_ship = request.json.get('estimated_ship', None)
-    create_at = request.json.get('create_at', None)
-    updated_at = request.json.get("updated_at", None)
     started_at = request.json.get('started_at', None)
     ended_at = request.json.get('ended_at', None)
     vendor_links = request.json.get('vendor_links', None)
     discussion_links = request.json.get('discussion_links', None)
     img_url = request.json.get('img_url', None)
+    creator = get_jwt_identity()
     
     project = Project(name=name,
                     project_type=project_type,
@@ -129,19 +146,18 @@ def create_project():
                     region=region,
                     baseprice=baseprice,
                     estimated_ship=estimated_ship,
-                    create_at=create_at,
-                    updated_at=updated_at,
                     started_at=started_at,
                     ended_at=ended_at,
                     vendor_links=vendor_links,
                     discussion_links=discussion_links,
-                    img_url=img_url)
+                    img_url=img_url,
+                    creator=creator)
     db.session.add(project)
     db.session.commit()
     return jsonify(project.serialize())
 
 @api.route('/projects', methods=['DELETE'])
-#@jwt_required()
+@jwt_required()
 def delete_project():
     project_id = request.json.get('project')
     target_project = Project.query.filter_by(id=project_id).first()
@@ -152,21 +168,20 @@ def delete_project():
     return jsonify({ "msg": "Project Deleted"}), 200
 
 @api.route('/projects', methods=['PUT'])
-#@jwt_required()
+@jwt_required()
 def update_project():
     project_id = request.json.get('project')
     project = Project.query.filter_by(id=project_id).first()
     if project is None:
         return jsonify({"msg":"Project doesn't exist"}), 400
     name = request.json.get('name')
+    message = ""
     project_type = request.json.get('project_type')
     project_stage = request.json.get('project_stage')
     sale_type = request.json.get('sale_type')
     region = request.json.get('region')
     baseprice = request.json.get('baseprice')
     estimated_ship = request.json.get('estimated_ship')
-    create_at = request.json.get('create_at')
-    updated_at = request.json.get('updated_at')
     started_at = request.json.get('started_at')
     ended_at = request.json.get('ended_at')
     vendor_links = request.json.get('vendor_links')
@@ -187,11 +202,13 @@ def update_project():
         project.project_stage = project.project_stage
     else:
         project.project_stage = project_stage
+        message+="project stage changed to " + project_stage + "\n"
     
     if sale_type is None or not sale_type:
         project.sale_type = project.sale_type
     else:
         project.sale_type = sale_type
+        message+="sale type changed to " + sale_type + "\n"
     
     if region is None or not region:
         project.region = project.region
@@ -202,21 +219,18 @@ def update_project():
         project.baseprice = project.baseprice
     else:
         project.baseprice = baseprice
+        message+="base price set to " + baseprice + "\n"
 
     if estimated_ship is None or not estimated_ship:
         project.estimated_ship = project.estimated_ship
     else:
         project.estimated_ship = estimated_ship
-    
-    if create_at is None or not create_at:
-        project.create_at = project.create_at
-    else:
-        project.create_at = create_at
+        message+="estimated ship date changed to " + estimated_ship + "\n"
 
-    if updated_at is None or not updated_at:
-        project.updated_at = project.updated_at
+    if started_at is None or not started_at:
+        project.started_at = project.started_at
     else:
-        project.updated_at = updated_at
+        project.ended_at = ended_at
 
     if ended_at is None or not ended_at:
         project.ended_at = project.ended_at
@@ -239,6 +253,11 @@ def update_project():
         project.img_url = img_url
 
     db.session.commit()
+    if message != "":
+        tracked_list = Tracked.query.filter_by(projectid=project.id) 
+        for t in tracked_list:
+            send_sms(to=t.user.phone, message=f'Project {project.name} updated: \n {message}')
+
     return jsonify(project.serialize())
 
 

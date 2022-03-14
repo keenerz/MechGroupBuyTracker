@@ -8,6 +8,7 @@ export function Settings(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
+  const [phone, setPhone] = useState("");
   const history = useHistory();
   const usernameEdit = JSON.parse(localStorage.getItem("useredit"));
 
@@ -22,6 +23,7 @@ export function Settings(props) {
     actions.getUser();
     setEmail(usernameEdit.email);
     setUsername(usernameEdit.username);
+    setPhone(usernameEdit.phone);
   }, []);
 
   return (
@@ -35,8 +37,8 @@ export function Settings(props) {
               e.preventDefault();
             } else {
               actions
-                .editUser(email, password, username)
-                .then((session) => history.push("/login"));
+                .editUser(email, password, username, phone)
+                .then((session) => history.push("/"));
               e.preventDefault();
             }
           }}
@@ -73,11 +75,25 @@ export function Settings(props) {
             />
           </div>
           <div className="mb-3">
+            <label for="phone" className="form-label">
+              Phone
+            </label>
+            <input
+              className="form-control"
+              type="tel"
+              name="phone"
+              placeholder="+18884452342"
+              id="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+          <div className="mb-3">
             <label for="password" className="form-label">
               Password
             </label>
             <input
-              class="form-control"
+              className="form-control"
               type="password"
               name="password"
               placeholder="Password"

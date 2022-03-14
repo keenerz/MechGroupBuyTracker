@@ -77,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           e.preventDefault();
         }
       },
-      editUser: async (email, password, username) => {
+      editUser: async (email, password, username, phone) => {
         const store = getStore();
         const actions = getActions();
         const session = actions.getCurrentSession();
@@ -92,6 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             password: password,
             username: username,
             usertype: "buyer",
+            phone: phone,
           }),
         };
         const response = await fetch(

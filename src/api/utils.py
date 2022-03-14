@@ -1,4 +1,6 @@
 from flask import jsonify, url_for
+import os
+from twilio.rest import Client
 
 class APIException(Exception):
     status_code = 400
@@ -39,3 +41,19 @@ def generate_sitemap(app):
         <p>Start working on your project by following the <a href="https://start.4geeksacademy.com/starters/full-stack" target="_blank">Quick Start</a></p>
         <p>Remember to specify a real endpoint path like: </p>
         <ul style="text-align: left;">"""+links_html+"</ul></div>"
+
+def send_sms(to, message):
+    # Find your Account SID and Auth Token at twilio.com/console
+    # and set the environment variables. See http://twil.io/secure
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
+
+    message = client.messages \
+                    .create(
+                        body=message,
+                        from_='+12673802505',
+                        to=to
+                    )
+
+    print(message.sid)

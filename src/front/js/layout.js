@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { AccountCreation } from "./pages/creation";
 import { Settings } from "./pages/settings";
+import { Listing } from "./component/listing";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -24,7 +25,7 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Switch>
-            <Route exact path="/home">
+            <Route exact path="/">
               <Home />
             </Route>
             <Route exact path="/login">
@@ -38,6 +39,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/accountsettings">
               <Settings />
+            </Route>
+            <Route exact path="/projectcreation">
+              <Listing />
             </Route>
             <Route>
               <h1>Not found!</h1>

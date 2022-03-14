@@ -70,7 +70,7 @@ export const Navbar = () => {
         </ul>
       </ul>
 
-      <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+      <form className="col-12 col-lg-auto me-lg-3">
         <input
           type="search"
           className="form-control"
@@ -79,7 +79,7 @@ export const Navbar = () => {
         />
       </form>
 
-      <div className="dropdown text-end">
+      <div className="dropdown text-end float-end">
         <a
           href="#"
           className="d-block link-dark text-decoration-none dropdown-toggle"

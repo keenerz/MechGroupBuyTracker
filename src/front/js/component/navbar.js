@@ -88,7 +88,7 @@ export const Navbar = () => {
           aria-expanded="false"
         >
           <img
-            src="https://github.com/mdo.png"
+            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
             alt="mdo"
             width="32"
             height="32"

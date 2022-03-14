@@ -28,7 +28,7 @@ export function Settings(props) {
 
   return (
     <section className="register">
-      <div className="form-container">
+      <div className="form-container bg-dark">
         <form
           method="post"
           onSubmit={(e) => {

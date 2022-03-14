@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "../../styles/listing.css";
 
-export const listing = () => {
+export const Listing = () => {
   const { store, actions } = useContext(Context);
   const [name, setName] = useState("");
   const [region, setRegion] = useState("");

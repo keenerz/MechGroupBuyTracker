@@ -93,7 +93,7 @@ export function Settings(props) {
               Password
             </label>
             <input
-              class="form-control"
+              className="form-control"
               type="password"
               name="password"
               placeholder="Password"

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { ProjectList } from "../component/projectlist";
+import { Display } from "../component/carousel";
 
-// import { Display } from "../component/carousel";
 import logo from "../../img/logo.png";
 import logoGIF from "../../img/logoGIF.gif";
 
@@ -24,11 +24,13 @@ export const Home = (props) => {
             <p className="lead text-muted">
               Unlock some of our newest listed products, while you still can.
             </p>
+            
           </div>
+          <Display/> 
         </div>
       </section>
       <ProjectList />
-      {/* <Display /> */}
+      
     </div>
   );
 };

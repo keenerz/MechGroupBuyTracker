@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
+import "../../styles/detailedview.css";
 import { Card } from "../component/cards";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -36,7 +36,7 @@ export const DetailedView = (props) => {
               <p className="card-text fw-bold">Stage: {props.trackedStatus}</p>
               <p className="card-text fw-bold">Region: {props.id}</p>
             </p>
-            
+
             <p className="card-text">
               <small className="text-muted">Last updated 14 mins ago</small>
             </p>

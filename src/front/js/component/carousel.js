@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
+import "../../styles/carousel.css";
 
 export const Display = () => {
   const [index, setIndex] = useState(0);

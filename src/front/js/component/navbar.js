@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-// import { Home } from "../layout";
+import "../../styles/navbar.css";
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const session = actions.getCurrentSession();
@@ -9,8 +9,7 @@ export const Navbar = () => {
     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
         <li>
-          {/* <Link to={`/${Home}`}> */}
-          <Link to="/home">
+          <Link to="/">
             <button className="btn btn link-light">Home</button>
           </Link>
         </li>
@@ -46,13 +45,15 @@ export const Navbar = () => {
             </li>
           </ul>
         </li>
+      </ul>
+      <div className="float-end login d-inline-flex">
         {!session ? (
           <Link to="/login">
-            <button className="btn btn-danger">Login</button>
+            <button className="btn btn-primary">Login</button>
           </Link>
         ) : (
           <button
-            className="btn btn-danger log"
+            className="btn btn-danger"
             onClick={() => {
               actions.logout();
             }}
@@ -60,69 +61,60 @@ export const Navbar = () => {
             Logout
           </button>
         )}
-        <ul className="nav">
-          <li className="nav-item">
-            <Link to="/create" className="nav-link link-light px-2">
-              Sign up
-            </Link>
-            <ul className="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
-          </li>
-        </ul>
-      </ul>
-
-      <form className="col-12 col-lg-auto me-lg-3">
-        <input
-          type="search"
-          className="form-control"
-          placeholder="Search..."
-          aria-label="Search"
-        />
-      </form>
-
-      <div className="dropdown text-end float-end">
-        <a
-          href="#"
-          className="d-block link-dark text-decoration-none dropdown-toggle"
-          id="dropdownUser1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img
-            src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
-            alt="mdo"
-            width="32"
-            height="32"
-            className="rounded-circle"
+        <Link to="/create">
+          <button className="btn btn-primary mx-3">Sign Up</button>
+        </Link>
+      </div>
+      <div className="d-inline-flex">
+        <form>
+          <input
+            type="search"
+            className="form-control"
+            placeholder="Search..."
+            aria-label="Search"
           />
-        </a>
-        <ul
-          className="dropdown-menu text-small"
-          aria-labelledby="dropdownUser1"
-        >
-          <li>
-            <a className="nav-link disabled dropdown-item" href="#">
-              Add New Listing (Coming Soon to Members!)
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Tracked Listings
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              My Account
-            </a>
-          </li>
-          <li>
-            <hr className="dropdown-divider" />
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Sign out
-            </a>
-          </li>
-        </ul>
+        </form>
+        <div className="dropdown">
+          <a
+            href="#"
+            className="link-dark text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
+              alt="mdo"
+              width="32"
+              height="32"
+              className="rounded-circle image"
+            />
+          </a>
+          <ul className="dropdown-menu text-small">
+            <li>
+              <a className="nav-link disabled dropdown-item" href="#">
+                Add New Listing (Coming Soon to Members!)
+              </a>
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                Tracked Listings
+              </a>
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                My Account
+              </a>
+            </li>
+            <li>
+              <hr className="dropdown-divider" />
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                Sign out
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useHistory, Link } from "react-router-dom";
+import "../../styles/register.css";
 
 export function Settings(props) {
   const { store, actions } = useContext(Context);

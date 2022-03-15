@@ -12,6 +12,7 @@ export const Listing = () => {
   const [estimated_ship, setestimated_ship] = useState("");
   const [vendor_links, setvendor_links] = useState("");
   const [sale_type, setsale_type] = useState("");
+  const [img_url, setimg_url] = useState("");
 
   return (
     <form
@@ -73,6 +74,22 @@ export const Listing = () => {
         value={vendor_links}
         onChange={(e) => setvendor_links(e.target.value)}
       />
+      <input
+        name="discussion_links"
+        type="text"
+        className="feedback-input"
+        placeholder="Discussion Links"
+        value={discussion_links}
+        onChange={(e) => setdiscussion_links(e.target.value)}
+      />
+      <input
+        name="creator"
+        type="text"
+        className="feedback-input"
+        placeholder="creator"
+        value={creator}
+        onChange={(e) => setcreator(e.target.value)}
+      />
       <textarea
         name="text"
         className="feedback-input"
@@ -80,6 +97,14 @@ export const Listing = () => {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       ></textarea>
+      <input
+        type="file"
+        className="feedback-input"
+        id="myFile"
+        name="filename"
+        value={img_url}
+        onChange={(e) => setimg_url(e.target.value)}
+      />
       <input type="submit" value="SUBMIT" />
     </form>
   );

@@ -145,6 +145,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       addProject: async (
+        user,
         name,
         project_type,
         project_stage,
@@ -152,8 +153,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         region,
         baseprice,
         estimated_ship,
-        create_at,
-        updates_at,
         started_at,
         ended_at,
         vendor_links,
@@ -169,14 +168,19 @@ const getState = ({ getStore, getActions, setStore }) => {
             Authorization: "Bearer " + session.token,
           },
           body: JSON.stringify({
+            user: user,
             name: name,
             project_type: project_type,
-            rotation_period: rotationPeriod,
-            orbital_period: orbitalPeriod,
-            diameter: diameter,
-            terrain: terrain,
-            population: population,
-            img_url: imgUrl,
+            project_stage: project_stage,
+            sale_type: sale_type,
+            region: region,
+            baseprice: baseprice,
+            estimated_ship: estimated_ship,
+            started_at: started_at,
+            ended_at: ended_at,
+            vendor_links: vendor_links,
+            discussion_links: discussion_links,
+            img_url: img_url,
           }),
         };
         const response = await fetch(

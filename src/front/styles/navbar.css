@@ -51,6 +51,7 @@
 .key__button:hover, .key__button:focus {
   box-shadow: 0 0 1px rgb(221, 221, 221), 0 1px 0 rgb(251, 255, 0), 0 4px 0 #414141, 0 2px 35px rgba(253, 237, 17, 0.3), 2px 2px 4px rgba(68, 68, 68, 0.25), -2px 2px 4px rgba(68, 68, 68, 0.25), 0 7px 4px rgba(68, 68, 68, 0.1);
   transform: translateY(2px);
+  color: hidden;
 }
 .key__button__long:hover, .key__button__long:focus {
   box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 4px 0 #C0C0C0, 0 2px 35px rgba(68, 68, 68, 0.3), 2px 2px 4px rgba(68, 68, 68, 0.25), -2px 2px 4px rgba(68, 68, 68, 0.25), 0 7px 4px rgba(68, 68, 68, 0.1);

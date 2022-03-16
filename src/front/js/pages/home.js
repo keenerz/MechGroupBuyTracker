@@ -5,7 +5,6 @@ import "../../styles/home.css";
 import { ProjectList } from "../component/projectlist";
 import { Display } from "../component/carousel";
 
-
 import logo from "../../img/logo.png";
 import logoGIF from "../../img/logoGIF.gif";
 
@@ -13,25 +12,24 @@ export const Home = (props) => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="text-center mt-5">
-      <div>
-        <img src={logoGIF} alt="img alt" id="logo-id" />
-      </div>
-
-      <section className="py-5 text-center container" id="album">
-        <div className="row py-lg-5">
-          <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-bold">List, Buy, Track. Repeat. </h1>
+    <div class=" text-center container">
+      <img src={logoGIF} alt="img alt" id="logo-id" />
+      
+      <div class="row">
+        <div class="col"> <h1 className=" subhead fw-bold display-1">BUY. <span id="BUY">LIST.</span><br/> <span id="TRACK">TRACK.</span> REPEAT. </h1>
             <p className="lead text-muted">
               Unlock some of our newest listed products, while you still can.
-            </p>
-            
-          </div>
-          <Display/> 
-        </div>
-      </section>
-      <ProjectList />
+            </p></div>
+        <div class="col"><Display/> </div>
+      </div>
+      <div>
+        
+      </div>
+
       
+
+      <ProjectList />
+     
     </div>
   );
 };

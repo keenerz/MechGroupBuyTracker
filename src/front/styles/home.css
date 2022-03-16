@@ -9,6 +9,10 @@ body {
   background-color: #000000;
   color: #ffffff;
 }
+.subhead{
+  font-family: fantasy;
+  letter-spacing: 5px;
+}
 a:hover {
   color: ffde59;
 }
@@ -19,6 +23,12 @@ a:hover {
 h1 {
   color: rgb(247, 0, 0);
   font-family: "Courier New", Courier, monospace;
+}
+h1 #BUY{
+  color: rgb(247, 223, 30); 
+}
+h1 #TRACK{
+  color: #00d8ff; 
 }
 h5 {
   font-family: "Courier New", Courier, monospace;

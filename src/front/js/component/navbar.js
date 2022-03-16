@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
+
+
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const session = actions.getCurrentSession();
@@ -10,12 +12,12 @@ export const Navbar = () => {
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
         <li>
           <Link to="/">
-            <button className="btn btn link-light">Home</button>
+            <button className="key__button btn btn link-light ">Home</button>
           </Link>
         </li>
         <li className="nav-item dropdown">
           <a
-            className="nav-link link-light dropdown-toggle"
+            className="key__button__long nav-link link-light dropdown-toggle"
             href="#"
             id="navbarDropdown"
             role="button"
@@ -49,7 +51,7 @@ export const Navbar = () => {
       <div className="float-end login d-inline-flex">
         {!session ? (
           <Link to="/login">
-            <button className="btn btn-primary">Login</button>
+            <button className="key__button btn btn-primary ">Login</button>
           </Link>
         ) : (
           <button
@@ -62,7 +64,7 @@ export const Navbar = () => {
           </button>
         )}
         <Link to="/create">
-          <button className="btn btn-primary mx-3">Sign Up</button>
+          <button className="key__button__long btn btn-primary mx-3">Sign Up</button>
         </Link>
       </div>
       <div className="d-inline-flex">

@@ -5,6 +5,7 @@ import "../../styles/home.css";
 import { ProjectList } from "../component/projectlist";
 import { Display } from "../component/carousel";
 
+
 import logo from "../../img/logo.png";
 import logoGIF from "../../img/logoGIF.gif";
 

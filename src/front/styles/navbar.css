@@ -1,7 +1,62 @@
-.dropdown-menu {
-  background-color: ffde59;
-}
+/* .dropdown-menu {
+  
+} */
 .image {
   margin-top: 53px;
   margin-left: 10px;
+}
+
+.key__button {
+  box-sizing: border-box;
+  line-height: 80px;
+  font-size: 22px;
+  text-align: right;
+  width: 80px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  margin: 0 8px;
+  height: 65px;
+  border-color: #f2f2f2;
+  border-style: solid;
+  text-shadow: 0 0.5px 1px #777, 0 2px 6px #f2f2f2;
+  border-width: 1px;
+  border-radius: 10px;
+  background: -webkit-linear-gradient(top, #202020 0%, #181717 80%, #000000 100%);
+  font-family: sans-serif;
+  display: inline-block;
+  transition: box-shadow 0.3s ease, transform 0.15s ease;
+  box-shadow: 0 0 1px #888, 0 1px 0 rgb(0, 0, 0), 0 6px 0 #383838, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
+}
+.key__button__long {
+  box-sizing: border-box;
+  line-height: 80px;
+  font-size: 22px;
+  text-align: right;
+  width: 125px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  margin: 0 8px;
+  height: 65px;
+  border-color: #5ce1e6;
+  border-style: solid;
+  text-shadow: 0 0.5px 1px rgb(228, 0, 0), 0 2px 6px #740000;
+  border-width: 1px;
+  border-radius: 10px;
+  background: -webkit-linear-gradient(top, #202020 0%, #181717 80%, #000000 100%);
+  font-family: sans-serif;
+  display: inline-block;
+  transition: box-shadow 0.3s ease, transform 0.15s ease;
+  box-shadow: 0 0 1px #888, 0 1px 0 #fa8f8f, 0 6px 0 #414141, 0 8px 17px rgba(68, 68, 68, 0.4), 2px 1px 4px rgba(68, 68, 68, 0.25), -2px 1px 4px rgba(68, 68, 68, 0.25), 0 9px 16px rgba(68, 68, 68, 0.1);
+}
+.key__button:hover, .key__button:focus {
+  box-shadow: 0 0 1px rgb(221, 221, 221), 0 1px 0 rgb(251, 255, 0), 0 4px 0 #414141, 0 2px 35px rgba(253, 237, 17, 0.3), 2px 2px 4px rgba(68, 68, 68, 0.25), -2px 2px 4px rgba(68, 68, 68, 0.25), 0 7px 4px rgba(68, 68, 68, 0.1);
+  transform: translateY(2px);
+}
+.key__button__long:hover, .key__button__long:focus {
+  box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 4px 0 #C0C0C0, 0 2px 35px rgba(68, 68, 68, 0.3), 2px 2px 4px rgba(68, 68, 68, 0.25), -2px 2px 4px rgba(68, 68, 68, 0.25), 0 7px 4px rgba(68, 68, 68, 0.1);
+  transform: translateY(2px);
+}
+.key__button:active {
+  box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 0 0 #3d3d3c, 0 0px 30px rgba(131, 122, 0, 0.15), 2px 2px 4px rgba(126, 107, 0, 0.25), -2px 2px 4px rgba(68, 68, 68, 0.25), 0 0px 4px rgba(38, 39, 1, 0.25);
+  transform: translateY(4px);
 }

@@ -47,7 +47,7 @@ export const Navbar = () => {
           </ul>
         </li>
         <Link to="/projectcreation">
-          <button className="key__button btn btn-primary">Create</button>
+          <button className="key__button__long btn btn-primary">Create</button>
         </Link>
       </ul>
       <div className="float-end login d-inline-flex">

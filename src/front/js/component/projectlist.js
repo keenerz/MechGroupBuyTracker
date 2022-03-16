@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
+
+import "../../styles/card.css";
 import { Card } from "../component/cards";
 
 export const ProjectList = (props) => {
@@ -25,7 +26,7 @@ export const ProjectList = (props) => {
     return true;
   };
   return (
-    <div class="album py-5 bg-dark">
+    <div class="album py-5 bg- primary">
       <div>
         <select
           className="form-select-sm m-3"

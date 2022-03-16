@@ -13,6 +13,8 @@ export const Listing = () => {
   const [vendor_links, setVendor_links] = useState("");
   const [sale_type, setSale_type] = useState("");
   const [img_url, setimg_url] = useState("");
+  const [discussion_links, setdiscussion_links] = useState("");
+  const [creator, setcreator] = useState("");
 
   return (
     <form

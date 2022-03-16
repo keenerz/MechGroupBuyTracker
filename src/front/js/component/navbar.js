@@ -46,6 +46,9 @@ export const Navbar = () => {
             </li>
           </ul>
         </li>
+        <Link to="/projectcreation">
+          <button className="key__button btn btn-primary">Create</button>
+        </Link>
       </ul>
       <div className="float-end login d-inline-flex">
         {!session ? (

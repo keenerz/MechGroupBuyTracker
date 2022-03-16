@@ -12,9 +12,8 @@ export const Listing = () => {
   const [estimated_ship, setEstimated_ship] = useState("");
   const [vendor_links, setVendor_links] = useState("");
   const [sale_type, setSale_type] = useState("");
-  const [img_url, setimg_url] = useState("");
-  const [discussion_links, setdiscussion_links] = useState("");
-  const [creator, setcreator] = useState("");
+  const [img_url, setImg_url] = useState("");
+  const [discussion_links, setDiscussion_links] = useState("");
 
   return (
     <form
@@ -97,7 +96,7 @@ export const Listing = () => {
         id="myFile"
         name="filename"
         value={img_url}
-        onChange={(e) => setimg_url(e.target.value)}
+        onChange={(e) => setImg_url(e.target.value)}
       />
       <input type="submit" value="SUBMIT" />
     </form>

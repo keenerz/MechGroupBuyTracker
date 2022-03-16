@@ -41,6 +41,7 @@ class Project(db.Model):
     vendor_links = db.Column(db.String(250), unique=False, nullable=True)
     discussion_links = db.Column(db.String(250), unique=False, nullable = True)
     img_url = db.Column(db.String(250), unique=False, nullable = True)
+    description = db.Column(db.String(250), unique=False, nullable=True)
     creator = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=True)
     user = db.relationship(User)
 
@@ -61,7 +62,8 @@ class Project(db.Model):
             "vendor_links": self.vendor_links,
             "discussion_links": self.discussion_links,
             "img_url" : self.img_url,
-            "creator" : self.creator
+            "creator" : self.creator,
+            "description" : self.description
             # do not serialize the password, its a security breach
         }
         tracked_list = []

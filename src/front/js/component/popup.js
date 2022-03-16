@@ -1,14 +1,11 @@
-/*import React, { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Listing } from "../component/listing";
 import Modal from "react-bootstrap/Modal";
-import ModalDialog from "react-bootstrap/ModalDialog";
-import ModalHeader from "react-bootstrap/ModalHeader";
-import ModalTitle from "react-bootstrap/ModalTitle";
-import ModalFooter from "react-bootstrap/ModalFooter";
+import Button from "react-bootstrap/Button";
 
-export function vcm(props) {
+export function MyVerticallyCenteredModal(props) {
   return (
     <Modal
       {...props}
@@ -31,14 +28,17 @@ export function vcm(props) {
   );
 }
 
-export function cpm() {
+export function App() {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
-      </Button>
+      <button
+        className="key__button btn btn-primary "
+        onClick={() => setModalShow(true)}
+      >
+        Create a Project
+      </button>
 
       <MyVerticallyCenteredModal
         show={modalShow}
@@ -47,4 +47,3 @@ export function cpm() {
     </>
   );
 }
-*/

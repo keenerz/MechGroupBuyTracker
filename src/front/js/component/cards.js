@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState, useContext } from "react";
-import { Context } from "/workspace/MechGroupBuyTracker/src/front/js/store/appContext.js";
+import { Context } from "../store/appContext.js";
 import { Link, useParams, useHistory } from "react-router-dom";
 
 export const Card = (props) => {

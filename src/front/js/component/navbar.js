@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
+import { App } from "../component/popup";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -46,9 +47,7 @@ export const Navbar = () => {
             </li>
           </ul>
         </li>
-        <Link to="/projectcreation">
-          <button className="key__button__long btn btn-primary">Create</button>
-        </Link>
+        <App />
       </ul>
       <div className="float-end login d-inline-flex">
         {!session ? (

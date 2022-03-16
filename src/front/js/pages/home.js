@@ -11,18 +11,14 @@ export const Home = (props) => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div class=" text-center container">
-      <div class="row">
-        <div class="col">
+    <div className=" text-center container">
+      <div className="col">
           <img src={homepagegif} alt="img alt" id="" />
         </div>
-        <div class="col">
-          <Display />{" "}
-        </div>
-      </div>
-      <div></div>
-
-      <ProjectList />
-    </div>
+          <Display />
+          <ProjectList />
+    </div>    
+      
+    
   );
 };

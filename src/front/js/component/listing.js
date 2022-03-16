@@ -9,9 +9,9 @@ export const Listing = () => {
   const [region, setRegion] = useState("");
   const [basePrice, setBasePrice] = useState("");
   const [description, setDescription] = useState("");
-  const [estimated_ship, setestimated_ship] = useState("");
-  const [vendor_links, setvendor_links] = useState("");
-  const [sale_type, setsale_type] = useState("");
+  const [estimated_ship, setEstimated_ship] = useState("");
+  const [vendor_links, setVendor_links] = useState("");
+  const [sale_type, setSale_type] = useState("");
   const [img_url, setimg_url] = useState("");
 
   return (
@@ -56,7 +56,7 @@ export const Listing = () => {
         className="feedback-input"
         placeholder="Expected Shipping"
         value={estimated_ship}
-        onChange={(e) => setestimated_ship(e.target.value)}
+        onChange={(e) => setEstimated_ship(e.target.value)}
       />
       <input
         name="sale_type"
@@ -64,7 +64,7 @@ export const Listing = () => {
         className="feedback-input"
         placeholder="Units for sale"
         value={sale_type}
-        onChange={(e) => setsale_type(e.target.value)}
+        onChange={(e) => setSale_type(e.target.value)}
       />
       <input
         name="vendors"
@@ -72,7 +72,7 @@ export const Listing = () => {
         className="feedback-input"
         placeholder="Vendor Links"
         value={vendor_links}
-        onChange={(e) => setvendor_links(e.target.value)}
+        onChange={(e) => setVendor_links(e.target.value)}
       />
       <input
         name="discussion_links"
@@ -80,15 +80,7 @@ export const Listing = () => {
         className="feedback-input"
         placeholder="Discussion Links"
         value={discussion_links}
-        onChange={(e) => setdiscussion_links(e.target.value)}
-      />
-      <input
-        name="creator"
-        type="text"
-        className="feedback-input"
-        placeholder="creator"
-        value={creator}
-        onChange={(e) => setcreator(e.target.value)}
+        onChange={(e) => setDiscussion_links(e.target.value)}
       />
       <textarea
         name="text"

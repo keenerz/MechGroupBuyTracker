@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
 
-
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const session = actions.getCurrentSession();
@@ -55,7 +54,7 @@ export const Navbar = () => {
           </Link>
         ) : (
           <button
-            className="btn btn-danger"
+            className="btn btn-danger key__button"
             onClick={() => {
               actions.logout();
             }}
@@ -64,7 +63,9 @@ export const Navbar = () => {
           </button>
         )}
         <Link to="/create">
-          <button className="key__button__long btn btn-primary mx-3">Sign Up</button>
+          <button className="key__button__long btn btn-primary mx-3">
+            Sign Up
+          </button>
         </Link>
       </div>
       <div className="d-inline-flex">
@@ -74,6 +75,7 @@ export const Navbar = () => {
             className="form-control"
             placeholder="Search..."
             aria-label="Search"
+            onChange={(e) => {}}
           />
         </form>
         <div className="dropdown">

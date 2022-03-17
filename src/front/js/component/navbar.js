@@ -15,38 +15,6 @@ export const Navbar = () => {
             <button className="key__button btn btn link-light ">Home</button>
           </Link>
         </li>
-        <li className="nav-item dropdown">
-          <a
-            className="key__button__long nav-link link-light dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Products
-          </a>
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <a className="dropdown-item" href="#">
-                Keycaps
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Keyboards
-              </a>
-            </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Switches
-              </a>
-            </li>
-          </ul>
-        </li>
         {session ? <App /> : ""}
       </ul>
       <div className="float-end login d-inline-flex">

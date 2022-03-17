@@ -138,6 +138,7 @@ def create_project():
     discussion_links = request.json.get('discussion_links', None)
     img_url = request.json.get('img_url', None)
     creator = get_jwt_identity()
+    description = request.json.get('description', None)
     
     project = Project(name=name,
                     project_type=project_type,
@@ -151,7 +152,8 @@ def create_project():
                     vendor_links=vendor_links,
                     discussion_links=discussion_links,
                     img_url=img_url,
-                    creator=creator)
+                    creator=creator,
+                    description=description)
     db.session.add(project)
     db.session.commit()
     return jsonify(project.serialize())

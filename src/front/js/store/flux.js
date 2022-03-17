@@ -145,7 +145,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       addProject: async (
-        user,
         name,
         project_type,
         project_stage,
@@ -157,7 +156,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         ended_at,
         vendor_links,
         discussion_links,
-        img_url
+        img_url,
+        description
       ) => {
         const actions = getActions();
         const session = actions.getCurrentSession();
@@ -168,7 +168,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             Authorization: "Bearer " + session.token,
           },
           body: JSON.stringify({
-            user: user,
             name: name,
             project_type: project_type,
             project_stage: project_stage,
@@ -181,15 +180,67 @@ const getState = ({ getStore, getActions, setStore }) => {
             vendor_links: vendor_links,
             discussion_links: discussion_links,
             img_url: img_url,
+            description: description,
           }),
         };
         const response = await fetch(
-          process.env.BACKEND_URL + `/api/planet`,
+          process.env.BACKEND_URL + `/api/projects`,
           options
         );
         if (response.status === 200) {
           const payload = await response.json();
-          console.log("planet created successfully!");
+          console.log("project created successfully!");
+          actions.loadProjects();
+          return payload;
+        }
+      },
+      editProject: async (
+        name,
+        project_type,
+        project_stage,
+        sale_type,
+        region,
+        baseprice,
+        estimated_ship,
+        started_at,
+        ended_at,
+        vendor_links,
+        discussion_links,
+        img_url,
+        description
+      ) => {
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + session.token,
+          },
+          body: JSON.stringify({
+            name: name,
+            project_type: project_type,
+            project_stage: project_stage,
+            sale_type: sale_type,
+            region: region,
+            baseprice: baseprice,
+            estimated_ship: estimated_ship,
+            started_at: started_at,
+            ended_at: ended_at,
+            vendor_links: vendor_links,
+            discussion_links: discussion_links,
+            img_url: img_url,
+            description,
+          }),
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/projects`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          console.log("project edited successfully!");
+          actions.loadProjects();
           return payload;
         }
       },

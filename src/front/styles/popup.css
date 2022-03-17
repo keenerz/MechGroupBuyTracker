@@ -1,3 +1,10 @@
-.div.modal-content {
-  background-color: aquamarine;
+.modal-content {
+  background-color: gray;
+  max-width: fit-content;
+  height: 600px;
+  overflow: auto;
+  border-radius: 25px;
+  padding: 20px;
+  background-image: url("https://i.ytimg.com/vi/vD4YBmWuoQ0/maxresdefault.jpg");
+  background-size: auto;
 }

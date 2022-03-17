@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import { Listing } from "../component/listing";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import "../../styles/popup.css";
 
 export function MyVerticallyCenteredModal(props) {
   return (
@@ -13,11 +14,6 @@ export function MyVerticallyCenteredModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header close>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Create a Project
-        </Modal.Title>
-      </Modal.Header>
       <Modal.Body>
         <Listing />
       </Modal.Body>

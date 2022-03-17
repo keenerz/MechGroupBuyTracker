@@ -47,7 +47,7 @@ export const Navbar = () => {
             </li>
           </ul>
         </li>
-        <App />
+        {session ? <App /> : ""}
       </ul>
       <div className="float-end login d-inline-flex">
         {!session ? (

@@ -9,7 +9,7 @@
 .key__button {
   box-sizing: border-box;
   line-height: 80px;
-  font-size: 22px;
+  font-size: 18px;
   text-align: right;
   width: auto;
   color: rgb(255, 255, 255);
@@ -37,7 +37,7 @@
 .key__button__long {
   box-sizing: border-box;
   line-height: 80px;
-  font-size: 22px;
+  font-size: 18px;
   text-align: right;
   width: 125px;
   color: rgb(255, 255, 255);

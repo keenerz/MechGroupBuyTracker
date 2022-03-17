@@ -19,31 +19,49 @@ export const DetailedView = (props) => {
     project_stage = "Ended";
   }
   console.log(project);
-
   return (
-    <div className="card mb-3" style={{ maxWidth: "540px" }}>
+    <div className="card mb-3  w-100">
       <div className="row g-0">
-        <div className="col-md-4">
+        <div className="col-md-4" id="leftSide">
           <img
             src="https://i.imgur.com/4l88EPt.jpeg"
-            className="img-fluid rounded-start"
+            className="img-fluid rounded-start h-100"
             alt="..."
           />
         </div>
-        <div className="col-md-8">
+        <div className="col-md-8" id="rightSide">
           <div className="card-body">
-            <h5 className="card-title">{project?.name}</h5>
-            <p className="card-text fw-bold text-capitalize">
-              Project Type: {project?.project_type}
-            </p>
-            <p className="card-text fw-bold text-capitalize">
-              Project Stage: {project_stage}
-            </p>
-            <p className="card-text fw-bold ">
-              Base Price: {project?.baseprice}
-            </p>
-            <p className="card-text fw-bold">
-              Start Date: {project?.start_date}
+            <h5 className="card-title">{project.name}</h5>
+            <p className="card-text">
+              <p className="card-text fw-bold fw-bold">User: {project.user}</p>
+              <p className="card-text fw-bold fw-bold">
+                Item Type: {project.project_type}
+              </p>
+              <p className="card-text fw-bold fw-bold">
+                Sale Type: {project.sale_type}
+              </p>
+              <p className="card-text fw-bold">Region: {project.region}</p>
+
+              <p className="card-text fw-bold fw-bold">
+                Base Price: {project.baseprice}
+              </p>
+              <p className="card-text fw-bold fw-bold">
+                Estimated Shipping Date: {project.estimated_ship}
+              </p>
+              <p className="card-text fw-bold">
+                Start Date: {project.start_at}
+              </p>
+              <p className="card-text fw-bold">End Date: {project.end_date}</p>
+              <p className="card-text fw-bold fw-bold">
+                Vendor Links: {project.vendor_links}
+              </p>
+              <p className="card-text fw-bold">
+                Discussion Links: {project.discussion_links}
+              </p>
+              <p className="card-text fw-bold">Region: {project.region}</p>
+              <p className="card-text fw-bold fw-bold">
+                Base Price: {project.baseprice}
+              </p>
             </p>
             <p className="card-text fw-bold">End Date: {project?.end_date}</p>
             <p className="card-text fw-bold">Stage: {props.trackedStatus}</p>

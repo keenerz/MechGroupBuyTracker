@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:migrations/versions/f2a912d4a5af_.py
-Revision ID: f2a912d4a5af
+Revision ID: 57c1876e1bd2
 Revises: 
-Create Date: 2022-03-17 21:58:39.318496
-=======
-Revision ID: 946ec2d016d9
-Revises: 
-Create Date: 2022-03-17 21:43:52.340919
->>>>>>> a22bf67bd58ae4a4be729b8b9152a61185fd7cb5:migrations/versions/946ec2d016d9_.py
+Create Date: 2022-03-17 22:20:05.655794
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/f2a912d4a5af_.py
-revision = 'f2a912d4a5af'
-=======
-revision = '946ec2d016d9'
->>>>>>> a22bf67bd58ae4a4be729b8b9152a61185fd7cb5:migrations/versions/946ec2d016d9_.py
+revision = '57c1876e1bd2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -46,7 +36,7 @@ def upgrade():
     sa.Column('project_stage', sa.Enum('interestcheck', 'groupbuy', 'ended', name='ProjectStage'), nullable=False),
     sa.Column('sale_type', sa.String(length=120), nullable=True),
     sa.Column('region', sa.String(length=120), nullable=True),
-    sa.Column('baseprice', sa.Float(precision=8), nullable=True),
+    sa.Column('baseprice', sa.Float(precision=10), nullable=True),
     sa.Column('estimated_ship', sa.String(length=120), nullable=True),
     sa.Column('create_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),

@@ -11,7 +11,6 @@ export const DetailedView = (props) => {
   const params = useParams().id;
 
   const project = store.projects;
-
   return (
     <div className="card mb-3" style={{ maxWidth: "540px" }}>
       <div className="row g-0">
@@ -36,7 +35,9 @@ export const DetailedView = (props) => {
               <p className="card-text fw-bold">Stage: {props.trackedStatus}</p>
               <p className="card-text fw-bold">Region: {props.id}</p>
             </p>
-
+            <Link to={`/projectedit/${params}`}>
+              <button>edit</button>
+            </Link>
             <p className="card-text">
               <small className="text-muted">Last updated 14 mins ago</small>
             </p>
@@ -47,7 +48,7 @@ export const DetailedView = (props) => {
   );
 };
 
-Card.propTypes = {
+DetailedView.propTypes = {
   id: PropTypes.string,
   img: PropTypes.string,
   name: PropTypes.string,

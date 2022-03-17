@@ -8,7 +8,6 @@ export const EditListing = () => {
   const [project, setProject] = useState({});
   const history = useHistory();
   const projectEdit = JSON.parse(localStorage.getItem("projectedit"));
-  const id = projectEdit?.id;
 
   useEffect(() => {
     setProject(projectEdit);
@@ -28,9 +27,11 @@ export const EditListing = () => {
           );
           e.preventDefault();
         } else {
-          actions.editProject(project).then(e.preventDefault());
-          // .then(history.push("/details/" + `${projectEdit.id}`))
-          // .then(localStorage.removeItem("projectedit"));
+          actions
+            .editProject(project)
+            .then(e.preventDefault())
+            .then(history.push("/details/" + `${projectEdit.id}`))
+            .then(localStorage.removeItem("projectedit"));
         }
       }}
     >

@@ -10,9 +10,7 @@ export const DetailedView = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams().id;
 
-  const project = store.projects[params];
-  console.log("params", params);
-  console.log("projects", project);
+  const project = store.projects;
   return (
     <div className="card mb-3  w-100">
       <div className="row g-0">
@@ -57,7 +55,9 @@ export const DetailedView = (props) => {
                 Base Price: {project.baseprice}
               </p>
             </p>
-
+            <Link to={`/projectedit/${params}`}>
+              <button>edit</button>
+            </Link>
             <p className="card-text">
               <small className="text-muted">Last updated 14 mins ago</small>
             </p>
@@ -68,7 +68,7 @@ export const DetailedView = (props) => {
   );
 };
 
-Card.propTypes = {
+DetailedView.propTypes = {
   id: PropTypes.string,
   img: PropTypes.string,
   name: PropTypes.string,

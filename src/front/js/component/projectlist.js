@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 import "../../styles/card.css";
@@ -8,6 +8,7 @@ import { Card } from "../component/cards";
 export const ProjectList = (props) => {
   const { store, actions } = useContext(Context);
   const [query, setQuery] = useState({
+    search: "",
     isTracking: false,
     stage: "0",
     type: "0",
@@ -23,6 +24,14 @@ export const ProjectList = (props) => {
     if (query.type !== "0" && project.project_type !== query.type) {
       return false;
     }
+    // if (
+    //   props.query.search !== "" &&
+    //   props.query.search
+    //     .toLocaleLowerCase()
+    //     .includes(query.search.toLocaleLowerCase())
+    // ) {
+    //   return false;
+    // }
     return true;
   };
   return (

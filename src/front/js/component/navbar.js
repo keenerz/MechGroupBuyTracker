@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
 import { App } from "../component/popup";
+import { ProjectList } from "./projectlist";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -12,40 +13,13 @@ export const Navbar = () => {
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
         <li>
           <Link to="/">
-            <button className="key__button btn btn link-light ">Home</button>
+            <button
+              className="key__button btn btn link-light "
+              onClick={() => localStorage.removeItem("projectedit")}
+            >
+              Home
+            </button>
           </Link>
-        </li>
-        <li className="nav-item dropdown">
-          <a
-            className="key__button__long nav-link link-light dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Products
-          </a>
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <a className="dropdown-item" href="#">
-                Keycaps
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Keyboards
-              </a>
-            </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Switches
-              </a>
-            </li>
-          </ul>
         </li>
         {session ? <App /> : ""}
       </ul>
@@ -64,11 +38,15 @@ export const Navbar = () => {
             Logout
           </button>
         )}
-        <Link to="/create">
-          <button className="key__button__long btn btn-primary mx-3">
-            Sign Up
-          </button>
-        </Link>
+        {!session ? (
+          <Link to="/create">
+            <button className="key__button__long btn btn-primary mx-3">
+              Sign Up
+            </button>
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
       <div className="d-inline-flex">
         <form>
@@ -77,7 +55,9 @@ export const Navbar = () => {
             className="form-control"
             placeholder="Search..."
             aria-label="Search"
-            onChange={(e) => {}}
+            // onChange={(e) => {
+            //   setQuery({ ...props.query, search: e.target.value });
+            // }}
           />
         </form>
         <div className="dropdown">
@@ -98,7 +78,7 @@ export const Navbar = () => {
           <ul className="dropdown-menu text-small">
             <li>
               <a className="nav-link disabled dropdown-item" href="#">
-                Add New Listing (Coming Soon to Members!)
+                My Projects (Coming Soon to Members!)
               </a>
             </li>
             <li>

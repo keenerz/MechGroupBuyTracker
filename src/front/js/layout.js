@@ -7,6 +7,7 @@ import { Login } from "./pages/login";
 import { AccountCreation } from "./pages/creation";
 import { Settings } from "./pages/settings";
 import { Listing } from "./component/listing";
+import { EditListing } from "./component/editlisting";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -26,11 +27,11 @@ const Layout = () => {
           <Navbar />
           <Switch>
             <Route exact path="/">
-              <Home />             
-            </Route> 
+              <Home />
+            </Route>
             <Route exact path="/display">
-            <Display/>
-             </Route> 
+              <Display />
+            </Route>
             <Route exact path="/login">
               <Login />
             </Route>
@@ -45,6 +46,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/projectcreation">
               <Listing />
+            </Route>
+            <Route exact path="/projectedit/:id">
+              <EditListing />
             </Route>
             <Route>
               <h1>Not found!</h1>

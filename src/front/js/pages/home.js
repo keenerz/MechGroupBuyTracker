@@ -9,16 +9,15 @@ import homepagegif from "../../img/homepagegif.gif";
 
 export const Home = (props) => {
   const { store, actions } = useContext(Context);
+  const session = actions.getCurrentSession();
 
   return (
     <div className=" text-center container">
       <div className="col">
-          <img src={homepagegif} alt="img alt" id="" />
-        </div>
-          <Display />
-          <ProjectList />
-    </div>    
-      
-    
+        <img src={homepagegif} alt="img alt" id="" />
+      </div>
+      {!session ? <Display /> : ""}
+      <ProjectList />
+    </div>
   );
 };

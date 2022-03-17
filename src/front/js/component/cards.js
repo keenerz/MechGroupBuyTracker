@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Link, useParams, useHistory } from "react-router-dom";
+import { DetailedView } from "../pages/detailedView.js";
 
 export const Card = (props) => {
   const { store, actions } = useContext(Context);
@@ -53,8 +54,11 @@ export const Card = (props) => {
         </p>
         <p className="card-text fw-bold">Start Date: {start_date}</p>
         <p className="card-text fw-bold">End Date: {end_date}</p>
-        <Link to={"/details/" + props.id}>
-          <button className="btn btn-outline-primary float-start">
+        <Link to={"/details/" + props.id} params={props.data}>
+          <button
+            className="btn btn-outline-primary float-start"
+            onClick={() => actions.getProject(props.id)}
+          >
             Learn more!
           </button>
         </Link>

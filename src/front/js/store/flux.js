@@ -194,54 +194,60 @@ const getState = ({ getStore, getActions, setStore }) => {
           return payload;
         }
       },
-      editProject: async (
-        name,
-        project_type,
-        project_stage,
-        sale_type,
-        region,
-        baseprice,
-        estimated_ship,
-        started_at,
-        ended_at,
-        vendor_links,
-        discussion_links,
-        img_url,
-        description
-      ) => {
+      editProject: async (project) => {
         const actions = getActions();
         const session = actions.getCurrentSession();
         const options = {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + session.token,
           },
           body: JSON.stringify({
-            name: name,
-            project_type: project_type,
-            project_stage: project_stage,
-            sale_type: sale_type,
-            region: region,
-            baseprice: baseprice,
-            estimated_ship: estimated_ship,
-            started_at: started_at,
-            ended_at: ended_at,
-            vendor_links: vendor_links,
-            discussion_links: discussion_links,
-            img_url: img_url,
-            description,
+            name: project.name,
+            project_type: project.project_type,
+            project_stage: project.project_stage,
+            sale_type: project.sale_type,
+            region: project.region,
+            baseprice: project.baseprice,
+            estimated_ship: project.estimated_ship,
+            started_at: project.started_at,
+            ended_at: project.ended_at,
+            vendor_links: project.vendor_links,
+            discussion_links: project.discussion_links,
+            img_url: project.img_url,
+            description: project.description,
           }),
         };
         const response = await fetch(
-          process.env.BACKEND_URL + `/api/projects`,
+          process.env.BACKEND_URL + `/api/projects/${project.id}`,
           options
         );
         if (response.status === 200) {
           const payload = await response.json();
           console.log("project edited successfully!");
-          actions.loadProjects();
           return payload;
+        }
+      },
+      getProject: async (project) => {
+        const store = getStore();
+        const actions = getActions();
+        const session = actions.getCurrentSession();
+        const options = {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + session.token,
+          },
+        };
+        const response = await fetch(
+          process.env.BACKEND_URL + `/api/projects/${project}`,
+          options
+        );
+        if (response.status === 200) {
+          const payload = await response.json();
+          localStorage.setItem("projectedit", JSON.stringify(payload));
+          setStore({ projectedit: payload });
+          console.log(JSON.stringify(payload));
         }
       },
       //Tracked Loading

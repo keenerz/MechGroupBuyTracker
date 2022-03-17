@@ -12,7 +12,12 @@ export const Navbar = () => {
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
         <li>
           <Link to="/">
-            <button className="key__button btn btn link-light ">Home</button>
+            <button
+              className="key__button btn btn link-light "
+              onClick={() => localStorage.removeItem("projectedit")}
+            >
+              Home
+            </button>
           </Link>
         </li>
         {session ? <App /> : ""}
@@ -32,11 +37,15 @@ export const Navbar = () => {
             Logout
           </button>
         )}
-        <Link to="/create">
-          <button className="key__button__long btn btn-primary mx-3">
-            Sign Up
-          </button>
-        </Link>
+        {!session ? (
+          <Link to="/create">
+            <button className="key__button__long btn btn-primary mx-3">
+              Sign Up
+            </button>
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
       <div className="d-inline-flex">
         <form>
@@ -66,7 +75,7 @@ export const Navbar = () => {
           <ul className="dropdown-menu text-small">
             <li>
               <a className="nav-link disabled dropdown-item" href="#">
-                Add New Listing (Coming Soon to Members!)
+                My Projects (Coming Soon to Members!)
               </a>
             </li>
             <li>

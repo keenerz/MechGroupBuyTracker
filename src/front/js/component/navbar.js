@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
 import { App } from "../component/popup";
+import { ProjectList } from "./projectlist";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -54,7 +55,9 @@ export const Navbar = () => {
             className="form-control"
             placeholder="Search..."
             aria-label="Search"
-            onChange={(e) => {}}
+            // onChange={(e) => {
+            //   setQuery({ ...props.query, search: e.target.value });
+            // }}
           />
         </form>
         <div className="dropdown">

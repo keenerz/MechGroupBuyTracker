@@ -66,7 +66,9 @@ export const Card = (props) => {
         </h5>
         <p className="card-text fw-bold">Project Type: {project_type}</p>
         <p className="card-text fw-bold">Project Type: {project_stage}</p>
-        <p className="card-text fw-bold">Base Price: {props.data.baseprice}</p>
+        <p className="card-text fw-bold">
+          Base Price (USD): ${props.data.baseprice}
+        </p>
         <p className="card-text fw-bold">Start Date: {start_date}</p>
         <p className="card-text fw-bold">End Date: {end_date}</p>
         <Link to={"/details/" + props.id} data={props.data}>

@@ -61,7 +61,7 @@ export const DetailedView = () => {
       <div className="row g-0">
         <div className="col-md-4" id="leftSide">
           <img
-            src="https://i.imgur.com/4l88EPt.jpeg"
+            src={local?.img_url || "https://via.placeholder.com/400x200"}
             className="img-fluid rounded-start h-100"
             alt="..."
           />
@@ -69,36 +69,36 @@ export const DetailedView = () => {
         <div className="col-md-8" id="rightSide">
           <div className="card-body">
             <h5 className="card-title">{project?.name}</h5>
-            <p className="card-text">
-              {/* <p className="card-text fw-bold fw-bold">
-                User: {project.creator}
-              </p> */}
-              <p className="card-text fw-bold fw-bold">
-                Project Type: {project_type}
-              </p>
-              <p className="card-text fw-bold fw-bold">
-                Item Type: {project_stage}
-              </p>
-              <p className="card-text fw-bold fw-bold">
-                Sale Type: {project?.sale_type}
-              </p>
-              <p className="card-text fw-bold">Region: {project?.region}</p>
-
-              <p className="card-text fw-bold fw-bold">
-                Base Price: {project?.baseprice}
-              </p>
-              <p className="card-text fw-bold fw-bold">
-                Estimated Shipping Date: {project?.estimated_ship}
-              </p>
-              <p className="card-text fw-bold">Start Date: {start_date}</p>
-              <p className="card-text fw-bold">End Date: {ended_date}</p>
-              <p className="card-text fw-bold">
-                Vendor Links: {project?.vendor_links}
-              </p>
-              <p className="card-text fw-bold">
-                Discussion Links: {project?.discussion_links}
-              </p>
-              <p className="card-text fw-bold">Region: {project?.region}</p>
+            <p className="card-text fw-bold fw-bold">
+              Project Type: {project_type}
+            </p>
+            <p className="card-text fw-bold fw-bold">
+              Item Type: {project_stage}
+            </p>
+            <p className="card-text fw-bold fw-bold">
+              Sale Type: {project?.sale_type}
+            </p>
+            <p className="card-text fw-bold fw-bold">
+              Base Price: {project?.baseprice}
+            </p>
+            <p className="card-text fw-bold fw-bold">
+              Estimated Shipping Date: {project?.estimated_ship}
+            </p>
+            <p className="card-text fw-bold">Start Date: {start_date}</p>
+            <p className="card-text fw-bold">End Date: {ended_date}</p>
+            <p className="card-text fw-bold">
+              Vendors:{" "}
+              {local?.vendor_links
+                ? local?.vendor_links.split(", ").join(" || ")
+                : ""}
+            </p>
+            <p className="card-text fw-bold">
+              Discussion Link:{" "}
+              {local?.discussion_links ? (
+                <a href={local?.discussion_links}>{local?.discussion_links}</a>
+              ) : (
+                ""
+              )}
             </p>
             {session ? (
               <Link to={`/projectedit/${project?.id}`}>
@@ -107,9 +107,6 @@ export const DetailedView = () => {
             ) : (
               ""
             )}
-            <p className="card-text">
-              <small className="text-muted">Last updated 14 mins ago</small>
-            </p>
           </div>
         </div>
       </div>

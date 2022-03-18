@@ -13,7 +13,11 @@ export const Listing = () => {
     <form
       method="post"
       onSubmit={(e) => {
-        if (name == "" || project_type == "" || project_stage == "") {
+        if (
+          project.name == "" ||
+          project.project_type == "" ||
+          project.project_stage == ""
+        ) {
           alert(
             "Cannot Submit without a name, Project Stage and/or Project Type"
           );
@@ -44,7 +48,7 @@ export const Listing = () => {
       <select
         className="feedback-input-selector"
         aria-label="project_type"
-        value={project_type}
+        value={project.project_type}
         onChange={(e) => {
           setProject({ ...project, project_type: e.target.value });
         }}

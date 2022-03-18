@@ -145,21 +145,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ projects: payload });
         }
       },
-      addProject: async (
-        name,
-        project_type,
-        project_stage,
-        sale_type,
-        region,
-        baseprice,
-        estimated_ship,
-        started_at,
-        ended_at,
-        vendor_links,
-        discussion_links,
-        img_url,
-        description
-      ) => {
+      addProject: async (project) => {
         const actions = getActions();
         const session = actions.getCurrentSession();
         const options = {
@@ -169,19 +155,19 @@ const getState = ({ getStore, getActions, setStore }) => {
             Authorization: "Bearer " + session.token,
           },
           body: JSON.stringify({
-            name: name,
-            project_type: project_type,
-            project_stage: project_stage,
-            sale_type: sale_type,
-            region: region,
-            baseprice: baseprice,
-            estimated_ship: estimated_ship,
-            started_at: started_at,
-            ended_at: ended_at,
-            vendor_links: vendor_links,
-            discussion_links: discussion_links,
-            img_url: img_url,
-            description: description,
+            name: project.name,
+            project_type: project.project_type,
+            project_stage: project.project_stage,
+            sale_type: project.sale_type,
+            region: project.region,
+            baseprice: project.baseprice,
+            estimated_ship: project.estimated_ship,
+            started_at: project.started_at,
+            ended_at: project.ended_at,
+            vendor_links: project.vendor_links,
+            discussion_links: project.discussion_links,
+            img_url: project.img_url,
+            description: project.description,
           }),
         };
         const response = await fetch(

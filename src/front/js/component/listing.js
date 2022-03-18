@@ -85,7 +85,7 @@ export const Listing = () => {
       <select
         className="feedback-input-selector"
         aria-label="project_stage"
-        value={project_type}
+        value={project_stage}
         onChange={(e) => {
           setProject_stage(e.target.value);
         }}

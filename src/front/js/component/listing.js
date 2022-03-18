@@ -205,7 +205,7 @@ export const Listing = () => {
         value={img_url}
         onChange={(e) => setImg_url(e.target.value)}
       />
-      <input type="submit" value="SUBMIT" />
+      <input type="submit" value="SUBMIT" onClick={window.location.reload()} />
     </form>
   );
 };

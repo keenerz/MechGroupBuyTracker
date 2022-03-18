@@ -111,14 +111,10 @@ def get_project():
     return jsonify(all_serialized_project)
 
 @api.route('/projects/<project_id>', methods=['GET'])
-@jwt_required()
 def get_specified_project(project_id):
     project = Project.query.filter_by(id=project_id).first()
     if project is None: 
         return jsonify({"msg": "Invalid project"}), 400
-    user_id = get_jwt_identity()
-    if user_id is not project.creator:
-        return jsonify({"msg": "You are not the project creator"}), 400
     return jsonify(project.serialize())
 
 @api.route('/projects', methods=['POST'])

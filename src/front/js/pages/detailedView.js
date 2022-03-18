@@ -8,9 +8,17 @@ import PropTypes from "prop-types";
 
 export const DetailedView = (props) => {
   const { store, actions } = useContext(Context);
-  const params = useParams().id;
-
-  const project = store.projects;
+  const params = useParams();
+  const project = store.projectedit;
+  let project_stage = "";
+  if (project?.project_stage === "interestcheck") {
+    project_stage = "Interest Check";
+  } else if (project?.project_stage === "groupbuy") {
+    project_stage = "Group Buy";
+  } else if (project?.project_stage === "ended") {
+    project_stage = "Ended";
+  }
+  console.log(project);
   return (
     <div className="card mb-3  w-100">
       <div className="row g-0">
@@ -55,7 +63,10 @@ export const DetailedView = (props) => {
                 Base Price: {project.baseprice}
               </p>
             </p>
-            <Link to={`/projectedit/${params}`}>
+            <p className="card-text fw-bold">End Date: {project?.end_date}</p>
+            <p className="card-text fw-bold">Stage: {props.trackedStatus}</p>
+            <p className="card-text fw-bold">Region: {props.id}</p>
+            <Link to={`/projectedit/${params.id}`}>
               <button>edit</button>
             </Link>
             <p className="card-text">

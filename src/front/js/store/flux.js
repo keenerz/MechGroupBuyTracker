@@ -235,9 +235,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         const session = actions.getCurrentSession();
         const options = {
           method: "GET",
-          headers: {
-            Authorization: "Bearer " + session.token,
-          },
         };
         const response = await fetch(
           process.env.BACKEND_URL + `/api/projects/${project}`,
@@ -247,7 +244,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           const payload = await response.json();
           localStorage.setItem("projectedit", JSON.stringify(payload));
           setStore({ projectedit: payload });
-          console.log(JSON.stringify(payload));
+          console.log(store.projectedit);
         }
       },
       //Tracked Loading

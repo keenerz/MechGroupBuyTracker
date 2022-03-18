@@ -54,7 +54,7 @@ export const Card = (props) => {
         </p>
         <p className="card-text fw-bold">Start Date: {start_date}</p>
         <p className="card-text fw-bold">End Date: {end_date}</p>
-        <Link to={"/details/" + props.id} params={props.data}>
+        <Link to={"/details/" + props.id}>
           <button
             className="btn btn-outline-primary float-start"
             onClick={() => actions.getProject(props.id)}

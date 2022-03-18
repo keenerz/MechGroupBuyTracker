@@ -74,8 +74,9 @@ export const ProjectList = (props) => {
         className="d-flex flex-row mx-auto"
         style={{ width: "90%", overflow: "auto" }}
       >
-        {store.projects.filter(filterProject).map((c, i) => <Card key={i} />)
-          .length === 0 ? (
+        {store.projects
+          .filter(filterProject)
+          .map((c, i) => <Card key={i} data={c} />).length === 0 ? (
           <h1 className="m-auto">No Projects Detected</h1>
         ) : (
           store.projects

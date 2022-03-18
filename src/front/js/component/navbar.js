@@ -55,9 +55,17 @@ export const Navbar = () => {
             className="form-control"
             placeholder="Search..."
             aria-label="Search"
-            // onChange={(e) => {
-            //   setQuery({ ...props.query, search: e.target.value });
-            // }}
+            onChange={(e) => {
+              store.projects
+                .filter(() =>
+                  store.project.name.filter("keycap", "keyboard", "switches")
+                )
+                .map((filteredproject) => {
+                  <ul>
+                    <li>{filteredproject.target.value}</li>
+                  </ul>;
+                });
+            }}
           />
         </form>
         <div className="dropdown">

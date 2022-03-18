@@ -31,8 +31,7 @@ export const EditListing = () => {
             .editProject(project)
             .then(e.preventDefault())
             .then(history.push("/details/" + `${projectEdit.id}`))
-            .then(localStorage.removeItem("projectedit"))
-            .then(actions.getProject());
+            .then(localStorage.removeItem("projectedit"));
         }
       }}
     >

@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       tracked: [],
       projects: [],
       useredit: null,
+      projectedit: null,
     },
     actions: {
       //Login and Token items

@@ -47,7 +47,7 @@ export const Listing = () => {
               img_url
             )
             .then(e.preventDefault())
-            .then(popup.props.setModalShow(false));
+            .then(setModalShow(false));
         }
       }}
     >

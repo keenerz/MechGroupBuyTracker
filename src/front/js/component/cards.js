@@ -9,7 +9,6 @@ export const Card = (props) => {
   const params = useParams();
   const session = actions.getCurrentSession();
   const history = useHistory();
-
   // Date Display Function
   let start_date = props.data.started_at;
   if (start_date !== null) {
@@ -33,7 +32,23 @@ export const Card = (props) => {
       " " +
       end_date.split(" ")[3];
   }
-
+  //Project Type/Stage Display Function
+  let project_stage = "";
+  if (props.data.project_stage === "interestcheck") {
+    project_stage = "Interest Check";
+  } else if (props.data.project_stage === "groupbuy") {
+    project_stage = "Group Buy";
+  } else if (props.data.project_stage === "ended") {
+    project_stage = "Ended";
+  }
+  let project_type = "";
+  if (props.data.project_type === "keycap") {
+    project_type = "Keycap";
+  } else if (props.data.project_type === "keyboard") {
+    project_type = "Keyboard";
+  } else if (props.data.project_type === "switches") {
+    project_type = "Switches";
+  }
   return (
     <div
       className="card p-0 me-3 mb-4"
@@ -49,15 +64,15 @@ export const Card = (props) => {
         <h5 className="card-title text-center px-3 py-0 fw-bold">
           {props.data.name}
         </h5>
-        <p className="card-text fw-bold fw-bold">
-          Base Price: {props.data.baseprice}
-        </p>
+        <p className="card-text fw-bold">Project Type: {project_type}</p>
+        <p className="card-text fw-bold">Project Type: {project_stage}</p>
+        <p className="card-text fw-bold">Base Price: {props.data.baseprice}</p>
         <p className="card-text fw-bold">Start Date: {start_date}</p>
         <p className="card-text fw-bold">End Date: {end_date}</p>
-        <Link to={"/details/" + props.id}>
+        <Link to={"/details/" + props.id} data={props.data}>
           <button
             className="btn btn-outline-primary float-start"
-            onClick={() => actions.getProject(props.id)}
+            onMouseOver={() => actions.getProject(props.id)}
           >
             Learn more!
           </button>

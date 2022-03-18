@@ -35,7 +35,7 @@ export const ProjectList = (props) => {
     return true;
   };
   return (
-    <div class="album py-5 bg- primary">
+    <div className="album py-5 bg- primary">
       <div>
         <select
           className="form-select-sm m-3"

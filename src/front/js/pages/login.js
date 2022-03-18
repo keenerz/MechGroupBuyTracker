@@ -25,7 +25,7 @@ export const Login = () => {
           <i className="fa-solid fa-lock-keyhole"></i>
         </div>
         <div className="mb-3">
-          <label for="email" classNameName="form-label">
+          <label for="email" className="form-label">
             Email
           </label>
           <input
@@ -39,7 +39,7 @@ export const Login = () => {
           />
         </div>
         <div className="mb-3">
-          <label for="password" classNameName="form-label">
+          <label for="password" className="form-label">
             Password
           </label>
           <input

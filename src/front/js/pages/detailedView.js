@@ -79,7 +79,7 @@ export const DetailedView = () => {
               Sale Type: {project?.sale_type}
             </p>
             <p className="card-text fw-bold fw-bold">
-              Base Price: {project?.baseprice}
+              Base Price (USD): ${project?.baseprice}
             </p>
             <p className="card-text fw-bold fw-bold">
               Estimated Shipping Date: {project?.estimated_ship}

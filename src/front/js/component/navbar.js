@@ -8,6 +8,7 @@ import { ProjectList } from "./projectlist";
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const session = actions.getCurrentSession();
+  const { searchbar, setsearchbar } = useContext(Context);
   return (
     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">

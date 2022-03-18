@@ -10,7 +10,7 @@ import { Listing } from "./component/listing";
 import { EditListing } from "./component/editlisting";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { Navbar1 } from "./component/navbar1";
 import { Footer } from "./component/footer";
 import { DetailedView } from "./pages/detailedView";
 import { Display } from "./component/carousel";
@@ -24,7 +24,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar />
+          <Navbar1 />
           <Switch>
             <Route exact path="/">
               <Home />

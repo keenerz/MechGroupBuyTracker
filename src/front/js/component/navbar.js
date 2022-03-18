@@ -5,7 +5,7 @@ import "../../styles/navbar.css";
 import { App } from "../component/popup";
 import { ProjectList } from "./projectlist";
 
-export const Navbar = () => {
+export const Navbar2 = () => {
   const { store, actions } = useContext(Context);
   const session = actions.getCurrentSession();
   const { searchbar, setsearchbar } = useContext(Context);

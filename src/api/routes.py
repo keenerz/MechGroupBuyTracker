@@ -219,7 +219,7 @@ def update_project(project_id):
         project.baseprice = project.baseprice
     else:
         project.baseprice = baseprice
-        message+="base price set to " + baseprice + "\n"
+        message+="base price set to " + str(baseprice) + "\n"
 
     if estimated_ship is None or not estimated_ship:
         project.estimated_ship = project.estimated_ship

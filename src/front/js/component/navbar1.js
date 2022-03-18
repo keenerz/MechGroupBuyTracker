@@ -16,7 +16,11 @@ export const Navbar1 = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand>MechGroupBuyTracker</Navbar.Brand>
+        <Navbar.Brand>
+          {" "}
+          <Link to="/">MechGroupBuyTracker</Link>
+        </Navbar.Brand>
+
         <Nav>
           <Link to="/">
             <Button

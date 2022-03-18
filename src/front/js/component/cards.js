@@ -65,7 +65,7 @@ export const Card = (props) => {
           {props.data.name}
         </h5>
         <p className="card-text fw-bold">Project Type: {project_type}</p>
-        <p className="card-text fw-bold">Project Type: {project_stage}</p>
+        <p className="card-text fw-bold">Project Stage: {project_stage}</p>
         <p className="card-text fw-bold">
           Base Price (USD): ${props.data.baseprice}
         </p>
@@ -76,7 +76,7 @@ export const Card = (props) => {
             className="btn btn-outline-primary float-start"
             onMouseOver={() => actions.getProject(props.id)}
           >
-            Learn more!
+            More Details
           </button>
         </Link>
         <button

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/navbar.css";
+import "../../styles/navbar1.css";
 import { App } from "../component/popup";
 import { ProjectList } from "./projectlist";
 import Navbar from "react-bootstrap/Navbar";
@@ -59,14 +59,9 @@ export const Navbar1 = () => {
           </Nav>
           <Nav>
             {session ? (
-              <NavDropdown
-                title="Account Settings"
-                id="collasible-nav-dropdown"
-              >
-                <Link to="/accountsettings">
-                  <NavDropdown.Item>Edit Account</NavDropdown.Item>
-                </Link>
-              </NavDropdown>
+              <Link to="/accountsettings">
+                <Button style={{ marginLeft: "10px" }}>Account Settings</Button>
+              </Link>
             ) : (
               ""
             )}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+/*import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
@@ -112,3 +112,4 @@ export const Navbar2 = () => {
     </div>
   );
 };
+*/

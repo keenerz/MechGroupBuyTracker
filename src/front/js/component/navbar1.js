@@ -18,10 +18,16 @@ export const Navbar1 = () => {
       <Container>
         <Navbar.Brand>
           {" "}
-          <Link to="/">MechGroupBuyTracker</Link>
+          <Link
+            to="/"
+            className="homelink"
+            onClick={() => localStorage.removeItem("projectedit")}
+          >
+            MechGroupBuyTracker
+          </Link>
         </Navbar.Brand>
 
-        <Nav>
+        {/* <Nav>
           <Link to="/">
             <Button
               style={{ marginLeft: "20px" }}
@@ -30,7 +36,7 @@ export const Navbar1 = () => {
               Home
             </Button>
           </Link>
-        </Nav>
+        </Nav> */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" style={{ marginLeft: "10px" }}>

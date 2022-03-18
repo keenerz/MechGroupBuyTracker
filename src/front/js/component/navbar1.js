@@ -49,7 +49,7 @@ export const Navbar1 = () => {
             )}
           </Nav>
           <Nav>
-            {session ? (
+            {!session ? (
               <Link to="/create">
                 <Button style={{ marginLeft: "10px" }}>Sign Up</Button>
               </Link>
@@ -58,7 +58,7 @@ export const Navbar1 = () => {
             )}
           </Nav>
           <Nav>
-            {!session ? (
+            {session ? (
               <NavDropdown
                 title="Account Settings"
                 id="collasible-nav-dropdown"

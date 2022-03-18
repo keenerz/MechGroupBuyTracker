@@ -5,6 +5,8 @@ import { Listing } from "../component/listing";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "../../styles/popup.css";
+import Navbar from "react-bootstrap/Navbar";
+import { Nav } from "react-bootstrap";
 
 export function MyVerticallyCenteredModal(props) {
   return (
@@ -29,12 +31,7 @@ export function App() {
 
   return (
     <>
-      <button
-        className="key__button btn btn-primary "
-        onClick={() => setModalShow(true)}
-      >
-        Create a Project
-      </button>
+      <Button onClick={() => setModalShow(true)}>Create</Button>
 
       <MyVerticallyCenteredModal
         show={modalShow}

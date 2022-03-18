@@ -111,7 +111,7 @@ export function AccountCreation(props) {
             </button>
           </div>
           <Link to="/login" className="already">
-            You already have an account? Login here.
+            You already have an account? Login.
           </Link>
         </form>
       </div>

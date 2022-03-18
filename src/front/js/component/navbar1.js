@@ -5,7 +5,7 @@ import "../../styles/navbar.css";
 import { App } from "../component/popup";
 import { ProjectList } from "./projectlist";
 import Navbar from "react-bootstrap/Navbar";
-import { Container, Nav } from "react-bootstrap";
+import { Container, Nav, NavDropdown } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 export const Navbar1 = () => {
@@ -49,10 +49,24 @@ export const Navbar1 = () => {
             )}
           </Nav>
           <Nav>
-            {!session ? (
+            {session ? (
               <Link to="/create">
                 <Button style={{ marginLeft: "10px" }}>Sign Up</Button>
               </Link>
+            ) : (
+              ""
+            )}
+          </Nav>
+          <Nav>
+            {!session ? (
+              <NavDropdown
+                title="Account Settings"
+                id="collasible-nav-dropdown"
+              >
+                <Link to="/accountsettings">
+                  <NavDropdown.Item>Edit Account</NavDropdown.Item>
+                </Link>
+              </NavDropdown>
             ) : (
               ""
             )}

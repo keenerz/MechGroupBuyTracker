@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useHistory, Link } from "react-router-dom";
-import "../../styles/register.css";
+import "../../styles/settings.css";
 
 export function Settings(props) {
   const { store, actions } = useContext(Context);
@@ -45,7 +45,7 @@ export function Settings(props) {
           }}
         >
           <h2 className="text-center">
-            <strong>Create</strong> an account.
+            <strong>Edit</strong> Your an account.
           </h2>
           <div className="mb-3">
             <label for="email" className="form-label">

@@ -8,6 +8,7 @@ import { ProjectList } from "./projectlist";
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const session = actions.getCurrentSession();
+  const { searchbar, setsearchbar } = useContext(Context);
   return (
     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
@@ -55,10 +56,18 @@ export const Navbar = () => {
             className="form-control"
             placeholder="Search..."
             aria-label="Search"
-            // onChange={(e) => {
-            //   setQuery({ ...props.query, search: e.target.value });
-            // }}
-          />
+            onChange={(e) => {
+              store.projects
+                .filter(() =>
+                  store.project.name.filter("keycap", "keyboard", "switches")
+                )
+                .map((filteredproject) => {
+                  <ul>
+                    <li>{filteredproject.target.value}</li>
+                  </ul>;
+                });
+            }}
+          ></input>
         </form>
         <div className="dropdown">
           <a

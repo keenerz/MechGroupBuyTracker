@@ -45,7 +45,7 @@ export function Settings(props) {
           }}
         >
           <h2 className="text-center">
-            <strong>Edit</strong> Your an account.
+            <strong>Edit</strong> Your account.
           </h2>
           <div className="mb-3">
             <label for="email" className="form-label">

@@ -20,7 +20,7 @@ export function AccountCreation(props) {
   };
 
   return (
-    <section className="register">
+    <section className="register1">
       <div className="form-container">
         <div className="image-holder"></div>
         <form

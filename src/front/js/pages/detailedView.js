@@ -101,7 +101,7 @@ export const DetailedView = () => {
               <p className="card-text fw-bold">Region: {project?.region}</p>
             </p>
             {session ? (
-              <Link to={`/projectedit/${params.id}`}>
+              <Link to={`/projectedit/${project?.id}`}>
                 <button>edit</button>
               </Link>
             ) : (

@@ -30,8 +30,8 @@ export const EditListing = () => {
           actions
             .editProject(project)
             .then(e.preventDefault())
-            .then(history.push("/details/" + `${projectEdit.id}`))
-            .then(localStorage.removeItem("projectedit"));
+            .then(actions.getProject(projectEdit.id))
+            .then(history.push("/details/" + `${projectEdit.id}`));
         }
       }}
     >

@@ -227,6 +227,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (response.status === 200) {
           const payload = await response.json();
           console.log("project edited successfully!");
+          localStorage.setItem("projectedit", JSON.stringify(payload));
+          setStore({ projectedit: payload });
+          window.location.reload();
           return payload;
         }
       },

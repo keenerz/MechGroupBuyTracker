@@ -47,7 +47,7 @@ export const Listing = () => {
               img_url
             )
             .then(e.preventDefault())
-            .then(setModalShow(false));
+            .then(window.location.reload());
         }
       }}
     >
@@ -205,7 +205,7 @@ export const Listing = () => {
         value={img_url}
         onChange={(e) => setImg_url(e.target.value)}
       />
-      <input type="submit" value="SUBMIT" onClick={window.location.reload()} />
+      <input type="submit" value="SUBMIT" />
     </form>
   );
 };

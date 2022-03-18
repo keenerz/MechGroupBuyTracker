@@ -87,29 +87,25 @@ export const Navbar = () => {
             />
           </a>
           <ul className="dropdown-menu text-small">
-            <li>
-              <a className="nav-link disabled dropdown-item" href="#">
-                My Projects (Coming Soon to Members!)
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Tracked Listings
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                My Account
-              </a>
-            </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Sign out
-              </a>
-            </li>
+            {!session ? (
+              <li className="nav-link disabled dropdown-item">Please Login!</li>
+            ) : (
+              <div>
+                <li>
+                  <a className="nav-link disabled dropdown-item" href="#">
+                    My Projects (Coming Soon to Members!)
+                  </a>
+                </li>
+                <li>
+                  <Link
+                    to="/accountsettings"
+                    className="nav-link dropdown-item"
+                  >
+                    Account Settings
+                  </Link>
+                </li>
+              </div>
+            )}
           </ul>
         </div>
       </div>

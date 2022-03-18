@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.css";
 import { App } from "../component/popup";
@@ -9,6 +9,7 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const session = actions.getCurrentSession();
   const { searchbar, setsearchbar } = useContext(Context);
+  const history = useHistory();
   return (
     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
       <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ">
@@ -34,6 +35,7 @@ export const Navbar = () => {
             className="btn btn-danger key__button"
             onClick={() => {
               actions.logout();
+              history.push("/");
             }}
           >
             Logout

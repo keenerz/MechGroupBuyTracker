@@ -16,7 +16,7 @@ export const Home = (props) => {
   return (
     <div className=" text-center container">
       <div className="col">
-        <img src={homepagegif} alt="img alt" id="" />
+        {!session ? <img src={homepagegif} alt="img alt" id="" /> : ""}
       </div>
       {!session ? <Display /> : ""}
       <ProjectList />

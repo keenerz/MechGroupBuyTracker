@@ -6,19 +6,7 @@ import { setModalShow } from "../component/popup";
 
 export const Listing = () => {
   const { store, actions } = useContext(Context);
-  const [name, setName] = useState("");
-  const [project_type, setProject_type] = useState("");
-  const [project_stage, setProject_stage] = useState("");
-  const [sale_type, setSale_type] = useState(null);
-  const [region, setRegion] = useState(null);
-  const [basePrice, setBasePrice] = useState(null);
-  const [description, setDescription] = useState(null);
-  const [estimated_ship, setEstimated_ship] = useState(null);
-  const [vendor_links, setVendor_links] = useState(null);
-  const [img_url, setImg_url] = useState(null);
-  const [discussion_links, setDiscussion_links] = useState(null);
-  const [started_at, setStarted_at] = useState(null);
-  const [ended_at, setEnded_at] = useState(null);
+  const [project, setProject] = useState({});
   const history = useHistory();
 
   return (
@@ -32,20 +20,7 @@ export const Listing = () => {
           e.preventDefault();
         } else {
           actions
-            .addProject(
-              name,
-              project_type,
-              project_stage,
-              region,
-              basePrice,
-              description,
-              estimated_ship,
-              started_at,
-              ended_at,
-              vendor_links,
-              discussion_links,
-              img_url
-            )
+            .addProject(project)
             .then(e.preventDefault())
             .then(window.location.reload());
         }
@@ -60,8 +35,8 @@ export const Listing = () => {
         type="text"
         className="feedback-input"
         placeholder=" Project Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={project.name}
+        onChange={(e) => setProject({ ...project, name: e.target.value })}
       />
       <label for="project_type" className="form-label">
         Project Type
@@ -71,7 +46,7 @@ export const Listing = () => {
         aria-label="project_type"
         value={project_type}
         onChange={(e) => {
-          setProject_type(e.target.value);
+          setProject({ ...project, project_type: e.target.value });
         }}
       >
         <option value="">Project Type</option>
@@ -85,9 +60,9 @@ export const Listing = () => {
       <select
         className="feedback-input-selector"
         aria-label="project_stage"
-        value={project_stage}
+        value={project.project_stage}
         onChange={(e) => {
-          setProject_stage(e.target.value);
+          setProject({ ...project, project_stage: e.target.value });
         }}
       >
         <option value="">Project Stage</option>
@@ -103,8 +78,8 @@ export const Listing = () => {
         type="text"
         className="feedback-input"
         placeholder="Region"
-        value={region}
-        onChange={(e) => setRegion(e.target.value)}
+        value={project.region}
+        onChange={(e) => setProject({ ...project, region: e.target.value })}
       />
       <label for="basePrice" className="form-label">
         Base Price
@@ -114,8 +89,8 @@ export const Listing = () => {
         type="number"
         className="feedback-input"
         placeholder="Base Price"
-        value={basePrice}
-        onChange={(e) => setBasePrice(e.target.value)}
+        value={project.basePrice}
+        onChange={(e) => setProject({ ...project, baseprice: e.target.value })}
       />
       <label for="shipping" className="form-label">
         Estimated Shipping
@@ -125,8 +100,10 @@ export const Listing = () => {
         type="text"
         className="feedback-input"
         placeholder="Expected Shipping"
-        value={estimated_ship}
-        onChange={(e) => setEstimated_ship(e.target.value)}
+        value={project.estimated_ship}
+        onChange={(e) =>
+          setProject({ ...project, estimated_ship: e.target.value })
+        }
       />
       <label for="started_at" className="form-label">
         Group Buy Starting Date
@@ -136,8 +113,8 @@ export const Listing = () => {
         type="date"
         className="feedback-input"
         placeholder="Starting Date"
-        value={started_at}
-        onChange={(e) => setStarted_at(e.target.value)}
+        value={project.started_at}
+        onChange={(e) => setProject({ ...project, started_at: e.target.value })}
       />
       <label for="ended_at" className="form-label">
         Group Buy Ending Date
@@ -147,8 +124,8 @@ export const Listing = () => {
         type="date"
         className="feedback-input"
         placeholder="Ending Date"
-        value={ended_at}
-        onChange={(e) => setEnded_at(e.target.value)}
+        value={project.ended_at}
+        onChange={(e) => setProject({ ...project, ended_at: e.target.value })}
       />
       <label for="sale_type" className="form-label">
         Sale Type
@@ -158,8 +135,8 @@ export const Listing = () => {
         type="text"
         className="feedback-input"
         placeholder="Units for sale"
-        value={sale_type}
-        onChange={(e) => setSale_type(e.target.value)}
+        value={project.sale_type}
+        onChange={(e) => setProject({ ...project, sale_type: e.target.value })}
       />
       <label for="vendors" className="form-label">
         Vendors
@@ -169,8 +146,10 @@ export const Listing = () => {
         type="text"
         className="feedback-input"
         placeholder="Vendor Links"
-        value={vendor_links}
-        onChange={(e) => setVendor_links(e.target.value)}
+        value={project.vendor_links}
+        onChange={(e) =>
+          setProject({ ...project, vendor_links: e.target.value })
+        }
       />
       <label for="discussion_links" className="form-label">
         Discussion Links
@@ -180,21 +159,25 @@ export const Listing = () => {
         type="text"
         className="feedback-input"
         placeholder="Discussion Links"
-        value={discussion_links}
-        onChange={(e) => setDiscussion_links(e.target.value)}
+        value={project.discussion_links}
+        onChange={(e) =>
+          setProject({ ...project, discussion_links: e.target.value })
+        }
       />
       <label for="description" className="form-label">
-        Vendors
+        Description
       </label>
       <textarea
         name="description"
         className="feedback-input"
         placeholder="Description of Product"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        value={project.description}
+        onChange={(e) => {
+          setProject({ ...project, description: e.target.value });
+        }}
       ></textarea>
       <label for="imgUrl" className="form-label">
-        Vendors
+        Image URL
       </label>
       <input
         type="url"
@@ -202,8 +185,8 @@ export const Listing = () => {
         id="imgUrl"
         name="imgUrl"
         placeholder="Image URL"
-        value={img_url}
-        onChange={(e) => setImg_url(e.target.value)}
+        value={project.img_url}
+        onChange={(e) => setProject({ ...project, img_url: e.target.value })}
       />
       <input type="submit" value="SUBMIT" />
     </form>

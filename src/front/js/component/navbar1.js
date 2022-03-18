@@ -16,8 +16,18 @@ export const Navbar1 = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand>MechGroupBuyTracker</Navbar.Brand>
-        <Nav>
+        <Navbar.Brand>
+          {" "}
+          <Link
+            to="/"
+            className="homelink"
+            onClick={() => localStorage.removeItem("projectedit")}
+          >
+            MechGroupBuyTracker
+          </Link>
+        </Navbar.Brand>
+
+        {/* <Nav>
           <Link to="/">
             <Button
               style={{ marginLeft: "20px" }}
@@ -26,7 +36,7 @@ export const Navbar1 = () => {
               Home
             </Button>
           </Link>
-        </Nav>
+        </Nav> */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto" style={{ marginLeft: "10px" }}>

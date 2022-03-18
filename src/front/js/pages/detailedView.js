@@ -73,7 +73,7 @@ export const DetailedView = () => {
               Project Type: {project_type}
             </p>
             <p className="card-text fw-bold fw-bold">
-              Item Type: {project_stage}
+              Project Stage: {project_stage}
             </p>
             <p className="card-text fw-bold fw-bold">
               Sale Type: {project?.sale_type}

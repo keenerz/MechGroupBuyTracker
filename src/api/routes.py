@@ -261,7 +261,8 @@ def update_project(project_id):
     if message != "":
         tracked_list = Tracked.query.filter_by(projectid=project.id) 
         for t in tracked_list:
-            send_sms(to=t.user.phone, message=f'Project {project.name} updated: \n {message}')
+            send_sms(to={if t.user.phone == None or not t.user.phone:
+                t.user.phone}, message=f'Project {project.name} updated: \n {message}')
 
     return jsonify(project.serialize())
 

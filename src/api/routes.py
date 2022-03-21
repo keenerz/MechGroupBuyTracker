@@ -20,7 +20,7 @@ def create_token():
     if user is None:
         return jsonify({"msg": "Missing email or password"}), 401
     access_token = create_access_token(identity=user.id)
-    return jsonify({ "token": access_token, "user_id": user.id })
+    return jsonify({ "token": access_token, "user_id": user.id } "usertype": user.usertype)
 
 @api.route('/user', methods=['POST'])
 def create_user():
@@ -261,7 +261,7 @@ def update_project(project_id):
     if message != "":
         tracked_list = Tracked.query.filter_by(projectid=project.id) 
         for t in tracked_list:
-            send_sms(to={if t.user.phone == None or not t.user.phone:
+            send_sms(to={if t.user.phone != None or is t.user.phone:
                 t.user.phone}, message=f'Project {project.name} updated: \n {message}')
 
     return jsonify(project.serialize())

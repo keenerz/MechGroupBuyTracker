@@ -10,4 +10,13 @@ Hello, this web app is a solution to the problem of the inability to track group
 - Notifies users of the changes to the projects via SMS if provided mobile number.
 <hr />
 <h3>Site in action</h3>
+Logo:
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/merch%20group%20buytrkr.gif?raw=true" />
+Site:
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Group-Buy-Tracker.gif?raw=true" />
+Details:
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Group%20Buy%20Tracker.png?raw=true" />
+Project Creation:
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/MGBTCreate.gif?raw=true" />
+Tracking
+<img src="https://raw.githubusercontent.com/keenerz/MechGroupBuyTracker/main/docs/assets/Tracking.gif?raw=true" />

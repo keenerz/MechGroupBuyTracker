@@ -11,7 +11,7 @@ Hello, this web app is a solution to the problem of the inability to track group
 <hr />
 <h3>Site in action</h3>
 Logo:
-<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/merch%20group%20buytrkr.gif?raw=true" />
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/homepagegif.gif?raw=true" />
 Site:
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Group-Buy-Tracker.gif?raw=true" />
 Details:

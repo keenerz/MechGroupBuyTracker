@@ -18,5 +18,7 @@ Details:
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Group%20Buy%20Tracker.png?raw=true" />
 Project Creation:
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/MGBTCreate.gif?raw=true" />
-Tracking
+Tracking:
 <img src="https://raw.githubusercontent.com/keenerz/MechGroupBuyTracker/main/docs/assets/Tracking.gif" />
+SMS Notifications:
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Screen%20Shot%202022-03-21%20at%208.45.41%20PM.png?raw=true" />

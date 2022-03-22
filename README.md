@@ -19,4 +19,4 @@ Details:
 Project Creation:
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/MGBTCreate.gif?raw=true" />
 Tracking
-<img src="https://raw.githubusercontent.com/keenerz/MechGroupBuyTracker/main/docs/assets/Tracking.gif?raw=true" />
+<img src="https://raw.githubusercontent.com/keenerz/MechGroupBuyTracker/main/docs/assets/Tracking.gif" />

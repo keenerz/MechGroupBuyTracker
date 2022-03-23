@@ -101,6 +101,7 @@ def get_user():
     phone_get = user_query.phone
     return jsonify({"email": email_get, "username": username_get, "phone":phone_get})
 
+
 #Project Endpoints
 @api.route('/projects', methods=['GET'])
 @jwt_required(optional=True)

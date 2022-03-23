@@ -1,73 +1,46 @@
-# WebApp boilerplate with React JS and Flask API
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
-
-<p align="center">
-<a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="https://github.com/4GeeksAcademy/flask-rest-hello/blob/main/docs/assets/how-to.png?raw=true?raw=true" /></a>
-</p>
-
-### Styles
-
-You can update the `styles/index.scss` or create new `.scss` files inside `styles/` and import them into your current scss or js files depending on your needs.
-
-### Components
-
-Add more files into your `./src/js/components` or styles folder as you need them and import them into your current files as needed.
-
-💡Note: There is an example using the Context API inside `views/demo.js`;
-
-### Views (Components)
-
-Add more files into your `./src/js/views` and import them in `./src/js/layout.jsx`.
-
-### Context
-
-This boilerplate comes with a centralized general Context API. The file `./src/js/store/flux.js` has a base structure for the store, we encourage you to change it and adapt it to your needs.
-
-React Context [docs](https://reactjs.org/docs/context.html)
-BreathCode Lesson [view](https://content.breatheco.de/lesson/react-hooks-explained)
-
-The `Provider` is already set. You can consume from any component using the useContext hook to get the `store` and `actions` from the Context. Check `/views/demo.js` to see a demo.
-
-```jsx
-import { Context } from "../store/appContext";
-const MyComponentSuper = () => {
-  //here you use useContext to get store and actions
-  const { store, actions } = useContext(Context);
-  return <div>{/* you can use your actions or store inside the html */}</div>;
-};
-```
-
-### Back-End Manual Installation:
-
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
-
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure yo replace the valudes with your database information:
-
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
-
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
-
-### Front-End Manual Installation:
-
-- Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% integrated with Herkou, just by pushing your changes to the heroku repository it will deploy: `$ git push heroku main`
-
-    	// "prettier-webpack-plugin": "^1.2.0",
-
-"dotenv-webpack": "^1.7.0",
-"friendly-errors-webpack-plugin": "^1.7.0",
+<h1>Mech Group Buy Tracker</h1>
+<hr />
+<h3>Introduction</h3>
+Hello, this web app is a solution to the problem of the inability to track group buys in the mechanical keyboard space. The endgoal being to connect group buy runners to to their buyers in all in one location. This solution allows you to track and be notified of changes to a group buy via SMS.  
+<hr />
+<h3>Features</h3>
+<ul>
+ <li>User Authenetication and login to make a profile for the user to track their specific group buy project.</li>
+ <li>Project updates for users and followers.</li>
+ <li>Creators can be directly in charge of their projects to change and modify.</li>
+ <li>Notifies users of the changes to the projects via SMS if provided mobile number.</li>
+ </ul>
+<hr />
+<h3>Technologies Used</h3>
+<ul>
+ <li>Javascript</li>
+ <li>React.JS</li>
+ <li>Python</li>
+ <li>Flask</li>
+ <li>Postgres SQL</li>
+ <li>HTML/CSS</li>
+<hr />
+<h3>Site in action</h3>
+Logo:
+ <br>
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/homepagegif.gif?raw=true" />
+ <br>
+Site:
+ <br>
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Group-Buy-Tracker.gif?raw=true" />
+ <br>
+Details:
+ <br>
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Group%20Buy%20Tracker.png?raw=true" />
+ <br>
+Project Creation:
+ <br>
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/MGBTCreate.gif?raw=true" />
+ <br>
+Tracking:
+ <br>
+<img src="https://raw.githubusercontent.com/keenerz/MechGroupBuyTracker/main/docs/assets/Tracking.gif" />
+ <br>
+SMS Notifications:
+<br>
+<img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Screen%20Shot%202022-03-21%20at%208.45.41%20PM.png?raw=true" />

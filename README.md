@@ -10,12 +10,12 @@ Hello, this web app is a solution to the problem of the inability to track group
 - Notifies users of the changes to the projects via SMS if provided mobile number.
 <hr />
 <h3>Technologies Used</h3>
-- Javascript
-- React.JS
-- Python
-- Flask
-- Postgres SQL
-- HTML/CSS
+ - Javascript
+ - React.JS
+ - Python
+ - Flask
+ - Postgres SQL
+ - HTML/CSS
 <hr />
 <h3>Site in action</h3>
 Logo:

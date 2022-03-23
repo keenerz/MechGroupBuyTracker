@@ -1,7 +1,7 @@
 <h1>Mech Group Buy Tracker</h1>
 <hr />
 <h3>Introduction</h3>
-Hello, this web app is a solution to the problem of the inability to track group buys in the mechanical keyboard space. The endgoal being to connect group buy runners to to their buyers in all in one location. This solution allows you to track and be notified of changes to a group buy via SMS.  
+Hello, this web app is a solution to the problem of the inability to track group buys in the mechanical keyboard space. The end goal is to connect group buy runners to their buyers all in one location. This solution allows you to track and be notified of changes to a group buy via SMS.
 <hr />
 <h3>Features</h3>
 <ul>

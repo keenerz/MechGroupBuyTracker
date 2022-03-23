@@ -4,18 +4,22 @@
 Hello, this web app is a solution to the problem of the inability to track group buys in the mechanical keyboard space. The endgoal being to connect group buy runners to to their buyers in all in one location. This solution allows you to track and be notified of changes to a group buy via SMS.  
 <hr />
 <h3>Features</h3>
+<div>
 - User Authenetication and login to make a profile for the user to track their specific group buy project.
 - Project updates for users and followers.
 - Creators can be directly in charge of their projects to change and modify.
 - Notifies users of the changes to the projects via SMS if provided mobile number.
+ </div>
 <hr />
 <h3>Technologies Used</h3>
+<div>
  - Javascript
  - React.JS
  - Python
  - Flask
  - Postgres SQL
  - HTML/CSS
+ </div>
 <hr />
 <h3>Site in action</h3>
 Logo:

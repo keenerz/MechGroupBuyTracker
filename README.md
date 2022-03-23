@@ -22,14 +22,20 @@ Hello, this web app is a solution to the problem of the inability to track group
 <hr />
 <h3>Site in action</h3>
 Logo:
+ <br>
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/homepagegif.gif?raw=true" />
 Site:
+ <br>
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Group-Buy-Tracker.gif?raw=true" />
 Details:
+ <br>
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Group%20Buy%20Tracker.png?raw=true" />
 Project Creation:
+ <br>
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/MGBTCreate.gif?raw=true" />
 Tracking:
+ <br>
 <img src="https://raw.githubusercontent.com/keenerz/MechGroupBuyTracker/main/docs/assets/Tracking.gif" />
 SMS Notifications:
+<br>
 <img src="https://github.com/keenerz/MechGroupBuyTracker/blob/main/docs/assets/Screen%20Shot%202022-03-21%20at%208.45.41%20PM.png?raw=true" />

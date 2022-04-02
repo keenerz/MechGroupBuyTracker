@@ -24,14 +24,6 @@ export const ProjectList = (props) => {
     if (query.type !== "0" && project.project_type !== query.type) {
       return false;
     }
-    // if (
-    //   props.query.search !== "" &&
-    //   props.query.search
-    //     .toLocaleLowerCase()
-    //     .includes(query.search.toLocaleLowerCase())
-    // ) {
-    //   return false;
-    // }
     return true;
   };
   return (

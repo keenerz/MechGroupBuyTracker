@@ -43,6 +43,25 @@ export const Navbar1 = () => {
             {session ? <App /> : ""}
           </Nav>
           <Nav>
+          <form>
+          <input
+            type="search"
+            className="form-control"
+            placeholder="Search..."
+            aria-label="Search"
+            onChange={(e) => {
+              store.projects
+                .filter(() =>
+                  store.project.name.filter("keycap", "keyboard", "switches")
+                )
+                .map((filteredproject) => {
+                  <ul>
+                    <li>{filteredproject.target.value}</li>
+                  </ul>;
+                });
+            }}
+          />
+        </form>
             {!session ? (
               <Link to="/login">
                 <Button>Login</Button>

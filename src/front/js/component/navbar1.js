@@ -42,59 +42,67 @@ export const Navbar1 = () => {
           <Nav className="me-auto" style={{ marginLeft: "10px" }}>
             {session ? <App /> : ""}
           </Nav>
-          <Nav>
-          <form>
-          <input
-            type="search"
-            className="form-control"
-            placeholder="Search..."
-            aria-label="Search"
-            onChange={(e) => {
-              store.projects
-                .filter(() =>
-                  store.project.name.filter("keycap", "keyboard", "switches")
-                )
-                .map((filteredproject) => {
-                  <ul>
-                    <li>{filteredproject.target.value}</li>
-                  </ul>;
-                });
-            }}
-          />
-        </form>
-            {!session ? (
-              <Link to="/login">
-                <Button>Login</Button>
-              </Link>
-            ) : (
-              <Button
-                onClick={() => {
-                  actions.logout();
-                  history.push("/");
-                }}
-              >
-                Logout
-              </Button>
-            )}
-          </Nav>
-          <Nav>
-            {!session ? (
-              <Link to="/create">
-                <Button style={{ marginLeft: "10px" }}>Sign Up</Button>
-              </Link>
-            ) : (
-              ""
-            )}
-          </Nav>
-          <Nav>
-            {session ? (
-              <Link to="/accountsettings">
-                <Button style={{ marginLeft: "10px" }}>Account Settings</Button>
-              </Link>
-            ) : (
-              ""
-            )}
-          </Nav>
+          <div>
+            <Nav>
+              <form>
+                <input
+                  type="search"
+                  className="form-control"
+                  placeholder="Search..."
+                  aria-label="Search"
+                  onChange={(e) => {
+                    store.projects
+                      .filter(() =>
+                        store.project.name.filter(
+                          "keycap",
+                          "keyboard",
+                          "switches"
+                        )
+                      )
+                      .map((filteredproject) => {
+                        <ul>
+                          <li>{filteredproject.target.value}</li>
+                        </ul>;
+                      });
+                  }}
+                />
+              </form>
+              {!session ? (
+                <Link to="/login">
+                  <Button>Login</Button>
+                </Link>
+              ) : (
+                <Button
+                  onClick={() => {
+                    actions.logout();
+                    history.push("/");
+                  }}
+                >
+                  Logout
+                </Button>
+              )}
+            </Nav>
+            <Nav>
+              {!session ? (
+                <Link to="/create">
+                  <Button style={{ marginLeft: "10px" }}>Sign Up</Button>
+                </Link>
+              ) : (
+                ""
+              )}
+            </Nav>
+            <Nav>
+              {session ? (
+                <Link to="/accountsettings">
+                  <Button style={{ marginLeft: "10px" }}>
+                    Account Settings
+                  </Button>
+                </Link>
+              ) : (
+                ""
+              )}
+            </Nav>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

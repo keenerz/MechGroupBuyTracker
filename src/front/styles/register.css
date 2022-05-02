@@ -6,14 +6,14 @@
   background: url(https://th.bing.com/th/id/R.d69b96e1d2a4f0ed11d8e487630e69d6?rik=10Fsvb7gV4DP9A&riu=http%3a%2f%2fallhdwallpapers.com%2fwp-content%2fuploads%2f2015%2f07%2fKeyboard-7.jpg&ehk=vGHMhSlLCpicmqtYMk6MeDY3lfx1a9BhtfyegFGRNCQ%3d&risl=&pid=ImgRaw&r=0);
 }
 
-.register .image-holder {
+.register1 .image-holder {
   display: table-cell;
   width: auto;
   background: url(https://media.kingston.com/hyperx/product/hx-product-keyboard-keycaps-5-usage-zm-lg.jpg);
   background-size: cover;
 }
 
-.register .form-container {
+.register1 .form-container {
   display: table;
   max-width: 900px;
   width: 90%;
@@ -21,7 +21,7 @@
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.register form {
+.register1 form {
   display: table-cell;
   background-color: #ffffff;
   padding: 40px 60px;
@@ -38,18 +38,18 @@
 }
 
 @media (max-width: 991px) {
-  .register-photo form {
+  .register1-photo form {
     padding: 40px;
   }
 }
 
-.register form h2 {
+.register1 form h2 {
   font-size: 24px;
   line-height: 1.5;
   margin-bottom: 30px;
 }
 
-.register form .form-control {
+.register1 form .form-control {
   background: #f7f9fc;
   border: none;
   border-bottom: 1px solid #dfe7f1;
@@ -61,12 +61,12 @@
   height: 40px;
 }
 
-.register form .form-check {
+.register1 form .form-check {
   font-size: 13px;
   line-height: 20px;
 }
 
-.register form .btn-primary {
+.register1 form .btn-primary {
   background: #f4476b;
   border: none;
   border-radius: 4px;
@@ -77,16 +77,16 @@
   outline: none !important;
 }
 
-.register form .btn-primary:hover,
-.register-photo form .btn-primary:active {
+.register1 form .btn-primary:hover,
+.register1-photo form .btn-primary:active {
   background: #eb3b60;
 }
 
-.register form .btn-primary:active {
+.register1 form .btn-primary:active {
   transform: translateY(1px);
 }
 
-.register form .already {
+.register1 form .already {
   display: block;
   text-align: center;
   font-size: 12px;
